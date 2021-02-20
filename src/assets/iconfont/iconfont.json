@@ -1,0 +1,205 @@
+{
+  "id": "346947",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13773798",
+      "name": "移除",
+      "font_class": "yichu",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "19494236",
+      "name": "删 除",
+      "font_class": "shanchu",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "12314781",
+      "name": "设备",
+      "font_class": "shebei",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "1119184",
+      "name": "系统",
+      "font_class": "xitong",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "8643807",
+      "name": "综合管理",
+      "font_class": "zongheguanli",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "2546498",
+      "name": "日志",
+      "font_class": "rizhi",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "4854091",
+      "name": "日志",
+      "font_class": "rizhi1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "689231",
+      "name": "多人 用户 2",
+      "font_class": "duorenyonghu2",
+      "unicode": "e7db",
+      "unicode_decimal": 59355
+    },
+    {
+      "icon_id": "13196747",
+      "name": "激活-regular",
+      "font_class": "jihuo-regular",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "6607923",
+      "name": "汽车",
+      "font_class": "qiche",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "379069",
+      "name": "汽车-01",
+      "font_class": "qiche01",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "7350323",
+      "name": "卫星，导航",
+      "font_class": "huaban",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "7404290",
+      "name": "公司",
+      "font_class": "gongsi",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "1091505",
+      "name": "心",
+      "font_class": "xin-copy",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "1241363",
+      "name": "酒店",
+      "font_class": "jiudian",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "2486627",
+      "name": "餐饮",
+      "font_class": "canyin",
+      "unicode": "e717",
+      "unicode_decimal": 59159
+    },
+    {
+      "icon_id": "178709",
+      "name": "心",
+      "font_class": "hert",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "137341",
+      "name": "消息",
+      "font_class": "iconfont04",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    },
+    {
+      "icon_id": "220115",
+      "name": "个人",
+      "font_class": "geren",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "964041",
+      "name": "反馈",
+      "font_class": "fankui",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "1686557",
+      "name": "咨询",
+      "font_class": "zixun",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "2029865",
+      "name": "足迹",
+      "font_class": "zuji",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
+      "icon_id": "2155781",
+      "name": "顶部",
+      "font_class": "dingbu",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "988978",
+      "name": "相机",
+      "font_class": "xiangji",
+      "unicode": "e6ee",
+      "unicode_decimal": 59118
+    },
+    {
+      "icon_id": "632162",
+      "name": "向下箭头",
+      "font_class": "xiangxiajiantou",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "300327",
+      "name": "导航",
+      "font_class": "importedlayers",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "466446",
+      "name": "放大镜",
+      "font_class": "search95a1aaac44fdb4",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1969990",
+      "name": "购物车空",
+      "font_class": "gouwuchekong",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
