@@ -22,14 +22,14 @@ body{
 
 .login{
     margin: auto;
-    width: 420px;
+    width: 320px;
     height: 500px;
     position: relative;
 }
 
 .login-content{
-    width: 420px;
-    min-height: 320px;
+    width: 320px;
+    min-height: 300px;
     background: white;
     border-radius: 6px;
     margin-top: 18px;
@@ -57,7 +57,7 @@ body{
 }
 
 .login-line{
-    width: 300px;
+    width: 260px;
     height: 42px;
     line-height: 42px;
     border: 1px solid #dcdee0;
@@ -67,12 +67,12 @@ body{
 }
 
 .login-button-line{
-    width: 300px; 
+    width: 260px; 
     margin: auto;
 }
 
 .login-button-line>button{
-    width: 300px;
+    width: 260px;
     height: 40px;
 }
 
@@ -81,29 +81,9 @@ body{
     text-indent: 4px;
     font-size: 16px;
     color: #333;
-    width: 236px;
+    width: 198px;
     border: none;
     outline: none;
-}
-
-.to-regist-line{
-    width: 300px;
-    margin: auto;
-    margin-top: 22px;
-    color: #999;
-    font-size: 16px;
-    text-align: center;
-}
-
-.to-login-line{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    height: 40px;
-}
-
-.to-regist-line a{
-    color: #1890ff;
-    font-weight: bolder;
 }
 
 .login-line>i{
@@ -118,39 +98,49 @@ body{
     margin-top: 24px;
 }
 
-.regist-content{
-    width: 520px;
-    min-height: 360px;
-    padding-top: 8px;
-}
-
-.regist-title{
-    /* border: 1px solid black; */
-    text-align: left;
-    margin-left: 24px;
-    margin-bottom: 12px;
-}
-
-.regist-line{
-    height: 48px;
-}
-
-.regist-line>span{
-    display: inline-block;
-    text-align: right;
-    width: 80px;
-    margin-right: 10px;
-}
-.regist-line>span>i{
-    color: red;
-    margin-right: 1px;
-}
-.regist-button-line{
-    padding-left: 92px;
-    margin-top: 4px;
-}
-
 .comm-ipt{
     margin-left: 10px;
     width: 160px;
+}
+
+.changepwd-edit-line>span{
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+    margin-right: 20px;
+}
+@media screen and (max-width: 1024px){
+    .changepwd-edit-line{
+        height: 50px;
+        line-height: 50px;
+    }
+}
+@media screen and (min-width: 1025px){
+    .login{
+        width: 420px;
+    }
+    .login-content{
+        width: 420px;
+        min-height: 320px;
+    }
+    .login-line{
+        width: 300px;
+    }
+    
+    .login-button-line{
+        width: 300px; 
+    }
+    
+    .login-button-line>button{
+        width: 300px;
+    }
+
+    .login-line>input{
+        width: 236px;
+    }
+
+    .changepwd-edit-line{
+        height: 60px;
+        line-height: 60px;
+    }
 }

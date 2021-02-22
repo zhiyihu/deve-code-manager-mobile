@@ -1,0 +1,103 @@
+.user-main {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-content{
+    width: 900px;
+    margin: auto;
+}
+
+.user-title {
+    font-size: 20px;
+    height: 40px;
+    flex-grow: 0;
+}
+
+.face-head {
+    width: 240px;
+    height: 120px;
+    background: white;
+    text-align: center;
+    padding-top: 20px;
+    margin: auto;
+    margin-top: 14px;
+}
+
+.user-base-info {
+    background: white;
+    flex-grow: 1;
+    padding: 4px 4px;
+    position: relative;
+}
+
+.face-head-photo {
+    width: 160px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.face-head-photo>img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.face-head-greet {
+    font-size: 26px;
+    /* margin-top: 24px; */
+}
+
+.user-base-info-line {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #ddd;
+    padding-top: 20px;
+    padding-bottom: 6px;
+}
+
+.base-info-title {
+    font-size: 18px;
+    width: 150px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-right: 18px;
+    height: 30px;
+}
+
+.base-info-value {
+    font-size: 18px;
+    padding-right: 4px;
+}
+
+.base-info-value>input {
+    width: 680px;
+    height: 32px;
+    border: none;
+    outline: none;
+    position: relative;
+    right: 4px;
+    bottom: 5px;
+}
+
+.base-info-value>img {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 10px;
+}
+
+.edit-ipt {
+    border: none;
+    outline: none;
+    width: 500px;
+}
+
+
+.userinfo-modify-part {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
