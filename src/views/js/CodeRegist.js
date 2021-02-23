@@ -93,11 +93,8 @@ export default {
             this.qrVisible = false;
         },
         onDecode(result) {
-            let nowTime = new Date().getTime();
-            if(this.lastScanTime && nowTime - this.lastScanTime < 1500){
+            if(!this.qrVisible){
                 return;
-            }else{
-                this.lastScanTime = nowTime;
             }
             this.qrVisible = false;
             this.addCode(result, true);
