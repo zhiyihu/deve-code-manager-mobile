@@ -45,17 +45,11 @@ const columns = [{
 {
     width: 70,
     title: '天数',
-    dataIndex: 'days',
-    scopedSlots: {
-        customRender: 'days'
-    },
+    dataIndex: 'daysShow',
 },
 {
     title: '到期时间',
-    dataIndex: 'expire_date',
-    scopedSlots: {
-        customRender: 'date'
-    },
+    dataIndex: 'passDayShow',
 },
 {
     title: '操作人',
@@ -231,14 +225,13 @@ export default {
                         let order = i + (self.current - 1) * self.reqParam.per_page_max_record_count;
                         item.key = order;
                         item.order = order;
-                        item.expire_date = item.days < 9999 ? item.expire_date : '9999-12-31';
                         item.func_list = item.func_list || '无';
                         item.pic = self.getIconPic(item.type);
                         item.code = self.$util.fmtActCode(item.code);
 
                         item.regDayShow = item.regist_datetime.substr(0, 19);
-                        item.daysShow = (item.days <= 9999 ? item.days + '天' : '永久');
-                        item.passDayShow = (item.days <= 9999 ? item.expire_date.substr(0, 10) : '9999-12-31');
+                        item.daysShow = self.$util.fmtRegDay(item.days);
+                        item.passDayShow = self.$util.fmtPassDay(item.days, item.expire_date);
                         item.codeShow = item.code;
                         item.funcShow = item.func_list;
                         item.copyText = self.getClipFmtTextSingle(item);
@@ -264,10 +257,10 @@ export default {
             res += '机型：' + code.type + '\r\n';
             res += '注册码：' + code.code + '\r\n';
             res += '注册时间：' + code.regDayShow + '\r\n';
-            res += '注册天数：' + code.daysShow + '\r\n';
+            // res += '注册天数：' + code.daysShow + '\r\n';
             res += '到期时间：' + code.passDayShow + '\r\n';
             res += '主机功能：' + code.funcShow + '\r\n';
-            res += '操作人：' + code.user + '\r\n';
+            // res += '操作人：' + code.user + '\r\n';
             return res;
         },
 
@@ -336,6 +329,9 @@ export default {
             const self = this;
             this.$api.post("/query_device_type", {}).then(res => {
                 if (res.err_code == 0) {
+                    if(!res.device_typs){
+                        res.device_typs = self.$util.adaptDeviceType(res.device_types);
+                    }
                     self.deviceTypesArr = [...new Set(Object.values(res.device_typs))];
                     let obj = new Object();
                     for (let key of self.deviceTypesArr) {

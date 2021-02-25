@@ -63,10 +63,48 @@ const menus = [{
             key: 'coderegist',
             link: '/coderegist',
             roles: 'device-regist',
-        }
+        },
+        {
+            title: '变更主机所属公司',
+            key: 'devicechange',
+            link: '/devicechange',
+            roles: 'device-query,device-update',
+        },
 
     ],
-}
+},
+{
+    title: '系统相关配置',
+    key: 'system',
+    icon: 'icon-xitong',
+    menus: [
+        {
+            title: '邮件服务器配置',
+            key: 'emailconfig',
+            link: '/emailconfig',
+            roles: 'admin',
+        },
+        {
+            title: '注册码小程序配置',
+            key: 'wxminiconfig',
+            link: '/wxminiconfig',
+            roles: 'admin',
+        },
+        {
+            title: '微信公众号配置',
+            key: 'wxpublicconfig',
+            link: '/wxpublicconfig',
+            roles: 'admin',
+        },
+        {
+            title: '生产入库做码配置',
+            key: 'devicetypeconfig',
+            link: '/devicetypeconfig',
+            roles: 'admin',
+        },
+
+    ],
+},
 ];
 
 const matchPermission = (permissions, roles)=>{

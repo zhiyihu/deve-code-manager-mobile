@@ -1,6 +1,6 @@
-import moment from "moment";
-import ClipboardJS from 'clipboard';
-import { StreamBarcodeReader } from "vue-barcode-reader";
+import {
+    StreamBarcodeReader
+} from "vue-barcode-reader";
 
 export default {
     components: {
@@ -8,78 +8,29 @@ export default {
     },
     data() {
         return {
-            registResArr: [],
-            copyText: '',
-            regResVisible: false,
-            regResModalTitle: '注册结果',
-            dateStyle: {
-                borderWidth: '0px'
-            },
-            maxActDay: 1,
             deviceTypesObj: {},
-            dateRange: [],
             loading: false,
             visible: false,
             modalTitle: '添加机号',
             addDeviceSnListVal: '',
             deviceTypeIconObj: {},
-            regTimeVal: '1',
-            activeDays: 1,
-            regReasonVal: '',
-            deviceFunc: {},
             deviceType: {},
-            deviceFuncOptions: [],
-            actPassDay: moment().add(1, 'days'),
-            regFuncVal: [],
             codeList: [],
             showCodeList: [],
             groupList: [],
             currTypeIndex: 0,
             currType: '',
-            actTimesArr: [],
-            actTimeConfigArr: [{
-                "val": "1",
-                "name": "1天"
-            }, {
-                "val": "3",
-                "name": "3天"
-            }, {
-                "val": "7",
-                "name": "7天"
-            }, {
-                "val": "15",
-                "name": "15天"
-            }, {
-                "val": "30",
-                "name": "30天"
-            }, {
-                "val": "60",
-                "name": "60天"
-            }, {
-                "val": "90",
-                "name": "90天"
-            }, {
-                "val": "180",
-                "name": "180天"
-            }, {
-                "val": "365",
-                "name": "1年"
-            }, {
-                "val": "1095",
-                "name": "3年"
-            }, {
-                "val": "1825",
-                "name": "5年"
-            }, {
-                "val": "10000",
-                "name": "永久"
-            }],
-            actReasonArr: [],
+
             machineNum: 0,
             error: '',
             result: '',
             noStreamApiSupport: false,
             qrVisible: false,
+            companySelectArr: [],
+            modfCompanyId: '',
+            companyObj: {},
+            deviceBelongCompany: '无',
+            deviceBelongCompanyIds: [],
         };
     },
     methods: {
@@ -93,167 +44,74 @@ export default {
             this.qrVisible = false;
         },
         onDecode(result) {
-            if(!this.qrVisible){
+            if (!this.qrVisible) {
                 return;
             }
             this.qrVisible = false;
             this.addCode(result, true);
         },
-        onLoaded() { },
+        onLoaded() {},
 
-        initClipboard() {
-            const self = this
-            this.clipboard = new ClipboardJS('.copy');
-            this.clipboard.on('success', (e) => {
-                e.clearSelection();
-                self.$message.success('复制成功');
-            });
-            this.clipboard.on('error', () => {
-                self.$message.error('复制错误，请重新复制！');
-            });
-        },
-
-        destoryClipboard() {
-            if (this.clipboard) {
-                this.clipboard.destroy();
-            }
-        },
         regResHandleOk() {
             this.regResVisible = false;
         },
         regResHandleCancel() {
             this.regResVisible = false;
         },
-        submitRegist() {
+        submitChangeCompany() {
             const self = this;
             if (!this.codeList.length) {
                 this.$message.info('请添加机号');
                 return;
             }
-            const currTypeIndex = self.currTypeIndex;
-            let currType = (this.groupList[currTypeIndex] || {
-                type: ''
-            }).type;
+            if (!(this.modfCompanyId + '')) {
+                this.$message.info('请选择变更公司');
+                return;
+            }
+            if(this.deviceBelongCompanyIds.includes(this.modfCompanyId)){
+                this.$message.info('请选择与设备所属公司不同的公司');
+                return;
+            }
             this.$confirm({
-                title: '激活提示',
-                content: '确认激活全部' + currType + '？',
+                title: '提示',
+                content: '确认变更' + self.codeList.length + '台主机，公司为【' + self.companyObj[self.modfCompanyId] + '】？',
                 okText: '确认',
                 okType: 'primary',
                 cancelText: '取消',
                 centered: true,
                 onOk() {
-                    self.reqRegistMachine();
+                    self.reqChangeMachineCompany();
                 },
-                onCancel() { },
+                onCancel() {},
             });
         },
-        getDeviceFuncVal() {
-            let regFuncVal = this.regFuncVal;
-            let total = 0;
-            for (let key of regFuncVal) {
-                total += Math.pow(2, key - 0);
-            }
-            return total;
-        },
-        reqRegistMachine() {
+        //变更公司
+        reqChangeMachineCompany() {
             const self = this;
             const param = new Object();
-            const devices = new Array();
-            const showCodeList = self.showCodeList;
-            const actDay = (self.activeDays) + '';
-            const functionCode = self.getDeviceFuncVal() + '';
-            const actReason = self.regReasonVal;
-            for (let item of showCodeList) {
-                devices.push({
-                    sn: item.value,
-                    type: item.type,
-                    days: actDay,
-                    function_code: functionCode,
-                    apply_reason: actReason,
-                });
-            }
-            param.devices = devices;
-            param.way = "web"; //激活方式为网页
+            const devices = self.codeList.map(item => item.value);
 
+            param.devices = devices;
+            param.company_id = this.modfCompanyId;
             self.$loading.show();
 
-            this.$api.post('/regist_device', param).then(res => {
+            this.$api.post('/change_device_company', param).then(res => {
                 self.$loading.hide();
                 if (res.err_code == '0') {
-                    self.clearCurrList();
-                    self.showRegistResModal(res.codes);
+                    self.clearAllList();
+                    self.$message.success('操作成功');
                 } else {
                     self.$error({
                         title: res.err_msg,
-                        onOk() { },
+                        onOk() {},
                     });
                 }
             }).catch(e => {
                 self.$loading.hide();
                 console.error(e);
             });
+        },
 
-        },
-        showRegistResModal(codes) {
-            const self = this;
-            let copyText = '';
-            const len = codes.length;
-            codes.forEach((item, index) => {
-                item.regDayShow = item.regist_datetime.substr(0, 19);
-                item.daysShow = self.$util.fmtRegDay(item.days);
-                item.passDayShow = self.$util.fmtPassDay(item.days, item.expire_date);
-                item.codeShow = self.$util.fmtActCode(item.code);
-                item.funcShow = (item.func_list.join('，') || '无');
-                copyText += '第' + (index + 1) + '条记录\r\n';
-                copyText += this.getClipFmtTextSingle(item) + (index < len - 1 ? '\r\n\r\n' : '');
-            });
-            self.registResArr = codes;
-            self.regResVisible = true;
-            self.copyText = copyText;
-            self.regResModalTitle = '注册成功（共' + codes.length + '条）';
-        },
-        getClipFmtTextSingle: function (code) {
-            let res = '';
-            res += '机号：' + code.sn + '\r\n';
-            res += '机型：' + code.type + '\r\n';
-            res += '注册码：' + code.codeShow + '\r\n';
-            res += '注册天数：' + code.daysShow + '\r\n';
-            res += '到期时间：' + code.passDayShow + '\r\n';
-            res += '主机功能：' + code.funcShow + '\r\n';
-            res += '操作人：' + code.user + '\r\n';
-            return res;
-        },
-        disabledDate(current) {
-            let maxActDay = this.maxActDay;
-            return (current && current < moment().endOf('day')) || current > moment().add(maxActDay, 'days');
-        },
-        onDateChange(date) {
-            this.regTimeVal = '';
-            let dayGap = date.diff(moment().startOf('day'), 'day');
-            this.activeDays = dayGap - 0;
-            this.dateStyle = {
-                borderWidth: '1px'
-            };
-        },
-        refreshDeviceFuncOptions(isNotResetVal) {
-            let options = new Array();
-            const currTypeIndex = this.currTypeIndex;
-            let currType = (this.groupList[currTypeIndex] || {
-                type: ''
-            }).type;
-            let funcArr = (this.deviceFunc[currType] || []);
-            for (let item of funcArr) {
-                options.push({
-                    label: item.name,
-                    value: item.bit,
-                });
-            }
-            this.deviceFuncOptions = options;
-            if (!isNotResetVal) {
-                this.regFuncVal = [];
-            }
-
-        },
         codeStrChange(e) {
             const codeStr = e.target.value;
             const codesArr = this.getLegalCodes(codeStr);
@@ -319,7 +177,7 @@ export default {
                 onOk() {
                     self.removeCode(code);
                 },
-                onCancel() { },
+                onCancel() {},
             });
         },
 
@@ -342,7 +200,7 @@ export default {
                 this.showCodeList = showCodeList;
                 this.groupList = newGroupList;
                 this.currTypeIndex = currTypeIndex;
-                this.refreshDeviceFuncOptions(true);
+                this.refreshDeviceBelongCompany();
             }
 
         },
@@ -363,7 +221,7 @@ export default {
                 onOk() {
                     self.clearCurrList();
                 },
-                onCancel() { },
+                onCancel() {},
             });
 
         },
@@ -388,7 +246,15 @@ export default {
             this.showCodeList = showCodeList;
             this.groupList = groupList;
             this.currTypeIndex = 0;
-            this.refreshDeviceFuncOptions();
+            this.refreshDeviceBelongCompany();
+        },
+        clearAllList: function () {
+            this.codeList = [];
+            this.showCodeList = [];
+            this.groupList = [];
+            this.currTypeIndex = 0;
+            this.deviceBelongCompany = '无';
+            this.deviceBelongCompanyIds = [];
         },
         addCode(codeStr, isScan) {
             codeStr = (codeStr || '');
@@ -397,13 +263,13 @@ export default {
             }
             const legalCodes = this.getLegalCodes(codeStr);
             let addTipText = '';
-            if(codeStr.match(/^[A-Za-z0-9]+$/g)){
-                addTipText = codeStr.substr(0,40);
+            if (codeStr.match(/^[A-Za-z0-9]+$/g)) {
+                addTipText = codeStr.substr(0, 40);
             }
             if (!legalCodes.length) {
                 this.$error({
-                    title: '不正确的主机号' + (isScan ? addTipText: ''),
-                    onOk() { },
+                    title: '不正确的主机号' + (isScan ? addTipText : ''),
+                    onOk() {},
                 });
                 return;
             }
@@ -419,7 +285,7 @@ export default {
 
                     this.$info({
                         title: code + '已在列表',
-                        onOk() { },
+                        onOk() {},
                     });
                     return;
                 }
@@ -446,18 +312,32 @@ export default {
             this.codeList = codeList;
             this.showCodeList = showCodeList;
             this.groupList = groupList;
-
-            this.refreshDeviceFuncOptions(true);
-
+            this.refreshDeviceBelongCompany();
         },
 
-        onRegTimeChange(e) {
-            let day = e.target.value;
-            this.activeDays = day - 0;
-            this.actPassDay = moment().add(day, 'days');
-            this.dateStyle = {
-                borderWidth: '0px'
-            };
+        refreshDeviceBelongCompany() {
+            const self = this;
+            if (!this.codeList.length) {
+                this.deviceBelongCompany = '无';
+                this.deviceBelongCompanyIds = [];
+            } else {
+                const param = new Object();
+                param.action = '0';
+                param.sn = self.codeList.map(item=>item.value);
+                this.$api.post("/query_device", param).then(res => {
+                    if (res.err_code == '0') {
+                        self.deviceBelongCompany = [...new Set(res.devices.map(item=>self.companyObj[item.company_id]))].join('，');
+                        self.deviceBelongCompanyIds = res.devices.map(item=>item.company_id);
+                    } else {
+                        self.$message.error(res.err_msg);
+                        self.deviceBelongCompany = '无';
+                        self.deviceBelongCompanyIds = [];
+                    }
+                }).catch(() => {
+                    self.$loading.hide();
+                });
+
+            }
         },
 
         tabCallback(key) {
@@ -468,7 +348,6 @@ export default {
             this.showCodeList = codeList.filter((item) => {
                 return item.type == currType
             });
-            this.refreshDeviceFuncOptions();
         },
 
         handleOk() {
@@ -513,68 +392,37 @@ export default {
                 if (callback) {
                     callback();
                 }
-            }).catch(() => { });
+            }).catch(() => {});
         },
 
-        reqRegistReasons() {
+        onCompanyChange(val) {
+            this.modfCompanyId = val;
+        },
+
+        reqCompany(callback) {
             const self = this;
-            this.$api.post("/query_regist_reason", {}).then(res => {
-                if (res.err_code == 0) {
-                    self.actReasonArr = res.reasons;
-                    self.regReasonVal = res.reasons[0];
-                } else {
-                    self.$message.error(res.err_img);
+            this.$api.post("/query_company", {
+                type: "1",
+            }).then(res => {
+                if (res.err_code == '0') {
+                    const resData = [];
+                    for (let company of res.companies) {
+                        resData.push(company);
+                        self.companyObj[company.company_id] = company.name;
+                    }
+                    self.companySelectArr = resData;
                 }
-            }).catch(() => { });
-        },
-
-        reqDeviceFuncs() {
-            const self = this;
-            this.$api.post("/query_device_func", {}).then(res => {
-                if (res.err_code == 0) {
-                    self.deviceFunc = res.device_func;
-                } else {
-                    self.$message.error(res.err_img);
+                if (callback) {
+                    callback();
                 }
-            }).catch(() => { });
-        },
-
-        setDateRange() {
-            const today = this.$util.getFmtDateStr(new Date());
-            this.dateRange = [moment(today, 'YYYY-MM-DD'), moment(today, 'YYYY-MM-DD')];
-
-        },
-        refreshMaxActDays: function () {
-            let user = JSON.parse(sessionStorage.getItem("user"));
-            const maxActDay = user.regist_max_days - 0;
-            this.maxActDay = maxActDay;
-
-            const timesArr = new Array();
-            const actTimeConfigArr = this.actTimeConfigArr;
-            for (let item of actTimeConfigArr) {
-                if (item.val - 0 <= maxActDay) {
-                    timesArr.push(item);
-                }
-            }
-            this.actTimesArr = timesArr;
+            }).catch(() => {
+                self.$loading.hide();
+            });
         },
 
     },
     mounted() {
-        this.refreshMaxActDays();
         this.reqDeviceType();
-        this.reqRegistReasons();
-        this.reqDeviceFuncs();
-        this.initClipboard();
-
+        this.reqCompany();
     },
-    destroyed() {
-        this.destoryClipboard();
-    },
-    computed: {
-        maxActText() {
-            let maxActDay = this.maxActDay;
-            return maxActDay - 0 <= 9999 ? '最多' + maxActDay + '天' : '可永久激活';
-        }
-    }
 };

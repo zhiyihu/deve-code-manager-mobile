@@ -31,7 +31,6 @@
                 </div>
                 <div>
                     <a-button type="primary" icon="reload" style="vertical-align: top;margin-left: 12px;" @click="reqData">刷新数据</a-button>
-                    <a-button type="primary" icon="plus" style="vertical-align: top;margin-left: 12px;" @click="addDevice">添加主机</a-button>
                 </div>
             </div>
             <div class="table-bottom-page-count">一共有{{total}}条数据，每页{{pageSize}}条，当前第{{current}}页</div>

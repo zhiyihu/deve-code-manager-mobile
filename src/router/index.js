@@ -81,6 +81,51 @@ const router = new Router({
                         roles: 'device-regist',
                         title: '主机注册'
                     }
+                },
+                {
+                    path: 'devicechange',
+                    name: 'devicechange',
+                    component: getSrc('DeviceCompanyChange'),
+                    meta: {
+                        roles: 'device-query,device-update',
+                        title: '变更主机所属公司'
+                    }
+                },
+                {
+                    path: 'emailconfig',
+                    name: 'emailconfig',
+                    component: getSrc('EmailConfig'),
+                    meta: {
+                        roles: 'admin',
+                        title: '邮件服务器配置'
+                    }
+                },
+                {
+                    path: 'wxminiconfig',
+                    name: 'wxminiconfig',
+                    component: getSrc('WxMiniProgramConfig'),
+                    meta: {
+                        roles: 'admin',
+                        title: '注册码小程序配置'
+                    }
+                },
+                {
+                    path: 'wxpublicconfig',
+                    name: 'wxpublicconfig',
+                    component: getSrc('WxPublicConfig'),
+                    meta: {
+                        roles: 'admin',
+                        title: '微信公众号配置'
+                    }
+                },
+                {
+                    path: 'devicetypeconfig',
+                    name: 'devicetypeconfig',
+                    component: getSrc('DeviceTypeConfig'),
+                    meta: {
+                        roles: 'admin',
+                        title: '生产入库做码配置'
+                    }
                 }
             ],
         },

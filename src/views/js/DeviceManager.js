@@ -244,6 +244,9 @@ export default {
             const self = this;
             this.$api.post("/query_device_type", {}).then(res => {
                 if (res.err_code == 0) {
+                    if(!res.device_typs){
+                        res.device_typs = self.$util.adaptDeviceType(res.device_types);
+                    }
                     self.deviceTypesArr = [...new Set(Object.values(res.device_typs))];
                     let obj = new Object();
                     for (let key of self.deviceTypesArr) {

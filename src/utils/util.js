@@ -4,6 +4,22 @@ const util = {
     fillZero(num) {
         return (num < 10 ? '0' : '') + num;
     },
+     //适配修改类型返回的请求
+    adaptDeviceType: function(deviceTypes){
+      const deviceTypeObj = new Object();
+      for(let item of deviceTypes){
+        deviceTypeObj[item.sn_flag] = item.name;
+      }
+      return deviceTypeObj;
+    },
+    //9999天显示永久
+    fmtRegDay: function(days){
+      return (days < 9999 ? days + '天' : '永久');
+    },
+
+    fmtPassDay: function(days, passDateStr){
+      return (days < 9999 ? passDateStr.substr(0, 10) : '永久激活');
+    },
     getFmtTimeStr(date) {
         return date.getFullYear() + '-'
         + this.fillZero(date.getMonth() + 1) + '-'
@@ -54,6 +70,26 @@ const util = {
     checkPwd(pwd){
       const pwdReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~,.:;@$!%*#?&+_=-])[A-Za-z\d~,.:;@$!%*#?&+_=-]{8,20}$/;  //密码为字母数字符号组成，长度至少8位
       return pwdReg.test(pwd);
+    },
+
+    checkDeviceFlag(flag){
+      const reg = /^\d{3}$/;
+      return reg.test(flag);
+    },
+
+    checkDeviceRegDay(regDay){
+      const reg = /^([1-9]\d{0,3}|10000)$/;
+      return reg.test(regDay);
+    },
+
+    checkPort(port){
+      const reg = /^([1-9]|[1-9]\d{1,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/;  //端口范围1~65535
+      return reg.test(port);
+    },
+
+    checkServer(server){
+      const reg = /^[a-z]{2,5}:\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]$/;
+      return reg.test(server);
     },
 
     checkEmail(email){

@@ -142,3 +142,64 @@
 .regist-machine-tipspan {
     margin-left: 12px;
 }
+
+
+.z-system-setting-part{
+    border-radius: 5px;
+    min-height: 320px;
+    padding: 24px 0px 6px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.z-system-setting-title{
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.z-system-setting-line{
+    display: flex;
+    height: 72px;
+    align-items: center;
+    width: 600px;
+}
+.z-system-setting-line>div:nth-of-type(1){
+    min-width: 140px;
+    text-align: right;
+    padding-right: 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    -moz-user-select:none;		
+	-webkit-user-select:none;
+	-ms-user-select:none;		
+	user-select:none;
+}
+
+.eye-touch-part-content{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 4px;
+}
+.eye-touch-part{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    width: 32px;
+    height: 32px;
+    vertical-align: top;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.not-empty-span{
+    color: #ff3300;
+    margin-right: 1px;
+}
+
+.z-system-checkbox-part{
+    height: auto;
+    margin-bottom: 24px;
+}

@@ -25,7 +25,6 @@
                     <span style="margin-left: 16px;">机号：</span>
                     <a-input allow-clear v-model="searchSN" style="width: 240px;"></a-input>
                     <a-button type="primary" icon="reload" style="vertical-align: top;margin-left: 12px;" @click="reqData">刷新数据</a-button>
-                    <a-button type="primary" icon="plus" style="vertical-align: top;margin-left: 12px;" @click="addDevice">添加主机</a-button>
                 </div>
             </div>
 

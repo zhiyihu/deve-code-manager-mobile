@@ -69,11 +69,11 @@
                     </div>
                     <div class="table-info-line">
                         <div>注册天数：</div>
-                        <div>{{ Number(item.days) > 9999 ? '永久' : item.days + '天'}}</div>
+                        <div>{{item.daysShow}}</div>
                     </div>
                     <div class="table-info-line">
                         <div>到期时间：</div>
-                        <div> {{ item.expire_date.substr(0, 10) }}</div>
+                        <div> {{ item.passDayShow}}</div>
                     </div>
                     <div class="table-info-line">
                         <div>主机功能：</div>

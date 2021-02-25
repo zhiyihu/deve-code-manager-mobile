@@ -259,3 +259,42 @@
   .ant-checkbox-wrapper{
     margin-bottom: 4px;
   }
+
+  
+  .z-system-setting-part{
+    padding: 4px 0px 6px 0px;
+  }
+  
+  .z-system-setting-title{
+      font-size: 22px;
+      margin-bottom: 16px;
+  }
+  
+  .z-system-setting-line{
+      margin-bottom: 18px;
+  }
+  .z-system-setting-line>div:nth-of-type(1){
+      margin-bottom: 6px;
+  }
+  
+  .eye-touch-part-content{
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 4px;
+  }
+  .eye-touch-part{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      width: 32px;
+      height: 32px;
+      vertical-align: top;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+.not-empty-span{
+    color: #ff3300;
+    margin-right: 1px;
+}
