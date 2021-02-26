@@ -126,6 +126,15 @@ const router = new Router({
                         roles: 'admin',
                         title: '生产入库做码配置'
                     }
+                },
+                {
+                    path: 'deviceimgconfig',
+                    name: 'deviceimgconfig',
+                    component: getSrc('DeviceImgConfig'),
+                    meta: {
+                        roles: 'admin',
+                        title: '设备图片配置'
+                    }
                 }
             ],
         },

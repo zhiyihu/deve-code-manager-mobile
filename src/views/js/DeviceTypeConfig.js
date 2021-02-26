@@ -1,4 +1,6 @@
+import DeveCodeCommon from './DeveCodeCommon';
 export default {
+    extends: DeveCodeCommon,
     data() {
         return {
            aesKey: '',
@@ -73,7 +75,7 @@ export default {
         submitModify() {
             const self = this;
             if (this.$util.checkNull([this.deviceName])){
-                this.$message.error('设备名称不能为空');
+                this.$message.error('设备类型不能为空');
                 return false;
             }
             if(!this.$util.checkDeviceFlag(this.deviceFlag)){
@@ -110,6 +112,7 @@ export default {
                 self.$loading.hide();
                 if (res.err_code == '0') {
                     self.$message.success('操作成功');
+                    self.reqQueryDeviceType();
                 } else {
                     self.$message.error(res.err_msg);
                 }
@@ -117,19 +120,6 @@ export default {
                 self.$loading.hide();
                 console.error(e);
             });
-        },
-
-
-        reqDeviceType() {
-            const self = this;
-            this.$api.post("/query_device_type", {}).then(res => {
-
-                if (res.err_code == 0) {
-                    self.deviceTypeObjArr = res.device_types;
-                } else {
-                    self.$message.error(res.err_img);
-                }
-            }).catch(() => { });
         },
 
         reqDeviceFuncs() {
@@ -145,7 +135,7 @@ export default {
 
     },
     mounted() {
-        this.reqDeviceType();
+        this.reqQueryDeviceType();
         this.reqDeviceFuncs();
     },
 };

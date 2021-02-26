@@ -102,6 +102,12 @@ const menus = [{
             link: '/devicetypeconfig',
             roles: 'admin',
         },
+        {
+            title: '设备图片配置',
+            key: 'deviceimgconfig',
+            link: '/deviceimgconfig',
+            roles: 'admin',
+        },
 
     ],
 },

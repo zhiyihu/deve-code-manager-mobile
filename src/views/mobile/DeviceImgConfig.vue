@@ -17,21 +17,18 @@
                         </div>
                     </div>
 
-
-                    <div class="z-system-setting-line">
-                        <div><span class="not-empty-span">*</span>默认注册天数：</div>
-                        <div><a-input v-model="regDay"  placeholder="1~10000" style="width: 100%;"></a-input></div>
+                     <div class="z-system-setting-line">
+                        <div><span class="not-empty-span">*</span>设备图片：</div>
+                        <div>
+                            <img v-if="imgUrl" style="width: 80px;height: 60px;border: 1px solid #eee;margin-right: 20px;" :src="imgUrl"/>
+                            <a-button :key="btnKey" style="position:relative;width: 120px;">
+                                <a-icon type="upload"/>
+                                上传图片
+                                <input accept="image/*" type="file" style="height: 32px;width: 120px;opacity: 0;position: absolute;left:0px;top: 0px;z-index:99;" @change="onFileChange"/>
+                            </a-button>
+                        </div>
                     </div>
-
-                    <div class="z-system-setting-line">
-                        <div><span class="not-empty-span">*</span>默认功能码：</div>
-                        <div><a-input disabled v-model="defaultFuncCode" style="width: 100%;"></a-input></div>
-                    </div>
-
-                    <div class="z-system-setting-line z-system-checkbox-part" v-if="deviceFuncOptions.length">
-                        <div></div>
-                        <div><a-checkbox-group style="width: 100%" v-model="regFuncVal" name="checkboxgroup" :options="deviceFuncOptions" @change="onFuncsCheckBoxChange"/></div>
-                    </div>
+                    <div style="height: 20px;"></div>
 
                     <div class="regist-machine-submit">
                         <a-button type="primary" @click="submitModify">提交修改</a-button>
@@ -45,9 +42,9 @@
 </template>
 
 <script>
-import DeviceTypeConfig from '../js/DeviceTypeConfig';
+import DeviceImgConfig from '../js/DeviceImgConfig';
 
-export default {...DeviceTypeConfig}
+export default {...DeviceImgConfig}
 
 </script>
 
