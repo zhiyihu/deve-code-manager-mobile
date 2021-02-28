@@ -122,20 +122,9 @@ export default {
             });
         },
 
-        reqDeviceFuncs() {
-            const self = this;
-            this.$api.post("/query_device_func", {}).then(res => {
-                if (res.err_code == 0) {
-                    self.deviceFunc = res.device_func;
-                } else {
-                    self.$message.error(res.err_img);
-                }
-            }).catch(() => { });
-        },
-
     },
     mounted() {
         this.reqQueryDeviceType();
-        this.reqDeviceFuncs();
+        this.reqQueryDeviceFuncs();
     },
 };

@@ -1,8 +1,10 @@
 import {
     StreamBarcodeReader
 } from "vue-barcode-reader";
+import DeveCodeCommon from './DeveCodeCommon';
 
 export default {
+    extends: DeveCodeCommon,
     components: {
         StreamBarcodeReader,
     },
@@ -202,7 +204,6 @@ export default {
                 this.currTypeIndex = currTypeIndex;
                 this.refreshDeviceBelongCompany();
             }
-
         },
 
         bindClearList: function () {
@@ -364,65 +365,15 @@ export default {
             this.visible = true;
         },
 
-        getIconPic(type) {
-            let deviceTypeIconObj = this.deviceTypeIconObj;
-            return deviceTypeIconObj[type];
-        },
-
-        /**请求类型 */
-        reqDeviceType(callback) {
-            const self = this;
-            this.$api.post("/query_device_type", {}).then(res => {
-
-                if (res.err_code == 0) {
-                    if(!res.device_typs){
-                        res.device_typs = self.$util.adaptDeviceType(res.device_types);
-                    }
-                    let deviceTypesArr = [...new Set(Object.values(res.device_typs))];
-                    let obj = new Object();
-                    for (let key of deviceTypesArr) {
-                        let imgName = self.$util.getMachinePicByType(key);
-                        obj[key] = require('../../assets/' + imgName + '.png');
-                    }
-                    self.deviceType = res.device_typs;
-                    self.deviceTypeIconObj = obj;
-                } else {
-                    self.$message.error(res.err_img);
-                }
-                if (callback) {
-                    callback();
-                }
-            }).catch(() => {});
-        },
-
         onCompanyChange(val) {
             this.modfCompanyId = val;
         },
-
-        reqCompany(callback) {
-            const self = this;
-            this.$api.post("/query_company", {
-                type: "1",
-            }).then(res => {
-                if (res.err_code == '0') {
-                    const resData = [];
-                    for (let company of res.companies) {
-                        resData.push(company);
-                        self.companyObj[company.company_id] = company.name;
-                    }
-                    self.companySelectArr = resData;
-                }
-                if (callback) {
-                    callback();
-                }
-            }).catch(() => {
-                self.$loading.hide();
-            });
-        },
-
     },
     mounted() {
-        this.reqDeviceType();
-        this.reqCompany();
+        const self = this;
+        this.reqQueryDeviceType();
+        this.reqQueryCompany(()=>{
+            self.companyObj = self.companyMap;
+        });
     },
 };

@@ -1,5 +1,6 @@
 import moment from "moment";
 import ClipboardJS from 'clipboard';
+import DeveCodeCommon from './DeveCodeCommon';
 
 const columns = [{
     title: '序号',
@@ -70,19 +71,11 @@ const columns = [{
 ];
 
 export default {
+    extends: DeveCodeCommon,
     data() {
         return {
             data: [],
             columns: columns,
-            companyMap: {
-                0: '无'
-            },
-            userMap: {},
-            userSelectArr: [],
-            companySelectArr: [],
-            companySel: '',
-            deviceTypeSel: '',
-            deviceTypesArr: [],
             dateRange: [],
             reqParam: {
                 page_num: "1",
@@ -100,13 +93,6 @@ export default {
             total: 0, //记录总条数
             current: 1, //分页的当前页码
             searchSN: '', //搜索机号
-            loading: false,
-            visible: false,
-            modalTitle: '',
-            companyCanChange: true,
-            addDeviceSnListVal: '',
-            productDate: '',
-            deviceTypeIconObj: {},
             pageSize: 10,
             copyText: '',
         };
@@ -133,16 +119,7 @@ export default {
         handleCancel() {
             this.visible = false;
         },
-        addDevice() {
-            //this.$message.info('添加设备');
-            this.$message.info('主机注册功能正在开发中...');
-            this.companySel = '';
-            this.deviceTypeSel = '';
-            this.addDeviceSnListVal = '';
-            this.productDate = '';
-            this.modalTitle = '添加设备';
-            // this.visible = true;
-        },
+
         onDateChange(moment, dates) {
             this.reqParam.beg_time = dates[0] ? dates[0] + ' 00:00:00' : '';
             this.reqParam.end_time = dates[1] ? dates[1] + ' 23:59:59' : '';
@@ -206,11 +183,6 @@ export default {
             });
         },
 
-        getIconPic(type) {
-            let deviceTypeIconObj = this.deviceTypeIconObj;
-            return deviceTypeIconObj[type];
-        },
-
         //请求数据
         reqDevices() {
             const self = this;
@@ -257,10 +229,8 @@ export default {
             res += '机型：' + code.type + '\r\n';
             res += '注册码：' + code.code + '\r\n';
             res += '注册时间：' + code.regDayShow + '\r\n';
-            // res += '注册天数：' + code.daysShow + '\r\n';
             res += '到期时间：' + code.passDayShow + '\r\n';
             res += '主机功能：' + code.funcShow + '\r\n';
-            // res += '操作人：' + code.user + '\r\n';
             return res;
         },
 
@@ -277,76 +247,6 @@ export default {
             this.copyText = copyTextArr.join('\r\n');
         },
 
-        reqCompany(callback) {
-            const self = this;
-            this.$loading.show();
-            this.$api.post("/query_company", {
-                type: "1",
-            }).then(res => {
-                if (res.err_code == '0') {
-                    const resData = [];
-                    for (let company of res.companies) {
-                        resData.push(company);
-                        self.companyMap[company.company_id] = company.name;
-                    }
-                    self.companySelectArr = resData;
-                }
-                if (callback) {
-                    callback();
-                }
-            }).catch(() => {
-                self.$loading.hide();
-            });
-        },
-
-        //请求用户
-        reqUser(callback) {
-            const self = this;
-            this.$api.post("/query_user", {
-                type: "2",
-            }).then(res => {
-                if (res.err_code == '0') {
-                    const obj = new Object();
-                    res.users.forEach((user) => {
-                        obj[user.id] = user.real_name;
-                    });
-                    self.userMap = obj;
-
-                    self.userSelectArr = res.users.filter(item => {
-                        return item.state != '1' && item.user != 'admin';
-                    });
-                }
-                if (callback) {
-                    callback();
-                }
-            }).catch((err) => {
-                console.error(err);
-            });
-        },
-
-        /**请求类型 */
-        reqDeviceType(callback) {
-            const self = this;
-            this.$api.post("/query_device_type", {}).then(res => {
-                if (res.err_code == 0) {
-                    if(!res.device_typs){
-                        res.device_typs = self.$util.adaptDeviceType(res.device_types);
-                    }
-                    self.deviceTypesArr = [...new Set(Object.values(res.device_typs))];
-                    let obj = new Object();
-                    for (let key of self.deviceTypesArr) {
-                        let imgName = self.$util.getMachinePicByType(key);
-                        obj[key] = require('../../assets/' + imgName + '.png');
-                    }
-                    self.deviceTypeIconObj = obj;
-                } else {
-                    self.$message.error(res.err_img);
-                }
-                if (callback) {
-                    callback();
-                }
-            }).catch(() => { });
-        },
 
         setDateRange() {
             const today = this.$util.getFmtDateStr(new Date());
@@ -359,9 +259,12 @@ export default {
     mounted() {
         const self = this;
         this.setDateRange();
-        this.reqDeviceType(() => {
-            self.reqUser(() => {
-                self.reqCompany(() => {
+        self.reqQueryDeviceType(() => {
+            self.reqQueryUser(() => {
+                self.userSelectArr = self.userSelectArr.filter(item => {
+                    return item.user != 'admin';
+                });
+                self.reqQueryCompany(() => {
                     self.reqData();
                 });
             });

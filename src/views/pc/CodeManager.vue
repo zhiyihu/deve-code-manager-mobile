@@ -7,7 +7,7 @@
                     <span style="margin-left: 16px;">机型：</span>
                     <a-select style="width: 240px;" default-value="" @change="onTypeChange">
                         <a-select-option value="">请选择</a-select-option>
-                        <a-select-option v-for="(item, index) in deviceTypesArr" :key="index" :value="item">
+                        <a-select-option v-for="(item, index) in deviceTypeSelectArr" :key="index" :value="item">
                             {{item}}
                         </a-select-option>
                     </a-select>

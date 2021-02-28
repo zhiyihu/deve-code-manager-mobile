@@ -124,7 +124,7 @@
                     <a-button key="back" @click="qrHandleCancel">取消</a-button>
                 </template>
                 <div style="height: 240px;overflow: hidden;">
-                    <StreamBarcodeReader  @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+                    <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
                 </div>
             </a-modal>
         </div>

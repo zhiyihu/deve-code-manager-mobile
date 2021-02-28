@@ -21,6 +21,9 @@
 					<div class="login-button-line">
 						<a-button type="primary" @click="loginUser">登录</a-button>
 					</div>
+                    <div class="forget-pwd-line">
+                        <a href="javascript:;" @click="showResetPwdModal">忘记密码？</a>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -40,6 +43,30 @@
             <div class="changepwd-edit-line">
                 <span>确认密码</span>
                 <a-input type="password" :maxLength="24" style="width: 180px;" v-model="confirmPwd" @keyup.enter="handleOk"></a-input>
+            </div>
+           
+        </a-modal>
+
+        <a-modal width="320px" :centered="true" v-model="resetPwdVisible" title="重置密码" on-ok="handleResetPwdOk">
+            <template slot="footer">
+                <a-button key="back" @click="handleResetPwdCancel">取消</a-button>
+                <a-button key="submit" type="primary" :loading="loading" @click="handleResetPwdOk">重置密码</a-button>
+            </template>
+            <div class="changepwd-edit-line">
+                <span>用户名</span>
+                <a-input style="width: 180px;" v-model="resetPwdUname"></a-input>
+            </div>
+            <div class="changepwd-edit-line">
+                <span>用户邮箱</span>
+                <a-input style="width: 180px;" v-model="emailAddr"></a-input>
+            </div>
+            <div class="changepwd-edit-line">
+                <span></span>
+                <a-button type="primary" @click="sendVerifyEmail">发送邮件</a-button>
+            </div>
+            <div class="changepwd-edit-line">
+                <span>验证码</span>
+                <a-input style="width: 180px;" v-model="verifyEmailCode" @keyup.enter="handleResetPwdOk"></a-input>
             </div>
            
         </a-modal>

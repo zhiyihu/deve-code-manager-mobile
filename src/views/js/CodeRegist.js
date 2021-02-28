@@ -1,8 +1,10 @@
 import moment from "moment";
 import ClipboardJS from 'clipboard';
 import { StreamBarcodeReader } from "vue-barcode-reader";
+import DeveCodeCommon from './DeveCodeCommon';
 
 export default {
+    extends: DeveCodeCommon,
     components: {
         StreamBarcodeReader,
     },
@@ -490,49 +492,12 @@ export default {
             return deviceTypeIconObj[type];
         },
 
-        /**请求类型 */
-        reqDeviceType(callback) {
-            const self = this;
-            this.$api.post("/query_device_type", {}).then(res => {
-
-                if (res.err_code == 0) {
-                    if(!res.device_typs){
-                        res.device_typs = self.$util.adaptDeviceType(res.device_types);
-                    }
-                    let deviceTypesArr = [...new Set(Object.values(res.device_typs))];
-                    let obj = new Object();
-                    for (let key of deviceTypesArr) {
-                        let imgName = self.$util.getMachinePicByType(key);
-                        obj[key] = require('../../assets/' + imgName + '.png');
-                    }
-                    self.deviceType = res.device_typs;
-                    self.deviceTypeIconObj = obj;
-                } else {
-                    self.$message.error(res.err_img);
-                }
-                if (callback) {
-                    callback();
-                }
-            }).catch(() => { });
-        },
-
         reqRegistReasons() {
             const self = this;
             this.$api.post("/query_regist_reason", {}).then(res => {
                 if (res.err_code == 0) {
                     self.actReasonArr = res.reasons;
                     self.regReasonVal = res.reasons[0];
-                } else {
-                    self.$message.error(res.err_img);
-                }
-            }).catch(() => { });
-        },
-
-        reqDeviceFuncs() {
-            const self = this;
-            this.$api.post("/query_device_func", {}).then(res => {
-                if (res.err_code == 0) {
-                    self.deviceFunc = res.device_func;
                 } else {
                     self.$message.error(res.err_img);
                 }
@@ -562,9 +527,9 @@ export default {
     },
     mounted() {
         this.refreshMaxActDays();
-        this.reqDeviceType();
+        this.reqQueryDeviceType();
         this.reqRegistReasons();
-        this.reqDeviceFuncs();
+        this.reqQueryDeviceFuncs();
         this.initClipboard();
 
     },

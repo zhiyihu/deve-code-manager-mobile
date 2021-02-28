@@ -109,11 +109,28 @@ body{
     text-align: right;
     margin-right: 20px;
 }
+.forget-pwd-line{
+    width: 300px;
+    text-align: right;
+    margin: auto;
+    margin-top: 22px;
+}
+
 @media screen and (max-width: 1024px){
     .changepwd-edit-line{
         height: 50px;
         line-height: 50px;
     }
+
+    .forget-pwd-line{
+        width: 260px;
+        margin-top: 18px;
+    }
+
+    .login-content{
+        min-height: 310px;
+    }
+
 }
 @media screen and (min-width: 1025px){
     .login{

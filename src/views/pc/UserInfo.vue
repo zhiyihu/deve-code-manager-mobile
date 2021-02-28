@@ -15,8 +15,7 @@
             <div class="user-base-info-line">
                 <div class="base-info-title">姓名</div>
                 <div class="base-info-value">
-                    <input v-model="realName" />
-                    <img src="../../assets/edit.png" />
+                    {{realName}}
                 </div>
             </div>
             <div class="user-base-info-line">
