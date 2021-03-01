@@ -42,7 +42,7 @@ export default {
                     sessionStorage.setItem('token', res.token);
                     sessionStorage.setItem('login_time', res.server_time);
                     sessionStorage.setItem('username', username);
-                    sessionStorage.setItem('password', password);
+                    //sessionStorage.setItem('password', password);
                     this.$router.replace({path: '/'});
                 }else if(res.err_code == '306'){
                     this.showSetPwdModal();
@@ -93,36 +93,37 @@ export default {
             this.resetPwdVisible = true;
         },
         handleResetPwdOk() {
-            // const self = this;
-            // if(!this.$util.checkPwd(this.newPwd)){
-            //     this.$message.error('密码必须有字母、数字、符号，长度8~20');
-            //     return;
-            // }
-            // if(this.newPwd != this.confirmPwd){
-            //     this.$message.error('两次输入密码不一致');
-            //     return;
-            // }
+            const self = this;
             if(this.$util.checkNull([this.resetPwdUname, this.verifyEmailCode])){
                 this.$message.error('用户名和验证码不能为空');
                 return;
             }
-            // this.$api.post('/xxx',{
-            //     param: 'param'
-            // }).then(res => {
-            //     if(res.err_code == '0'){
-            //         self.$message.success('重置密码成功');
-            //     }else{
-            //         self.$message.error(res.err_msg);
-            //     }
+            if (!this.$util.checkEmail(this.emailAddr)) {
+                this.$message.error('邮箱格式不对');
+                return;
+            }
+            const clientTime = this.$util.getFmtTimeStr(new Date());
+            this.$api.post('/reset_password',{
+                user : self.resetPwdUname,
+                email : self.emailAddr,
+                code: self.verifyEmailCode,
+                client_time : clientTime,
+            }).then(res => {
+                if(res.err_code == '0'){
+                    self.$message.success('重置密码成功');
+                    self.resetPwdVisible = false;
+                }else{
+                    self.$message.error(res.err_msg);
+                }
                 
-            // });
-            this.resetPwdVisible = false;
+            });
         },
         handleResetPwdCancel() {
             this.resetPwdVisible = false;
         },
 
         sendVerifyEmail(){
+            const self = this;
             if(this.$util.checkNull([this.resetPwdUname])){
                 this.$message.error('用户名不能为空');
                 return;
@@ -131,17 +132,20 @@ export default {
                 this.$message.error('邮箱格式不对');
                 return;
             }
-            if(!this.sendEmailTime){
-                this.sendEmailTime = new Date().getTime();
-            }else if((new Date().getTime() - this.sendEmailTime < 30000)){
-                this.$message.info('邮件已发送，请30秒后再操作');
+            let nowTime = new Date().getTime();
+            if(this.sendEmailTime && (nowTime - this.sendEmailTime < 60000)){
+                this.$message.info('邮件已发送，请60秒后再操作');
                 return;
             }
-            this.$api.post('/xxx',{
-                param: 'param'
+            const clientTime = this.$util.getFmtTimeStr(new Date());
+            this.$api.post('/send_reset_password_mail',{
+                user : self.resetPwdUname,
+                email : self.emailAddr,
+                client_time : clientTime,
             }).then(res => {
                 if(res.err_code == '0'){
                     self.$message.success('邮件发送成功');
+                    self.sendEmailTime = new Date().getTime();
                 }else{
                     self.$message.error(res.err_msg);
                 }

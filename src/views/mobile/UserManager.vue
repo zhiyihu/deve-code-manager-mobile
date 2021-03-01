@@ -89,18 +89,26 @@
                     </div>
                     <div class="amodal-edit-line">
                         <span><i>*</i>所属公司</span>
-                        <a-select style="width: 180px;" v-model="companySel" :disabled="!companyCanChange">
+                        <a-select style="width: 180px;" v-model="companySel" :disabled="!companyCanChange" @change="onParentCompanySelectChange">
                             <a-select-option value="" disabled>请选择</a-select-option>
                             <a-select-option v-for="(item, index) in companys" :key="index" :value="item.company_id">
                                 {{item.name}}
                             </a-select-option>
                         </a-select>
                     </div>
-                    <div class="amodal-edit-line">
-                        <span><i>*</i>角色权限</span>
+                    <div v-if="treeData&&treeData.length">
+                        <div class="amodal-edit-line">
+                            <span><i>*</i>角色权限</span>
+                        </div>
+                        <div class="amodal-edit-line" style="height: 100px;">
+                            <a-tree style="width: 260px;position: relative; bottom: 30px;left: 0px;" v-model="checkedKeys" checkable :expanded-keys="expandedKeys" :auto-expand-parent="autoExpandParent" :selected-keys="selectedKeys" :tree-data="treeData" @expand="onExpand" @select="onSelect" />
+                        </div>
                     </div>
-                    <div class="amodal-edit-line" style="height: 100px;">
-                        <a-tree style="width: 260px;position: relative; bottom: 30px;left: 0px;" v-model="checkedKeys" checkable :expanded-keys="expandedKeys" :auto-expand-parent="autoExpandParent" :selected-keys="selectedKeys" :tree-data="treeData" @expand="onExpand" @select="onSelect" />
+                    <div v-else>
+                        <div class="amodal-edit-line"  style="height: 30px;">
+                            <span><i>*</i>角色权限</span>
+                            <span style="text-align:left;margin-left:6px;font-weight:bolder;">无</span>
+                        </div>
                     </div>
                 </div>
             </a-modal>

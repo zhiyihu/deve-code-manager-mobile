@@ -40,8 +40,8 @@
                             {{ ['通用','代理商','驾校'][item.type || 0] }}
                         </div>
                     </div>
-                    <div class="table-info-line">
-                        <div>父公司：</div>
+                    <div class="table-info-line" v-if="companyMap[item.parent_id]">
+                        <div>上一级：</div>
                         <div> {{companyMap[item.parent_id] || ""}}</div>
                     </div>
 
@@ -61,35 +61,51 @@
                     <a-button key="back" @click="handleCancel">取消</a-button>
                     <a-button key="submit" type="primary" :loading="loading" @click="handleOk">提交</a-button>
                 </template>
-                <div class="amodal-edit-line">
-                    <span><i>*</i>公司类型</span>
-                    <a-radio-group default-value="0" button-style="solid" v-model="companyType">
-                        <a-radio-button value="0">通用</a-radio-button>
-                        <a-radio-button value="1">代理商</a-radio-button>
-                        <a-radio-button value="2">驾校</a-radio-button>
-                    </a-radio-group>
-                </div>
-                <div class="amodal-edit-line">
-                    <span><i>*</i>公司名称</span>
-                    <a-input style="width: 180px;" :maxLength="24" :disabled="unameDisabled" v-model="companyName"></a-input>
-                </div>
-                <div class="amodal-edit-line">
-                    <span><i>*</i>电话</span>
-                    <a-input style="width: 180px;" :maxLength="20" v-model="telephone"></a-input>
-                </div>
-                <div class="amodal-edit-line">
-                    <span><i>*</i>地址</span>
-                    <a-input style="width: 180px;" :maxLength="30" v-model="address"></a-input>
-                </div>
-                <div class="amodal-edit-line">
-                    <span><i>*</i>父公司</span>
-                    <a-select style="width: 180px;" :disabled="!parentCanChange" v-model="companyParentSel">
-                        <a-select-option value="" disabled>请选择</a-select-option>
-                        <a-select-option v-if="operateType == 'modify'" value="0" disabled>无</a-select-option>
-                        <a-select-option v-for="(item, index) in backData" :key="index" :value="item.company_id">
-                            {{item.name}}
-                        </a-select-option>
-                    </a-select>
+                <div style="max-height: 320px;overflow: auto;">
+                    <div class="amodal-edit-line">
+                        <span><i>*</i>公司类型</span>
+                        <a-radio-group :disabled="companyId==myCompanyId" default-value="0" button-style="solid" v-model="companyType">
+                            <a-radio-button value="0">通用</a-radio-button>
+                            <a-radio-button value="1">代理商</a-radio-button>
+                            <a-radio-button value="2">驾校</a-radio-button>
+                        </a-radio-group>
+                    </div>
+                    <div class="amodal-edit-line">
+                        <span><i>*</i>公司名称</span>
+                        <a-input style="width: 180px;" :maxLength="24" :disabled="unameDisabled" v-model="companyName"></a-input>
+                    </div>
+                    <div class="amodal-edit-line">
+                        <span><i>*</i>电话</span>
+                        <a-input style="width: 180px;" :maxLength="20" v-model="telephone"></a-input>
+                    </div>
+                    <div class="amodal-edit-line">
+                        <span><i>*</i>地址</span>
+                        <a-input style="width: 180px;" :maxLength="30" v-model="address"></a-input>
+                    </div>
+                    <div class="amodal-edit-line" v-if="parentCanChange">
+                        <span><i>*</i>上一级</span>
+                        <a-select style="width: 180px;" :disabled="!parentCanChange" v-model="companyParentSel"  @change="onParentCompanySelectChange">
+                            <a-select-option value="" disabled>请选择</a-select-option>
+                            <a-select-option v-if="operateType == 'modify'" value="0" disabled>无</a-select-option>
+                            <a-select-option v-for="(item, index) in backData" :key="index" :value="item.company_id">
+                                {{item.name}}
+                            </a-select-option>
+                        </a-select>
+                    </div>
+                    <div v-if="treeData&&treeData.length">
+                        <div class="amodal-edit-line">
+                            <span><i>*</i>角色权限</span>
+                        </div>
+                        <div class="amodal-edit-line" style="height: 100px;">
+                            <a-tree style="width: 260px;position: relative; bottom: 30px;left: 0px;" v-model="checkedKeys" checkable :expanded-keys="expandedKeys" :auto-expand-parent="autoExpandParent" :selected-keys="selectedKeys" :tree-data="treeData" @expand="onExpand" @select="onSelect" />
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div class="amodal-edit-line"  style="height: 30px;">
+                            <span><i>*</i>角色权限</span>
+                            <span style="text-align:left;margin-left:6px;font-weight:bolder;">无</span>
+                        </div>
+                    </div>
                 </div>
             </a-modal>
         </div>

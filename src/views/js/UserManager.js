@@ -1,3 +1,4 @@
+import CommonManager from './CommonManager';
 const columns = [{
     title: "序号",
     dataIndex: "order",
@@ -48,6 +49,7 @@ const columns = [{
 },
 ];
 export default {
+    extends: CommonManager,
     data() {
         return {
             currModifyRegistUser: '',
@@ -68,18 +70,10 @@ export default {
             telephone: '',
             email: '',
             company_id: '',
-            permissions: '',
             unameDisabled: false,
             operateType: 'add',
             companySel: '',
             userId: '',
-            //权限树相关变量
-            treeData: [], //权限树
-            expandedKeys: [],
-            autoExpandParent: true,
-            checkedKeys: [],
-            selectedKeys: [],
-            permissionObj: {},
 
             //公司map，id对应名称
             companyMap: {},
@@ -112,11 +106,11 @@ export default {
             this.telephone = '';
             this.email = '';
             this.companyCanChange = true;
+           
             this.checkedKeys = [];
             this.permissions = ''; //权限名用逗号连接起来的字符串，如果为admin则不可改
-
             this.selectedKeys = [];
-            this.setTreeCheckable(true);
+            this.treeData = [];
 
             this.showModal('添加用户');
         },
@@ -130,38 +124,27 @@ export default {
             this.companySel = record.company_id;
             this.userId = record.id;
 
-            this.selectedKeys = [];
             this.unameDisabled = true;
             this.operateType = 'modify';
             this.companyCanChange = false;
             this.showModal('修改用户');
-            const isMe = this.uname == this.user;
-            if (this.permissions == 'admin') {
-                this.checkedKeys = this.calCheckedKeys(Object.keys(this.permissionObj), true);
-                this.setTreeCheckable(false);
-            } else {
-                this.checkedKeys = this.calCheckedKeys(this.permissions.split(','), isMe);
-                this.setTreeCheckable(!isMe);
-            }
-        },
-        calCheckedKeys(keys, isdisable) {
-            const set = new Set();
-            for (let key of keys) {
-                set.add(key);
-                if (isdisable) {
-                    set.add(this.permissionObj[key] || key);
+            this.checkedKeys = [];
+            this.selectedKeys = [];
+            this.treeData = [];
+            
+            this.reqQueryPermissionsTree(record.company_id, ()=>{
+                const isMe = this.uname == this.user;
+                if (this.permissions == 'admin') {
+                    this.checkedKeys = this.calCheckedKeys(Object.keys(this.permissionObj), true);
+                    this.setTreeCheckable(false);
+                } else {
+                    this.checkedKeys = this.calCheckedKeys(this.permissions.split(','), isMe);
+                    this.setTreeCheckable(!isMe);
                 }
-            }
-            return [...set.values()];
+            });
+        
         },
-        setTreeCheckable(flag) {
-            for (let tree of this.treeData) {
-                tree.disabled = !flag;
-                for (let t of tree.children) {
-                    t.disabled = !flag;
-                }
-            }
-        },
+
         stop(record, type) {
             const self = this;
             const tip = ['停用', '激活'][type];
@@ -412,78 +395,11 @@ export default {
                 self.$loading.hide();
             });
         },
-        getSelectPermissions() {
-            let permissionsArr = [];
-            for (const key of this.checkedKeys) {
-                if (this.permissionObj[key]) {
-                    permissionsArr.push(key);
-                }
-            }
-            return permissionsArr.join(',');
-        },
-        reqPermissions() {
-            const self = this;
-            this.$api.post("/query_perimissions").then(res => {
-                if (res.err_code == '0') {
-                    const pNameObj = {
-                        'company': '公司权限',
-                        'user': '用户权限',
-                        'log': '日志权限',
-                        'device': '设备权限'
-                    };
-                    const pObj = new Object();
-                    const permissionObj = new Object();
-                    const expandedKeys = new Array();
-                    for (let permission of res.permissions) {
-                        const group = permission.group;
-                        const name = permission.name;
-                        const name_cn = permission.name_cn;
-                        if (!pObj[group]) {
-                            pObj[group] = {
-                                title: pNameObj[group] || '未命名权限',
-                                key: group,
-                                children: [],
-                            };
-                            expandedKeys.push(group);
-                        }
-
-                        pObj[group].children.push({
-                            title: name_cn,
-                            key: name
-                        });
-
-                        permissionObj[name] = group;
-
-                    }
-                    const treeData = [];
-                    for (let key in pObj) {
-                        treeData.push(pObj[key]);
-                    }
-                    self.permissionObj = permissionObj;
-                    //设置权限树
-                    self.treeData = treeData;
-                    //全部展开
-                    self.expandedKeys = expandedKeys;
-                }
-            }).catch(() => { });
-        },
-        onExpand(expandedKeys) {
-            this.expandedKeys = expandedKeys;
-            this.autoExpandParent = false;
-        },
-
-        onCheck(checkedKeys) {
-            this.checkedKeys = checkedKeys;
-        },
-        onSelect(selectedKeys) {
-            this.selectedKeys = selectedKeys;
-        },
 
     },
     mounted() {
         this.reqCompany(() => {
             this.reqData();
         });
-        this.reqPermissions();
     }
 };

@@ -1,3 +1,4 @@
+import CommonManager from './CommonManager';
 const columns = [{
     title: '序号',
     dataIndex: 'order',
@@ -25,7 +26,7 @@ const columns = [{
     },
 },
 {
-    title: '父公司',
+    title: '上一级',
     dataIndex: 'parent_id',
     scopedSlots: {
         customRender: 'parent_id'
@@ -41,6 +42,7 @@ const columns = [{
 },
 ];
 export default {
+    extends: CommonManager,
     data() {
         return {
             data: [],
@@ -54,12 +56,12 @@ export default {
             address: '', //弹出框，公司地址
             telephone: '', //弹出框，电话号码
             companyType: '0', //弹出框，公司类型
-            companyParentSel: '', //弹出框，父公司下拉选项
+            companyParentSel: '', //弹出框，上级下拉选项
             companyId: '',
 
             myCompany: '', //操作者的公司id，不可删除
             myCompanyName: '',//操作者公司名称
-            parentCanChange: true, //父公司下拉列表是否可改，如果是最自己公司或根公司，不可改
+            parentCanChange: true, //下拉列表是否可改，如果是最自己公司或根公司，不可改
             unameDisabled: false,
             operateType: 'add',
             companyMap: {
@@ -92,6 +94,11 @@ export default {
 
             this.unameDisabled = false;
             this.operateType = 'add';
+            this.checkedKeys = [];
+            this.permissions = ''; //权限名用逗号连接起来的字符串，如果为admin则不可改
+            this.selectedKeys = [];
+            this.treeData = [];
+
             this.showModal('添加公司');
         },
         modify(record) {
@@ -107,6 +114,23 @@ export default {
             this.unameDisabled = true;
             this.operateType = 'modify';
             this.showModal('修改公司');
+            this.checkedKeys = [];
+            this.permissions = '';
+            this.selectedKeys = [];
+            this.treeData = [];
+            const self = this;
+            this.reqQueryPermissionsTree(this.myCompanyId == this.companyId ? this.companyId : record.parent_id, ()=>{
+                self.reqPermissionsByCompanyId(this.companyId, ()=>{
+                    const isMe = this.myCompanyId == this.companyId;
+                    if (this.permissions == 'ALL') {
+                        this.checkedKeys = this.calCheckedKeys(Object.keys(this.permissionObj), true);
+                        this.setTreeCheckable(false);
+                    } else {
+                        this.checkedKeys = this.calCheckedKeys((this.permissions ? this.permissions.split(',') : []), isMe);
+                        this.setTreeCheckable(!isMe);
+                    }
+                });
+            });
         },
         del(record) {
             const self = this;
@@ -152,13 +176,18 @@ export default {
             if (!this.checkLegalVal()) {
                 return;
             }
-
+            let permissions = this.getSelectPermissions();
+            if(!permissions){
+                this.$message.error('必须要给公司分配权限');
+                return;
+            }
             this.$api.post("/add_company", {
                 name: self.companyName, //公司名称
                 telephone: self.telephone, //公司电话
                 address: self.address, //公司地址
                 type: self.companyType, //公司类型（0通用，1代理商，2驾校）
                 parent_id: self.companyParentSel, //父公司
+                permissions: permissions
             }).then(res => {
                 if (res.err_code == '0') {
                     self.visible = false;
@@ -180,14 +209,20 @@ export default {
                 return;
             }
 
-            this.$api.post("/update_company", {
+            let param = {
                 company_id: self.companyId,
                 name: self.companyName, //公司名称
                 telephone: self.telephone, //公司电话
                 address: self.address, //公司地址
-                type: self.companyType, //公司类型（0通用，1代理商，2驾校）
                 parent_id: self.companyParentSel, //父公司
-            }).then(res => {
+            }
+
+            if(this.myCompanyId != self.companyId){
+               param.permissions = this.getSelectPermissions();
+               param.type = this.companyType; //公司类型（0通用，1代理商，2驾校）
+            }
+            
+            this.$api.post("/update_company", param).then(res => {
                 if (res.err_code == '0') {
                     self.visible = false;
                     self.$message.success('修改成功');

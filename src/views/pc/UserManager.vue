@@ -140,6 +140,7 @@
               <a-select
                 style="width: 486px"
                 v-model="companySel"
+                @change="onParentCompanySelectChange"
                 :disabled="!companyCanChange"
               >
                 <a-select-option value="" disabled>请选择</a-select-option>
@@ -152,24 +153,13 @@
                 </a-select-option>
               </a-select>
             </div>
-            <div class="amodal-edit-line" style="height: 100px">
-              <span><i>*</i>角色权限</span>
-              <a-tree
-                style="
-                  width: 340px;
-                  position: relative;
-                  bottom: 30px;
-                  left: 84px;
-                "
-                v-model="checkedKeys"
-                checkable
-                :expanded-keys="expandedKeys"
-                :auto-expand-parent="autoExpandParent"
-                :selected-keys="selectedKeys"
-                :tree-data="treeData"
-                @expand="onExpand"
-                @select="onSelect"
-              />
+            <div v-if="treeData&&treeData.length" class="amodal-edit-line" style="min-height: 100px;">
+                <span><i>*</i>角色权限</span>
+                <a-tree style="width: 340px; position: relative; bottom: 30px; left: 84px" v-model="checkedKeys" checkable :expanded-keys="expandedKeys" :auto-expand-parent="autoExpandParent" :selected-keys="selectedKeys" :tree-data="treeData" @expand="onExpand" @select="onSelect" />
+            </div>
+            <div v-else class="amodal-edit-line" style="height: 30px;">
+                <span><i>*</i>角色权限</span>
+                <span style="text-align:left;font-weight:bolder;margin-left:6px;">无</span>
             </div>
           </div>
         </a-modal>
