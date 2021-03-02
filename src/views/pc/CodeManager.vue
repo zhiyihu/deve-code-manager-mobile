@@ -53,7 +53,7 @@
                     {{companyMap[company_id] || ''}}
                 </span>
                 <span slot="pic" slot-scope="pic">
-                    <img :src="pic" style="width: 64px;height:48px;"/>
+                    <img :src="pic" style="width: 64px;height:43px;"/>
                 </span>
                  <template v-slot:action="record">
                     <a href="javascript:;" :class="'table-opt-alink copy'+record.order" @click="useClipboard(record.order);" :data-clipboard-text="record.copyText">复制</a>

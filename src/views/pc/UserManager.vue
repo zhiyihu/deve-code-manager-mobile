@@ -15,9 +15,9 @@
           <div class="opt-head-part">
             <span style="margin-left: 16px">筛选：</span>
             <a-input
-              placeholder="输入用户名或姓名筛选"
+              placeholder="输入用户名/姓名/公司名筛选"
               allow-clear
-              style="width: 200px"
+              style="width: 230px"
               @change="search"
               v-model="searchText"
             ></a-input>

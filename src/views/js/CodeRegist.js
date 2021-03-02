@@ -17,6 +17,9 @@ export default {
             dateStyle: {
                 borderWidth: '0px'
             },
+            actIptStyle: {
+                borderWidth: '0px'
+            },
             maxActDay: 1,
             deviceTypesObj: {},
             dateRange: [],
@@ -236,6 +239,9 @@ export default {
             this.dateStyle = {
                 borderWidth: '1px'
             };
+            this.actIptStyle = {
+                borderWidth: '0px'
+            };
         },
         refreshDeviceFuncOptions(isNotResetVal) {
             let options = new Array();
@@ -253,6 +259,9 @@ export default {
             this.deviceFuncOptions = options;
             if (!isNotResetVal) {
                 this.regFuncVal = [];
+            }
+            if(!this.regFuncVal.length){
+                this.regFuncVal = this.getDefaultFuncCode(currType);
             }
 
         },
@@ -432,7 +441,7 @@ export default {
                 codeList.push({
                     type: type,
                     value: code,
-                    pic: this.getIconPic(type)
+                    pic: this.getIconPic(this.$util.getSnFlag(code), type)
                 });
             }
 
@@ -460,6 +469,9 @@ export default {
             this.dateStyle = {
                 borderWidth: '0px'
             };
+            this.actIptStyle = {
+                borderWidth: '0px'
+            };
         },
 
         tabCallback(key) {
@@ -485,11 +497,6 @@ export default {
             this.addDeviceSnListVal = '';
             this.machineNum = 0;
             this.visible = true;
-        },
-
-        getIconPic(type) {
-            let deviceTypeIconObj = this.deviceTypeIconObj;
-            return deviceTypeIconObj[type];
         },
 
         reqRegistReasons() {
@@ -524,8 +531,62 @@ export default {
             this.actTimesArr = timesArr;
         },
 
+        onActiveDaysInput(e){
+            let val = e.target.value;
+            let iptVal = val;
+            const maxDay = Math.min(this.maxActDay, 9998);
+            val = val.replace(/[^0-9]/g, '');
+            if(Number(val) > maxDay){
+              val = maxDay;
+            }
+            if(iptVal != val){
+                this.activeDays = val - 0;
+            }
+            this.actPassDay = moment().add(Number(val), 'days');
+            this.regTimeVal = '';
+            this.dateStyle = {
+                borderWidth: '0px'
+            };
+            this.actIptStyle = {
+                borderWidth: '1px'
+            };
+        },
+
+        onActiveDaysBlur(e){
+            let val = e.target.value;
+            if(!val || !(val - 0)){
+                this.activeDays = 1;
+            }
+            this.actPassDay = moment().add(1, 'days');
+        },
+
+        getDefaultFuncCode: function(type){
+            const deviceFuncMap = this.deviceFuncMap;
+            const showCodeList = this.showCodeList;
+            const funcArr = new Array();
+            if(showCodeList && showCodeList.length){
+              let code = showCodeList[0].value;
+              let snFlag = this.$util.getSnFlag(code);
+              let funcCode = deviceFuncMap[type + '|' + snFlag];
+              if(funcCode){
+                let binaryStr = Number(funcCode).toString(2);
+                let len = binaryStr.length;
+                let i = 1;
+                for(let c of binaryStr){
+                  if(c == 1){
+                    funcArr.push(len - i);
+                  }
+                  i++;
+                }
+              }
+            }
+            return funcArr;
+        },
+
+
     },
     mounted() {
+        this.reqQueryDeviceIcon();
         this.refreshMaxActDays();
         this.reqQueryDeviceType();
         this.reqRegistReasons();

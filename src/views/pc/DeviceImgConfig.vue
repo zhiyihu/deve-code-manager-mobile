@@ -18,14 +18,15 @@
                     </div>
                     
                     <div class="z-system-setting-line">
-                        <div><span class="not-empty-span">*</span>设备图片：</div>
+                        <div><span class="not-empty-span">*</span>设备图标：</div>
                         <div>
-                            <img v-if="imgUrl" style="width: 80px;height: 60px;border: 1px solid #eee;margin-right: 20px;" :src="imgUrl"/>
+                            <img v-if="imgUrl" style="width: 64px;height: 43px;border: 1px solid #eee;margin-right: 10px;" :src="imgUrl"/>
                             <a-button :key="btnKey" style="position:relative;width: 120px;">
                                 <a-icon type="upload"/>
                                 上传图片
                                 <input accept="image/*" type="file" style="height: 32px;width: 120px;opacity: 0;position: absolute;left:0px;top: 0px;z-index:99;" @change="onFileChange"/>
                             </a-button>
+                            <span>（推荐尺寸64*43）</span>
                         </div>
                     </div>
                     <div style="height: 20px;"></div>

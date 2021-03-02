@@ -34,8 +34,11 @@
                             {{item.name}}
                         </a-radio-button>
                     </a-radio-group>
-                    <span class="regist-machine-tipspan">
-                        {{Number(activeDays) > 9999 ? '永久激活': activeDays + '天'}}
+                    <span class="regist-machine-tipspan" v-if="activeDays<=9999">
+                        <span class="machine-passday-div" :style="actIptStyle">
+                            <a-input v-model="activeDays" style="width:90px;" type="number" @change="onActiveDaysInput" @blur="onActiveDaysBlur"></a-input>
+                        </span>
+                        <span style="margin-left:6px">天</span>
                     </span>
                 </div>
                 <div class="regist-machine-passday" v-if="activeDays<=9999">

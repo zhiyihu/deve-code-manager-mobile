@@ -297,7 +297,7 @@ export default {
                 codeList.push({
                     type: type,
                     value: code,
-                    pic: this.getIconPic(type)
+                    pic: this.getIconPic(this.$util.getSnFlag(code), type)
                 });
             }
 
@@ -371,6 +371,7 @@ export default {
     },
     mounted() {
         const self = this;
+        this.reqQueryDeviceIcon();
         this.reqQueryDeviceType();
         this.reqQueryCompany(()=>{
             self.companyObj = self.companyMap;

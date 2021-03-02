@@ -69,7 +69,7 @@ const router = new Router({
                     name: 'codelist',
                     component: getSrc('CodeManager'),
                     meta: {
-                        roles: 'device-add,device-regist,device-query',
+                        roles: 'device-regist',
                         title: '注册码管理'
                     }
                 },

@@ -39,7 +39,7 @@
                     {{companyMap[company_id] || ''}}
                 </span>
                 <span slot="pic" slot-scope="pic">
-                    <img :src="pic" style="width: 64px;height:48px;"/>
+                    <img :src="pic" style="width: 64px;height:43px;"/>
                 </span>
             </a-table>
             <a-pagination show-size-changer style="margin-top: 24px;margin-bottom: 20px;" :page-size-options="pageSizeOptions" :page-size="Number(reqParam.per_page_max_record_count)" @change="onPageChange" @showSizeChange="onShowSizeChange" v-model="current" :total="total"  :show-total="(total) => `共有${total}条数据`" show-less-items>

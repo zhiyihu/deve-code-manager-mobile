@@ -362,7 +362,7 @@ export default {
                 const searchData = [];
                 searchVal = searchVal.toUpperCase();
                 this.backData.forEach((item) => {
-                    if (item.user.toUpperCase().includes(searchVal) || item.real_name.toUpperCase().includes(searchVal)) {
+                    if (item.user.toUpperCase().includes(searchVal) || item.real_name.toUpperCase().includes(searchVal)||item.company_name.includes(searchVal)) {
                         searchData.push(item);
                     }
                 });

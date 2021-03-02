@@ -145,7 +145,7 @@ export default {
                         let order = i + (self.current - 1) * self.reqParam.per_page_max_record_count;
                         item.key = order;
                         item.order = order;
-                        item.pic = self.getIconPic(item.device_type);
+                        item.pic = self.getIconPic(this.$util.getSnFlag(item.sn), item.device_type)
                     }
                     self.data = res.devices;
                 } else {
@@ -171,8 +171,10 @@ export default {
         const self = this;
         this.setDateRange();
         this.reqQueryDeviceType(() => {
-            self.reqQueryCompany(() => {
-                self.reqData();
+            self.reqQueryDeviceIcon(()=>{
+                self.reqQueryCompany(() => {
+                    self.reqData();
+                });
             });
         });
 

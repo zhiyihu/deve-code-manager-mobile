@@ -198,7 +198,7 @@ export default {
                         item.key = order;
                         item.order = order;
                         item.func_list = item.func_list || '无';
-                        item.pic = self.getIconPic(item.type);
+                        item.pic = self.getIconPic(self.$util.getSnFlag(item.sn), item.type);
                         item.code = self.$util.fmtActCode(item.code);
 
                         item.regDayShow = item.regist_datetime.substr(0, 19);
@@ -260,12 +260,14 @@ export default {
         const self = this;
         this.setDateRange();
         self.reqQueryDeviceType(() => {
-            self.reqQueryUser(() => {
-                self.userSelectArr = self.userSelectArr.filter(item => {
-                    return item.user != 'admin';
-                });
-                self.reqQueryCompany(() => {
-                    self.reqData();
+            self.reqQueryDeviceIcon(()=>{
+                self.reqQueryUser(() => {
+                    self.userSelectArr = self.userSelectArr.filter(item => {
+                        return item.user != 'admin';
+                    });
+                    self.reqQueryCompany(() => {
+                        self.reqData();
+                    });
                 });
             });
         });

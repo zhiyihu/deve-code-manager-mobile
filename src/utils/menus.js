@@ -56,7 +56,7 @@ const menus = [{
             title: '注册码管理',
             key: 'codelist',
             link: '/codelist',
-            roles: 'device-add,device-regist,device-query',
+            roles: 'device-regist',
         },
         {
             title: '主机注册',

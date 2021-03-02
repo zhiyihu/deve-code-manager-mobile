@@ -1,6 +1,18 @@
 import Vue from 'vue';
 
 const util = {
+    getSnFlag: function(code){
+      let type = "";
+      if (code.length == 15) {
+        type = '0' + code.substr(5, 2);
+      } else if (code.length == 14) {
+        type = '0' + code.substr(2, 2);
+      } else if (code.length == 19) {
+        type = code.substr(6, 3);
+      }
+      return type;
+    },
+    
     fillZero(num) {
         return (num < 10 ? '0' : '') + num;
     },

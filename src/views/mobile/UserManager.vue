@@ -5,7 +5,7 @@
             <div class="data-table-head">
                 <div class="opt-head-part">
                     <span>筛选：</span>
-                    <a-input placeholder="输入用户名或姓名筛选" allow-clear style="width: calc(100vw - 80px)" @change="search" v-model="searchText"></a-input>
+                    <a-input placeholder="输入用户名/姓名/公司名筛选" allow-clear style="width: calc(100vw - 80px)" @change="search" v-model="searchText"></a-input>
                 </div>
                 <div style="margin-top: 10px;">
                     <a-button type="primary" icon="reload" style="vertical-align: top;" @click="reqData">刷新数据</a-button>
