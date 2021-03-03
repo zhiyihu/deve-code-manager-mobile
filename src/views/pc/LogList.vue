@@ -44,6 +44,9 @@
                 <span slot="company_id" slot-scope="company_id">
                     {{companyMap[company_id] || ''}}
                 </span>
+                <span slot="message" slot-scope="text" v-html="text">
+                    {{text}}
+                </span>
             </a-table>
             <a-pagination show-size-changer style="margin-top: 24px;margin-bottom: 20px;" :page-size-options="pageSizeOptions" :page-size="Number(reqParam.per_page_max_record_count)" @change="onPageChange" @showSizeChange="onShowSizeChange" v-model="current" :total="total"  :show-total="(total) => `共有${total}条数据`" show-less-items>
                 <template slot="buildOptionText" slot-scope="props">

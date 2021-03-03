@@ -43,10 +43,10 @@
                         </div>
                     </div>
 
-                    <div class="table-info-line">
+                    <!-- <div class="table-info-line">
                         <div>来源：</div>
                         <div>{{item.client_ip}}</div>
-                    </div>
+                    </div> -->
                     <div class="table-info-line">
                         <div>用户：</div>
                         <div>{{userMap[item.user_id] || item.user_id}}</div>
@@ -69,7 +69,7 @@
                     </div>
                       <div class="table-info-line">
                         <div>描述：</div>
-                        <div> {{item.message}}</div>
+                        <div v-html="item.message"></div>
                     </div>
                 </div>
             </div>

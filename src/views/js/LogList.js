@@ -3,6 +3,7 @@ import moment from "moment";
 const columns = [{
     title: '序号',
     dataIndex: 'order',
+    width: '60px',
 },
 {
     dataIndex: 'time',
@@ -10,31 +11,18 @@ const columns = [{
     scopedSlots: {
         customRender: 'time'
     },
-
-    customCell: () => {
-        return {
-            style: {
-                'min-width': '180px',
-            },
-        };
-    },
+    width: '166px',
 },
-{
-    dataIndex: 'client_ip',
-    title: '来源',
-},
+// {
+//     dataIndex: 'client_ip',
+//     title: '来源',
+// },
 {
     title: '用户',
     dataIndex: 'user_id',
+    width: '120px',
     scopedSlots: {
         customRender: 'user_id'
-    },
-    customCell: () => {
-        return {
-            style: {
-                'min-width': '88px',
-            },
-        };
     },
 },
 {
@@ -43,10 +31,12 @@ const columns = [{
     scopedSlots: {
         customRender: 'company_id'
     },
+    width: '225px',
 },
 {
     title: '日志类型',
     dataIndex: 'log_type',
+    width: '140px',
     scopedSlots: {
         customRender: 'log_type'
     },
@@ -54,21 +44,25 @@ const columns = [{
 {
     title: '结果',
     dataIndex: 'result',
+    width: '70px',
     scopedSlots: {
         customRender: 'result'
-    },
-    customCell: () => {
-        return {
-            style: {
-                'min-width': '66px',
-            },
-        };
     },
 },
 {
     title: '描述',
     dataIndex: 'message',
-    width: '400px',
+    scopedSlots: {
+        customRender: 'message'
+    },
+    customCell: () => {
+        return {
+            style: {
+                'min-width': '500px',
+                'max-width': '800px',
+            },
+        };
+    },
 },
 
 ];
@@ -86,7 +80,7 @@ export default {
             reqParam: { page_num: "1", per_page_max_record_count: "10", user: "", optype: "" },
             pagination: false,
             pageSizeOptions: ['10', '20', '50', '100'],
-            logTableStyle: { maxHeight: Math.floor((document.body.clientHeight - 210)) + 'px' },
+            logTableStyle: {wordBreak:'break-all', maxHeight: Math.floor((document.body.clientHeight - 210)) + 'px' },
             tableScroll: {y: Math.floor((document.body.clientHeight - 280))},
             total: 0, //记录总条数
             current: 1,  //分页的当前页码
@@ -152,6 +146,7 @@ export default {
                         log.key = log.log_id;
                         i += 1;
                         log.order = i + (self.current - 1) * self.reqParam.per_page_max_record_count;
+                        log.message = log.message.replace(/\n/g, '<br/>');
                         resData.push(log);
                     }
                     self.data = resData;

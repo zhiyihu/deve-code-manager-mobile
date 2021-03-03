@@ -76,13 +76,16 @@ export default {
             });
         },
 
-        reqQueryDeviceFuncs() {
+        reqQueryDeviceFuncs(callback) {
             const self = this;
             this.$api.post("/query_device_func", {}).then(res => {
                 if (res.err_code == 0) {
                     self.deviceFunc = res.device_func;
                 } else {
                     self.$message.error(res.err_img);
+                }
+                if(callback){
+                    callback();
                 }
             }).catch(() => { });
         },

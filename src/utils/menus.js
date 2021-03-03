@@ -50,7 +50,7 @@ const menus = [{
             title: '主机管理',
             key: 'devicelist',
             link: '/devicelist',
-            roles: 'device-add,device-regist,device-query',
+            roles: 'device-regist,device-query',
         },
         {
             title: '注册码管理',
@@ -106,6 +106,12 @@ const menus = [{
             title: '设备图片配置',
             key: 'deviceimgconfig',
             link: '/deviceimgconfig',
+            roles: 'admin',
+        },
+        {
+            title: '设备功能配置',
+            key: 'devicefuncconfig',
+            link: '/devicefuncconfig',
             roles: 'admin',
         },
 

@@ -60,7 +60,7 @@ const router = new Router({
                     name: 'devicelist',
                     component: getSrc('DeviceManager'),
                     meta: {
-                        roles: 'device-add,device-regist,device-query',
+                        roles: 'device-regist,device-query',
                         title: '设备管理'
                     }
                 },
@@ -134,6 +134,15 @@ const router = new Router({
                     meta: {
                         roles: 'admin',
                         title: '设备图片配置'
+                    }
+                },
+                {
+                    path: 'devicefuncconfig',
+                    name: 'devicefuncconfig',
+                    component: getSrc('DeviceFuncConfig'),
+                    meta: {
+                        roles: 'admin',
+                        title: '设备功能码配置'
                     }
                 }
             ],
