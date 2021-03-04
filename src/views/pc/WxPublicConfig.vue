@@ -13,6 +13,14 @@
                         <div><span class="not-empty-span">*</span>公众号AESKey：</div>
                         <div><a-input v-model="aesKey" style="width: 420px;"></a-input></div>
                     </div>
+                    <div class="z-system-setting-line">
+                        <div><span class="not-empty-span">*</span>公众号appId：</div>
+                        <div><a-input v-model="appId" style="width: 420px;"></a-input></div>
+                    </div>
+                    <div class="z-system-setting-line">
+                        <div><span class="not-empty-span">*</span>公众号Secret：</div>
+                        <div><a-input v-model="secret" style="width: 420px;"></a-input></div>
+                    </div>
                     <div class="regist-machine-submit">
                         <a-button type="primary" @click="submitModify">提交修改</a-button>
                     </div>

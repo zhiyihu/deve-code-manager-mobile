@@ -4,6 +4,8 @@ export default {
         return {
            aesKey: '',
            token: '',
+           appId: '',
+           secret: '',
         };
     },
     methods: {
@@ -32,6 +34,8 @@ export default {
             const param = new Object();
             param.wx_gzh_aeskey = this.aesKey;
             param.wx_gzh_token = this.token;
+            param.wx_gzh_appid = this.appId;
+            param.wx_gzh_secret = this.secret;
 
             this.$api.post('/set_wx_gzh_info', param).then(res => {
                 self.$loading.hide();
@@ -52,6 +56,8 @@ export default {
                 if (res.err_code == 0) {
                     this.aesKey = res.wx_gzh_aeskey;
                     this.token = res.wx_gzh_token;
+                    this.appId = res.wx_gzh_appid;
+                    this.secret = res.wx_gzh_secret;
                 } else {
                     self.$message.error(res.err_img);
                 }

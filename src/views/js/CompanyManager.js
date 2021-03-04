@@ -98,6 +98,7 @@ export default {
             this.permissions = ''; //权限名用逗号连接起来的字符串，如果为admin则不可改
             this.selectedKeys = [];
             this.treeData = [];
+            this.companyId = '';
 
             this.showModal('添加公司');
         },

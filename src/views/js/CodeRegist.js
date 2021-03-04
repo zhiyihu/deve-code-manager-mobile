@@ -222,10 +222,10 @@ export default {
             res += '机号：' + code.sn + '\r\n';
             res += '机型：' + code.type + '\r\n';
             res += '注册码：' + code.codeShow + '\r\n';
-            res += '注册天数：' + code.daysShow + '\r\n';
+            // res += '注册天数：' + code.daysShow + '\r\n';
             res += '到期时间：' + code.passDayShow + '\r\n';
             res += '主机功能：' + code.funcShow + '\r\n';
-            res += '操作人：' + code.user + '\r\n';
+            // res += '操作人：' + code.user + '\r\n';
             return res;
         },
         disabledDate(current) {
@@ -287,16 +287,9 @@ export default {
         },
 
         getMachineType(code) {
-            let type = "";
-            if (code.length == 15) {
-                type = '0' + code.substr(5, 2);
-            } else if (code.length == 14) {
-                type = '0' + code.substr(2, 2);
-            } else if (code.length == 19) {
-                type = code.substr(6, 3);
-            }
+            let snFlag = this.$util.getSnFlag(code);
             const deviceType = this.deviceType;
-            return deviceType[type];
+            return deviceType[snFlag];
         },
 
         getIndexOfCode(code) {
@@ -311,7 +304,7 @@ export default {
         },
         getLegalCodes(codeStr) {
             codeStr = codeStr.toUpperCase();
-            const reg = new RegExp('[A-Z][A-Z0-9]{13,18}', 'g');
+            const reg = new RegExp('([A-Z]1[0-9]{2}[1-9ABC][A-Z0-9]{14})|([A-Z]2[0-9]{2}[A-Z0-9]{10})|([A-Z]3[0-9][A-Z0-9]{12})', 'g');
             const self = this;
             return [...new Set(codeStr.match(reg) || [])].filter(item => {
                 return self.getMachineType(item);
