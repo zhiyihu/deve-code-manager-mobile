@@ -144,6 +144,15 @@ const router = new Router({
                         roles: 'admin',
                         title: '设备功能码配置'
                     }
+                },
+                {
+                    path: 'barcodeprint',
+                    name: 'barcodeprint',
+                    component: getSrc('BarCodePrint'),
+                    meta: {
+                        roles: '',
+                        title: '打印条码功能'
+                    }
                 }
             ],
         },

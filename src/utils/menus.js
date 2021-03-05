@@ -6,7 +6,13 @@ const menus = [{
         title: '个人信息',
         key: 'personal',
         link: '/personal',
-    },]
+    },
+    {
+        title: '打印条码功能',
+        key: 'barcodeprint',
+        link: '/barcodeprint',
+    }
+    ]
 },
 {
     title: '综合管理',
