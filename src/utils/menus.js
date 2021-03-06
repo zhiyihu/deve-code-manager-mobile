@@ -1,3 +1,7 @@
+let device = 'pc';
+if(navigator && navigator.userAgent && (/Android|iPhone|iPad|Windows Phone/).test(navigator.userAgent)){
+    device = 'mobile';
+}
 const menus = [{
     title: '个人中心',
     key: 'person',
@@ -8,9 +12,10 @@ const menus = [{
         link: '/personal',
     },
     {
-        title: '打印条码功能',
+        title: '打印出货单',
         key: 'barcodeprint',
         link: '/barcodeprint',
+        pc: true,
     }
     ]
 },
@@ -142,7 +147,7 @@ export function getMenus(permissions) {
     for(const menu of menus){
         let secondMenus = [];
         for(const m of menu.menus){
-            if(hasRole(permissions, m.roles)){
+            if((!m.pc || device == 'pc') &&hasRole(permissions, m.roles)){
                 secondMenus.push(m);
             }
         }

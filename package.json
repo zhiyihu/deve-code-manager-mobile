@@ -11,10 +11,12 @@
     "ant-design-vue": "^1.6.5",
     "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
+    "jsbarcode": "^3.11.3",
     "umi-request": "^1.3.5",
     "vue": "^2.6.11",
     "vue-barcode": "^1.3.0",
     "vue-barcode-reader": "^0.0.3",
+    "vue-print-nb": "^1.6.0",
     "vue-router": "^3.4.7",
     "zxing": "^0.1.2"
   },

@@ -151,7 +151,7 @@ const router = new Router({
                     component: getSrc('BarCodePrint'),
                     meta: {
                         roles: '',
-                        title: '打印条码功能'
+                        title: '打印出货单'
                     }
                 }
             ],
