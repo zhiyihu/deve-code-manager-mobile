@@ -6,15 +6,7 @@
         margin: 'auto',
         minHeight: '280px',
       }">
-        <div style="
-          position: relative;
-          border: 0px solid #e8e8e8;
-          width: 598pt;
-          margin: auto;
-          padding: 0px;
-        ">
-            <span style="padding: 14px;">手机暂不支持打印出货单功能，请使用电脑浏览器访问……</span>
-        </div>
+        <div style="padding:14px;">手机暂不支持打印标签功能，请使用电脑浏览器访问</div>
     </a-layout-content>
 </a-layout>
 </template>
@@ -24,6 +16,7 @@
 </script>
 
 <style>
-@import url("../../assets/css/manager.css");
+@import url("../../assets/css/manager-mobile.css");
 @import url("../../assets/iconfont/iconfont.css");
+
 </style>

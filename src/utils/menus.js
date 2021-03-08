@@ -10,12 +10,6 @@ const menus = [{
         title: '个人信息',
         key: 'personal',
         link: '/personal',
-    },
-    {
-        title: '打印出货单',
-        key: 'barcodeprint',
-        link: '/barcodeprint',
-        pc: true,
     }
     ]
 },
@@ -81,7 +75,13 @@ const menus = [{
             link: '/devicechange',
             roles: 'device-query,device-update',
         },
-
+        {
+            title: '打印外箱标签',
+            key: 'barcodeprint',
+            link: '/barcodeprint',
+            roles: 'device-print_shipping_label',
+            pc: true,
+        }
     ],
 },
 {

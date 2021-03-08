@@ -311,8 +311,8 @@ body {
     font-size: 8pt;
     padding-left: 6pt;
     padding-right: 6pt;
-    padding-top: 0.2pt;
-    padding-bottom: 0.2pt;
+    padding-top: 0pt;
+    padding-bottom: 0pt;
     color: #000;
 }
 .barcode-td-main{
@@ -321,7 +321,7 @@ body {
 .barcode-td-part {
     width: 200pt;
     position: relative;
-    height: 32pt;
+    height: 31pt;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -330,7 +330,7 @@ body {
     padding-bottom: 3pt;
 }
 .barcode-td-part > img {
-    max-height: 20pt;
+    height: 19pt;
     max-width: 190pt;
 }
 .top-prt-code-title{
@@ -346,7 +346,7 @@ body {
     margin-left: 8pt;
 }
 .top-prt-code-title > img {
-    height: 20pt;
+    height: 19pt;
 }
 .prt-bottom-bottom{
     height: 48px;
