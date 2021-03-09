@@ -153,6 +153,15 @@ const router = new Router({
                         roles: '',
                         title: '打印外箱标签'
                     }
+                },
+                {
+                    path: 'barcodeprintconfig',
+                    name: 'barcodeprintconfig',
+                    component: getSrc('BarCodePrintConfig'),
+                    meta: {
+                        roles: '',
+                        title: '外箱标签配置'
+                    }
                 }
             ],
         },

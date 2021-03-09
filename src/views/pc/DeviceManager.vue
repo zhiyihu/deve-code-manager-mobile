@@ -2,7 +2,7 @@
 <a-layout style="padding: 20px 16px 0px 16px;background:#fff;margin-bottom:18px;">
     <a-layout-content :style="{ background: '#fff', padding: '0px 0px', margin: 0, minHeight: '280px' }">
         <div style="position: relative;">
-            <div class="data-table-head" style="height: 90px;">
+            <div class="data-table-head" style="height: auto;line-height:45px;padding-bottom: 10px;">
                 <div class="opt-head-part">
                     <span style="margin-left: 16px;">机型：</span>
                     <a-select style="width: 240px;" default-value="" @change="onDeviceTypeChange">
@@ -18,13 +18,12 @@
                             {{item.name}}
                         </a-select-option>
                     </a-select>
-                    <span style="margin-left: 16px;">生产日期：</span>
-                    <a-range-picker :inputReadOnly="true" v-model="dateRange" style="width: 300px;" @change="onDateChange" />
-                </div>
-                <div class="opt-head-part" style="margin-top: 12px;">
+                    <span v-if="isDevecent" style="margin-left: 16px;">生产日期：</span>
+                    <a-range-picker v-if="isDevecent" :inputReadOnly="true" v-model="dateRange" style="width: 300px;" @change="onDateChange" />
+                    <br v-if="isDevecent"/>
                     <span style="margin-left: 16px;">机号：</span>
                     <a-input allow-clear v-model="searchSN" style="width: 240px;"></a-input>
-                    <a-button type="primary" icon="reload" style="vertical-align: top;margin-left: 12px;" @click="reqData">刷新数据</a-button>
+                    <a-button type="primary" icon="reload" style="margin-left: 12px;" @click="reqData">刷新数据</a-button>
                 </div>
             </div>
 

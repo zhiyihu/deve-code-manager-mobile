@@ -92,7 +92,7 @@
               <a @click="del(record)" href="javascript:;">删除</a>
             </template>
             <template
-              v-if="mypermission.includes('admin') && record.user != 'admin'"
+              v-if="mypermission.includes('admin') && record.user != 'admin' || mypermission.includes('user-modify_regist_days') && record.user != uname"
             >
               <a-divider type="vertical" />
               <a @click="modifyRegistDay(record)" href="javascript:;"

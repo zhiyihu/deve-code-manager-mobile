@@ -21,7 +21,7 @@
                         </a-select-option>
                     </a-select>
                 </div>
-                <div class="opt-head-part-line">
+                <div class="opt-head-part-line" v-if="isDevecent">
                     <span style="margin-left: 16px;">生产日期：</span>
                     <a-range-picker v-model="dateRange" style="width: calc(100vw - 130px)" @change="onDateChange" />
                 </div>
@@ -48,7 +48,7 @@
                         <div>机型：</div>
                         <div>{{item.device_type}}</div>
                     </div>
-                    <div class="table-info-line">
+                    <div class="table-info-line" v-if="isDevecent">
                         <div>生产时间：</div>
                         <div>{{item.product_time.substr(0,19)}}</div>
                     </div>

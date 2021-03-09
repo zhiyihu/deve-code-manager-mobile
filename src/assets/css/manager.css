@@ -16,6 +16,7 @@
     border: none;
 }
 
+
 .amodal-edit-line {
     height: 54px;
 }
@@ -394,4 +395,8 @@ body {
 }
 .normal-icon-desc{
     margin-right: 8px;
+}
+
+.zx-print-config-list{
+    height: 360px;
 }

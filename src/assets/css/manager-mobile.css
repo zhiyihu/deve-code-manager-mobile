@@ -370,21 +370,6 @@
     }
 }
 
-.print-code-main {
-    border: 1px solid #ccc;
-    width: 596pt;
-}
-
-.print-code-content {
-    display: flex;
-    flex-wrap: wrap;
-    width: 594pt;
-    height: auto;
-    min-height: 840pt;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-content: flex-start;
-}
 
 .code-line-two-part {
     width: 295pt;
@@ -407,7 +392,8 @@
 }
 
 .my-print-code-table td {
-    border: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
     font-size: 8pt;
     padding-left: 6pt;
     padding-right: 6pt;
@@ -460,8 +446,7 @@
 }
 
 .prt-product-bill-opt-part {
-    /* display: flex; */
-    padding-top: 8px;
+    padding: 8px 14px;
 }
 
 .my-toprint-textarea-part {
@@ -474,15 +459,22 @@
 
 .my-toprint-textarea-part>table {
     margin: 0;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
 }
 
 .prt-table-param-line {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    padding-left: 14px;
+}
+
+.prt-table-param-line>div{
+    margin-bottom: 10px;
 }
 
 .prt-bill-btns-line {
-    margin-bottom: 16px;
-    ;
+    margin-bottom: 16px;;
+    padding-left: 14px;
 }
 
 .rowval-ipt {
@@ -491,6 +483,14 @@
     outline: none;
     background: none;
     height: 10pt;
+}
+
+.my-print-code-table-top .rowval-ipt{
+    width: 200px;
+}
+
+.my-print-code-table-top{
+    width: calc(100vw - 28px);
 }
 
 .rowval-ipt:active {

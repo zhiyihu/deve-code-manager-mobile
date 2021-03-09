@@ -54,7 +54,7 @@
                     </div>
                     <div class="table-info-optbtns">
                         <a href="javascript:;" class="table-opt-alink" @click="modify(item);">修改</a>
-                        <a href="javascript:;" class="table-opt-alink" v-if="mypermission.includes('admin') && item.user != 'admin'" @click="modifyRegistDay(item);">修改注册天数</a>
+                        <a href="javascript:;" class="table-opt-alink" v-if="mypermission.includes('admin') && item.user != 'admin'||mypermission.includes('user-modify_regist_days') && record.user != uname" @click="modifyRegistDay(item);">修改注册天数</a>
                         <a href="javascript:;" class="table-opt-alink" v-if="item.user != uname && !item.permissions.includes('admin') && item.state != 2" @click="stop(item, '0');">停用</a>
                         <a href="javascript:;" class="table-opt-alink tablel-opt-alink-act" v-if="item.user != uname && !item.permissions.includes('admin') && item.state == 2" @click="stop(item, '1');">激活</a>
                         <a href="javascript:;" class="table-opt-alink" v-if="item.user != uname && !item.permissions.includes('admin')" @click="del(item);">删除</a>

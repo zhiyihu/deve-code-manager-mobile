@@ -1,6 +1,6 @@
 import moment from "moment";
 import DeveCodeCommon from './DeveCodeCommon';
-const columns = [{
+let columns = [{
     title: '序号',
     dataIndex: 'order',
     width: 60,
@@ -45,13 +45,18 @@ const columns = [{
 },
 
 ];
-
+let company_id = JSON.parse(sessionStorage.getItem("user")).company_id;
+let isDevecent = company_id == '1';
+if(!isDevecent){
+    columns = columns.slice(0, columns.length - 1);
+}
 export default {
     extends: DeveCodeCommon,
     data() {
         return {
             data: [],
             columns,
+            isDevecent: isDevecent,
             dateRange: [],
             reqParam: {
                 page_num: "1",
