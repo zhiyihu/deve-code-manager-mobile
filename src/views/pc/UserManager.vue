@@ -118,7 +118,7 @@
               >提交</a-button
             >
           </template>
-          <div style="max-height: 480px; overflow: auto">
+          <div style="max-height: 680px; overflow: auto">
             <div class="amodal-edit-line">
               <span><i>*</i>用户名</span>
               <a-input
@@ -153,7 +153,7 @@
                 </a-select-option>
               </a-select>
             </div>
-            <div v-if="treeData&&treeData.length" class="amodal-edit-line" style="min-height: 100px;">
+            <div v-if="treeData&&treeData.length" class="amodal-edit-line" style="min-height: 280px;">
                 <span><i>*</i>角色权限</span>
                 <a-tree style="width: 340px; position: relative; bottom: 30px; left: 84px" v-model="checkedKeys" checkable :expanded-keys="expandedKeys" :auto-expand-parent="autoExpandParent" :selected-keys="selectedKeys" :tree-data="treeData" @expand="onExpand" @select="onSelect" />
             </div>

@@ -40,7 +40,7 @@
                     <a-button key="back" @click="handleCancel">取消</a-button>
                     <a-button key="submit" type="primary" :loading="loading" @click="handleOk">提交</a-button>
                 </template>
-                <div style="max-height: 480px; overflow: auto">
+                <div style="max-height: 660px; overflow: auto">
                     <div class="amodal-edit-line">
                         <span><i>*</i>公司类型</span>
                         <a-radio-group :disabled="companyId==myCompanyId" default-value="0" button-style="solid" v-model="companyType">
@@ -71,7 +71,7 @@
                             </a-select-option>
                         </a-select>
                     </div>
-                    <div v-if="treeData&&treeData.length" class="amodal-edit-line" style="min-height: 100px;">
+                    <div v-if="treeData&&treeData.length" class="amodal-edit-line" style="min-height: 200px;">
                         <span><i>*</i>角色权限</span>
                         <a-tree style="width: 340px; position: relative; bottom: 30px; left: 84px" v-model="checkedKeys" checkable :expanded-keys="expandedKeys" :auto-expand-parent="autoExpandParent" :selected-keys="selectedKeys" :tree-data="treeData" @expand="onExpand" @select="onSelect" />
                     </div>
