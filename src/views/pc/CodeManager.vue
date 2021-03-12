@@ -31,7 +31,7 @@
                     </a-select>
                     <span style="margin-left: 16px;">机号：</span>
                     <a-input allow-clear v-model="searchSN" style="width: 240px;"></a-input>
-                    <a-button type="primary" icon="reload" style="vertical-align: top;margin-left: 12px;" @click="reqData">刷新数据</a-button>
+                    <a-button type="primary" icon="search" style="vertical-align: top;margin-left: 12px;" @click="reqData">查询</a-button>
                     <a-button v-if="total>0" type="primary" icon="copy" class="copypage" @click="useClipboard('page');" :data-clipboard-text="copyText" style="vertical-align: top;margin-left: 12px;">复制本页</a-button>
                 </div>
             </div>

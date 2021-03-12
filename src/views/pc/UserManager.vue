@@ -23,10 +23,10 @@
             ></a-input>
             <a-button
               type="primary"
-              icon="reload"
+              icon="search"
               style="vertical-align: top; margin-left: 12px"
               @click="reqData"
-              >刷新数据</a-button
+              >查询</a-button
             >
             <a-button
               type="primary"

@@ -26,7 +26,7 @@
                     <a-range-picker :inputReadOnly="true" v-model="dateRange" style="width: calc(100vw - 130px)" @change="onDateChange" />
                 </div>
                 <div>
-                    <a-button type="primary" icon="reload" style="vertical-align: top;margin-left: 12px;" @click="reqData">刷新数据</a-button>
+                    <a-button type="primary" icon="search" style="vertical-align: top;margin-left: 12px;" @click="reqData">查询</a-button>
                 </div>
 
             </div>

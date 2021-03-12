@@ -11,7 +11,7 @@
                 <div class="opt-head-part">
                     <span style="margin-left: 16px">筛选：</span>
                     <a-input placeholder="输入公司名称筛选" allow-clear style="width: 230px" @change="search" v-model="searchText"></a-input>
-                    <a-button type="primary" icon="reload" style="vertical-align: top; margin-left: 12px" @click="reqData">刷新数据</a-button>
+                    <a-button type="primary" icon="search" style="vertical-align: top; margin-left: 12px" @click="reqData">查询</a-button>
                     <a-button type="primary" icon="plus" style="vertical-align: top; margin-right: 8px; margin-left: 12px" @click="addItem">添加公司</a-button>
                 </div>
             </div>
