@@ -86,6 +86,13 @@
                 </div>
             </div>
             <div v-if="printType==1" class="machine-card-num-part">
+                <div class="create-card-num-line">
+                    <span>起始编号：</span>
+                    <a-input v-model="cardBeginOrder" placeholder="请输入10位板卡号" :maxLength="10" style="width: 200px;margin-right:18px;"></a-input>
+                    <span>个数：</span>
+                    <a-input v-model="cardNum" placeholder="1~999" :maxLength="3" style="width: 130px;margin-right:6px;" type="number"></a-input>
+                    <a-button type="primary" @click="createCardListNum">生成连续板卡号</a-button>
+                </div>
                 <a-textarea placeholder="在此处输入板卡号，用任意符号分隔" style="resize:none; height:144pt;" @change="onCodesTextsChange" v-model="cardCodeStr"></a-textarea>
             </div>
             <div class="prt-bill-btns-line">

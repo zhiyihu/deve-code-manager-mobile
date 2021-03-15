@@ -275,7 +275,7 @@ body {
 }
 .print-code-main{
     border: 1px solid #ccc;
-    width: 599pt;
+    width: 596pt;
 }
 .print-code-content {
     display: flex;
@@ -361,8 +361,8 @@ body {
     padding-bottom: 2pt;
 }
 .barcode-card-part>img{
-    height: 20pt;
-    max-width: 84pt;
+    height: 18pt;
+    max-width: 72pt;
 }
 .barcode-td-part > img {
     height: 19pt;
@@ -437,4 +437,8 @@ body {
 
 .machine-card-num-part{
     padding: 14px 0px 20px 0px;
+}
+
+.create-card-num-line{
+    margin-bottom: 12px;
 }

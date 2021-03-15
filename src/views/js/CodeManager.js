@@ -15,7 +15,7 @@ const columns = [{
     },
 },
  {
-    width: 180,
+    width: 200,
     title: '机号',
     dataIndex: 'sn',
 },

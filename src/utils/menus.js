@@ -82,13 +82,13 @@ const menus = [{
             roles: 'device-print_shipping_label',
             pc: true,
         },
-        {
-            title: '外箱标签配置',
-            key: 'barcodeprintconfig',
-            link: '/barcodeprintconfig',
-            roles: 'device-update_shipping_label,not-show',
-            pc: true,
-        }
+        // {
+        //     title: '外箱标签配置',
+        //     key: 'barcodeprintconfig',
+        //     link: '/barcodeprintconfig',
+        //     roles: 'device-update_shipping_label,not-show',
+        //     pc: true,
+        // }
     ],
 },
 {

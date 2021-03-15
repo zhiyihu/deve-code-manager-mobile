@@ -150,19 +150,19 @@ const router = new Router({
                     name: 'barcodeprint',
                     component: getSrc('BarCodePrint'),
                     meta: {
-                        roles: '',
+                        roles: 'print_shipping_label',
                         title: '打印外箱标签'
                     }
                 },
-                {
-                    path: 'barcodeprintconfig',
-                    name: 'barcodeprintconfig',
-                    component: getSrc('BarCodePrintConfig'),
-                    meta: {
-                        roles: '',
-                        title: '外箱标签配置'
-                    }
-                }
+                // {
+                //     path: 'barcodeprintconfig',
+                //     name: 'barcodeprintconfig',
+                //     component: getSrc('BarCodePrintConfig'),
+                //     meta: {
+                //         roles: '',
+                //         title: '外箱标签配置'
+                //     }
+                // }
             ],
         },
         {
