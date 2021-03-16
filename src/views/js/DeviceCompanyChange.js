@@ -70,10 +70,10 @@ export default {
                 this.$message.info('请选择变更公司');
                 return;
             }
-            if(this.deviceBelongCompanyIds.includes(this.modfCompanyId)){
-                this.$message.info('请选择与设备所属公司不同的公司');
-                return;
-            }
+            // if(this.deviceBelongCompanyIds.includes(this.modfCompanyId)){
+            //     this.$message.info('请选择与设备所属公司不同的公司');
+            //     return;
+            // }
             this.$confirm({
                 title: '提示',
                 content: '确认变更' + self.codeList.length + '台主机，公司为【' + self.companyObj[self.modfCompanyId] + '】？',
@@ -268,8 +268,8 @@ export default {
                 return;
             }
             const codeList = this.codeList;
-            if (codeList.length >= 300) {
-                this.$message.info('最多添加300台');
+            if (codeList.length >= 500) {
+                this.$message.info('最多添加500台');
                 return;
             }
 

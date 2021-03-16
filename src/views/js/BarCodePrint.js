@@ -32,6 +32,7 @@ export default {
             aPageNum: 10,
             cardNum: '',
             cardBeginOrder: '',
+            isNotUseSN: false,
         };
     },
     computed: {
@@ -61,6 +62,9 @@ export default {
         onUseCompanyIconChange(e){
             this.isDontUseCompanyIcon = e.target.checked;
         },
+        onUseSNChange(){
+          this.onCodesTextsChange();  
+        },
         onFileChange(e){
             const self = this;
             let files = e.target.files;
@@ -87,7 +91,7 @@ export default {
             this.codeArr = [];
             this.codeStr = '';
             this.cardCodeStr = '';
-            this.aPageNum = [10, 84][this.printType];
+            this.aPageNum = [10, 84, 1][this.printType];
             this.cardBeginOrder = '';
             this.cardNum = '';
         },
@@ -96,16 +100,24 @@ export default {
             let codeArr;
             if(this.printType == '0'){
                 let codeStr = this.codeStr;
-                const reg = new RegExp('([A-Z]1[0-9]{2}[1-9ABC][A-Z0-9]{14})|([A-Z]2[0-9]{2}[A-Z0-9]{10})|([A-Z]3[0-9][A-Z0-9]{12})', 'g');
-                codeArr = [...new Set(codeStr.match(reg) || [])].filter(item => {
-                    return self.getMachineType(item);
-                });
+                if(!this.isNotUseSN){
+                    const reg = new RegExp('([A-Z]1[0-9]{2}[1-9ABC][A-Z0-9]{14})|([A-Z]2[0-9]{2}[A-Z0-9]{10})|([A-Z]3[0-9][A-Z0-9]{12})', 'g');
+                    codeArr = [...new Set(codeStr.match(reg) || [])].filter(item => {
+                        return self.getMachineType(item);
+                    });
+                }else{
+                    let codeNum = Number(codeStr);
+                    codeArr = [];
+                    if(!isNaN(codeNum) && codeNum > 0 && codeNum < 201){
+                        codeArr = new Array(codeNum).fill(" ");
+                    }
+                }
+                
             }else if(this.printType == '1'){
                 let codeStr = this.cardCodeStr;
                 const reg = new RegExp('([0-9]{10})', 'g');
                 codeArr = [...new Set(codeStr.match(reg) || [])];
             }
-            
             if(this.codeArr.join(',') == codeArr.join(',')){
                 return;
             }else{
@@ -119,6 +131,9 @@ export default {
         },
 
         createBarcode(){
+            if(this.isNotUseSN && this.printType == 0){
+                return;
+            }
             const width = this.getBarCodeWidth(this.printType);
             for (let i = 0; i < this.codeArr.length; i++) {
                 jsbarcode("#barcode" + i, this.codeArr[i], {

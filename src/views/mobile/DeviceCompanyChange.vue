@@ -13,7 +13,7 @@
                 <div class="regist-machine-line-title">机号列表</div>
                 <div class="regist-machine-list">
                     <div class="regist-machine-sn" v-for="(item, index) in showCodeList" :key="index">
-                        <span style="width: 14px;">{{index + 1}}</span>
+                        <span style="width:auto;min-width:14px;">{{index + 1}}</span>
                         <img :src="item.pic" />
                         <span style="flex-grow:1;">{{item.value}}</span>
                         <button @click="bindDelCode(item.value)"><span class="iconfont icon-yichu" style="color:#18acff;font-size:18px;"></span></button>

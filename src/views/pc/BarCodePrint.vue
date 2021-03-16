@@ -18,6 +18,7 @@
                 <a-radio-group default-value="0" button-style="solid" v-model="printType" @change="onPrintTypeChange">
                     <a-radio-button value="0">外箱标签</a-radio-button>
                     <a-radio-button value="1">板卡号</a-radio-button>
+                    <!-- <a-radio-button value="2">装箱清单</a-radio-button> -->
                 </a-radio-group>
             </div>
             <div v-if="printType==0">
@@ -64,14 +65,14 @@
                                         <td><input v-model="productCheckVal" type="text" class="rowval-ipt"/></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><input v-model="remarksText" type="text" class="rowval-ipt"/></td>
+                                        <td colspan="2"><input v-model="remarksText" type="text" class="rowval-ipt" style="width:240pt"/></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="my-toprint-textarea-part">
-                        <a-textarea @change="onCodesTextsChange" v-model="codeStr" style="resize:none;height: 144pt;width:280pt;" placeholder="在此处输入机号，用任意符号分隔"></a-textarea>
+                        <a-textarea @change="onCodesTextsChange" v-model="codeStr" style="resize:none;height: 144pt;width:280pt;" placeholder="在此处输入机号，用任意符号分隔。不使用机号时，在此处输入要打印的标签个数（1~200）。"></a-textarea>
                     </div>
                 </div>
                 <div class="prt-table-param-line">
@@ -83,9 +84,10 @@
                         </a-select-option>
                     </a-select>
                     <a-checkbox @change="onUseCompanyIconChange">不使用公司图标</a-checkbox>
+                    <a-checkbox v-model="isNotUseSN" @change="onUseSNChange">不使用机号</a-checkbox>
                 </div>
             </div>
-            <div v-if="printType==1" class="machine-card-num-part">
+            <div v-else-if="printType==1" class="machine-card-num-part">
                 <div class="create-card-num-line">
                     <span>起始编号：</span>
                     <a-input v-model="cardBeginOrder" placeholder="请输入10位板卡号" :maxLength="10" style="width: 200px;margin-right:18px;"></a-input>
@@ -93,7 +95,12 @@
                     <a-input v-model="cardNum" placeholder="1~999" :maxLength="3" style="width: 130px;margin-right:6px;" type="number"></a-input>
                     <a-button type="primary" @click="createCardListNum">生成连续板卡号</a-button>
                 </div>
-                <a-textarea placeholder="在此处输入板卡号，用任意符号分隔" style="resize:none; height:144pt;" @change="onCodesTextsChange" v-model="cardCodeStr"></a-textarea>
+                <a-textarea placeholder="在此处输入板卡号，用任意符号分隔。" style="resize:none; height:144pt;" @change="onCodesTextsChange" v-model="cardCodeStr"></a-textarea>
+            </div>
+            <div v-else class="machine-card-num-part">
+                <div class="create-card-num-line">
+                    装箱清单
+                </div>
             </div>
             <div class="prt-bill-btns-line">
                 <a-button v-if="codeArr.length" v-print="'#printMe'" style="margin-right: 14px;" type="primary" icon="printer">打印</a-button>
@@ -144,14 +151,14 @@
                                     <td><input :value="productCheckVal" type="text" class="rowval-ipt"/></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><input :value="remarksText" type="text" class="rowval-ipt"/></td>
+                                    <td colspan="2"><input :value="remarksText" type="text" class="rowval-ipt" style="width:240pt" /></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="print-code-main" v-if="printType==1">
+            <div class="print-code-main" v-else-if="printType==1">
                 <div class="print-code-content" id="printMe">
                     <div class="code-line-six-part" v-for="(item, index) in codeArr" :key="index">
                         <div class="barcode-card-main">
@@ -162,6 +169,11 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+            <div class="print-code-main" v-else>
+                <div class="print-code-content" id="printMe">
+                    <div>装箱清单</div>
                 </div>
             </div>
             <div class="prt-bottom-bottom">
