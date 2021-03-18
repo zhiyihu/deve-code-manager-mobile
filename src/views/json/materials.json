@@ -1,0 +1,2737 @@
+[
+    {
+        "materials_order": "00.01.0000001",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U8R"
+    },
+    {
+        "materials_order": "00.01.0000002",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U8H"
+    },
+    {
+        "materials_order": "00.01.0000003",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U8A"
+    },
+    {
+        "materials_order": "00.01.0000004",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07N7R"
+    },
+    {
+        "materials_order": "00.01.0000005",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07N7H"
+    },
+    {
+        "materials_order": "00.01.0000006",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07N7A"
+    },
+    {
+        "materials_order": "00.01.0000007",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U7R"
+    },
+    {
+        "materials_order": "00.01.0000008",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U3R"
+    },
+    {
+        "materials_order": "00.01.0000009",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06N5R"
+    },
+    {
+        "materials_order": "00.01.0000010",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06N7R"
+    },
+    {
+        "materials_order": "00.01.0000011",
+        "newest_name": "高精度定位定向定姿一体机",
+        "supplier_newest_type": "JK62U8R"
+    },
+    {
+        "materials_order": "00.01.0000012",
+        "newest_name": "高精度定位定向定姿一体机",
+        "supplier_newest_type": "JK62N7R"
+    },
+    {
+        "materials_order": "00.01.0000013",
+        "newest_name": "高精度定位定向一体机(直通带电台型)",
+        "supplier_newest_type": "JK60U8R"
+    },
+    {
+        "materials_order": "00.01.0000014",
+        "newest_name": "高精度定位定向一体机(直通带电台型)",
+        "supplier_newest_type": "JK60N7R"
+    },
+    {
+        "materials_order": "00.01.0000015",
+        "newest_name": "高精度定位一体机(直通型)",
+        "supplier_newest_type": "JK61U7"
+    },
+    {
+        "materials_order": "00.01.0000016",
+        "newest_name": "高精度定位一体机(直通型)",
+        "supplier_newest_type": "JK61N5"
+    },
+    {
+        "materials_order": "00.01.0000017",
+        "newest_name": "高精度定位一体机(直通型)",
+        "supplier_newest_type": "JK61N7"
+    },
+    {
+        "materials_order": "00.01.0000018",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08UG"
+    },
+    {
+        "materials_order": "00.01.0000019",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08UJ"
+    },
+    {
+        "materials_order": "00.01.0000020",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08US"
+    },
+    {
+        "materials_order": "00.01.0000021",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08UC"
+    },
+    {
+        "materials_order": "00.01.0000022",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08B8DW"
+    },
+    {
+        "materials_order": "00.01.0000023",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08B8KW"
+    },
+    {
+        "materials_order": "00.01.0000024",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U7X"
+    },
+    {
+        "materials_order": "00.01.0000025",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U3X"
+    },
+    {
+        "materials_order": "00.01.0000026",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06N5X"
+    },
+    {
+        "materials_order": "00.01.0000027",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06N7X"
+    },
+    {
+        "materials_order": "00.01.0000028",
+        "newest_name": "高精度定位主机",
+        "supplier_newest_type": "JK09U8DS"
+    },
+    {
+        "materials_order": "00.01.0000029",
+        "newest_name": "高精度定位主机",
+        "supplier_newest_type": "JK09U8KS"
+    },
+    {
+        "materials_order": "00.01.0000030",
+        "newest_name": "高精度定位主机",
+        "supplier_newest_type": "JK09U8DR"
+    },
+    {
+        "materials_order": "00.01.0000031",
+        "newest_name": "高精度定位主机",
+        "supplier_newest_type": "JK09U8KR"
+    },
+    {
+        "materials_order": "00.01.0000032",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08B8DS"
+    },
+    {
+        "materials_order": "00.01.0000033",
+        "newest_name": "JK08主机",
+        "supplier_newest_type": "JK08B8KS"
+    },
+    {
+        "materials_order": "00.01.0000034",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U4R"
+    },
+    {
+        "materials_order": "00.01.0000035",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U4X"
+    },
+    {
+        "materials_order": "00.01.0000036",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U4R"
+    },
+    {
+        "materials_order": "00.01.0000037",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U4H"
+    },
+    {
+        "materials_order": "00.01.0000038",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07N7R-CUT"
+    },
+    {
+        "materials_order": "00.01.0000039",
+        "newest_name": "高精度定位定向定姿一体机",
+        "supplier_newest_type": "JK62U4R"
+    },
+    {
+        "materials_order": "00.01.0000040",
+        "newest_name": "高精度定位主机",
+        "supplier_newest_type": "JK62U3R"
+    },
+    {
+        "materials_order": "00.01.0000041",
+        "newest_name": "定位定向一体机",
+        "supplier_newest_type": "JK62U4X"
+    },
+    {
+        "materials_order": "00.01.0000042",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U3R1"
+    },
+    {
+        "materials_order": "00.01.0000043",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U4R1"
+    },
+    {
+        "materials_order": "00.01.0000044",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U6R"
+    },
+    {
+        "materials_order": "00.01.0000045",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U6H"
+    },
+    {
+        "materials_order": "00.01.0000046",
+        "newest_name": "JK17主机",
+        "supplier_newest_type": "JK17U6R"
+    },
+    {
+        "materials_order": "00.01.0000047",
+        "newest_name": "JK17主机",
+        "supplier_newest_type": "JK17U6R1"
+    },
+    {
+        "materials_order": "00.01.0000048",
+        "newest_name": "JK17主机",
+        "supplier_newest_type": "JK17U6F"
+    },
+    {
+        "materials_order": "00.01.0000049",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U6R"
+    },
+    {
+        "materials_order": "00.01.0000050",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U6R1"
+    },
+    {
+        "materials_order": "00.01.0000051",
+        "newest_name": "驾考基准站",
+        "supplier_newest_type": "JK06U6X"
+    },
+    {
+        "materials_order": "00.01.0000052",
+        "newest_name": "定位定向一体机",
+        "supplier_newest_type": "JK62U6X"
+    },
+    {
+        "materials_order": "00.01.0000053",
+        "newest_name": "高精度定位定向定姿一体机",
+        "supplier_newest_type": "JK62U6R"
+    },
+    {
+        "materials_order": "00.01.0000054",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK27U6R"
+    },
+    {
+        "materials_order": "00.01.0000055",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U6X"
+    },
+    {
+        "materials_order": "00.01.0000056",
+        "newest_name": "高精度驾考驾培主控机",
+        "supplier_newest_type": "JK09U8R"
+    },
+    {
+        "materials_order": "00.01.0000057",
+        "newest_name": "高精度驾考驾培主控机",
+        "supplier_newest_type": "JK09U6R"
+    },
+    {
+        "materials_order": "00.01.0000058",
+        "newest_name": "JK27主机",
+        "supplier_newest_type": "JK27U6F"
+    },
+    {
+        "materials_order": "00.01.0000059",
+        "newest_name": "JK09主机",
+        "supplier_newest_type": "JK09"
+    },
+    {
+        "materials_order": "00.01.0000060",
+        "newest_name": "高精度驾考驾培主控机",
+        "supplier_newest_type": "JK09U6DS"
+    },
+    {
+        "materials_order": "00.01.0000061",
+        "newest_name": "JK17主机",
+        "supplier_newest_type": "JK17N7F"
+    },
+    {
+        "materials_order": "00.01.0000062",
+        "newest_name": "JK17主机",
+        "supplier_newest_type": "JK17U6X"
+    },
+    {
+        "materials_order": "00.01.0000063",
+        "newest_name": "高精度驾考驾培主控机",
+        "supplier_newest_type": "JK09N7R"
+    },
+    {
+        "materials_order": "00.01.0000064",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK07U6R-CUT"
+    },
+    {
+        "materials_order": "00.01.0000065",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20N7R"
+    },
+    {
+        "materials_order": "00.01.0000066",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20N7H"
+    },
+    {
+        "materials_order": "00.01.0000067",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20N7A"
+    },
+    {
+        "materials_order": "00.01.0000068",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20U6R"
+    },
+    {
+        "materials_order": "00.01.0000069",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20U6H"
+    },
+    {
+        "materials_order": "00.01.0000070",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20U6X"
+    },
+    {
+        "materials_order": "00.01.0000071",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20N8R"
+    },
+    {
+        "materials_order": "00.01.0000072",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20N8H"
+    },
+    {
+        "materials_order": "00.01.0000073",
+        "newest_name": "驾考一体机",
+        "supplier_newest_type": "JK20N8A"
+    },
+    {
+        "materials_order": "00.02.0000001",
+        "newest_name": "车宝-小盒子",
+        "supplier_newest_type": "CZ07B8H"
+    },
+    {
+        "materials_order": "00.02.0000002",
+        "newest_name": "车宝-小盒子",
+        "supplier_newest_type": "CZ07T1H"
+    },
+    {
+        "materials_order": "00.02.0000003",
+        "newest_name": "车宝-小盒子",
+        "supplier_newest_type": "CZ07U2H"
+    },
+    {
+        "materials_order": "00.02.0000004",
+        "newest_name": "车厘子—大盒子",
+        "supplier_newest_type": "CZ08B8"
+    },
+    {
+        "materials_order": "00.02.0000005",
+        "newest_name": "车厘子—大盒子",
+        "supplier_newest_type": "CZ08T1"
+    },
+    {
+        "materials_order": "00.02.0000006",
+        "newest_name": "车厘子—大盒子",
+        "supplier_newest_type": "CZ08T3"
+    },
+    {
+        "materials_order": "00.02.0000007",
+        "newest_name": "车霸王—分体机",
+        "supplier_newest_type": "CZ09B8H"
+    },
+    {
+        "materials_order": "00.02.0000008",
+        "newest_name": "车霸王—分体机",
+        "supplier_newest_type": "CZ09T1H"
+    },
+    {
+        "materials_order": "00.02.0000009",
+        "newest_name": "车霸王—分体机",
+        "supplier_newest_type": "CZ09T3H"
+    },
+    {
+        "materials_order": "00.02.0000010",
+        "newest_name": "车霸王—分体机",
+        "supplier_newest_type": "CZ09N5H"
+    },
+    {
+        "materials_order": "00.02.0000011",
+        "newest_name": "车霸王—分体机",
+        "supplier_newest_type": "CZ09N7H"
+    },
+    {
+        "materials_order": "00.03.0000001",
+        "newest_name": "传感器检测板",
+        "supplier_newest_type": "DET01"
+    },
+    {
+        "materials_order": "00.03.0000002",
+        "newest_name": "JK08检测板",
+        "supplier_newest_type": "DET02"
+    },
+    {
+        "materials_order": "00.04.0000001",
+        "newest_name": "倾斜测量模块",
+        "supplier_newest_type": "INS01"
+    },
+    {
+        "materials_order": "00.04.0000002",
+        "newest_name": "亚米级惯性导航模块",
+        "supplier_newest_type": "INS02B8"
+    },
+    {
+        "materials_order": "00.04.0000003",
+        "newest_name": "亚米级惯性导航模块",
+        "supplier_newest_type": "INS02T1"
+    },
+    {
+        "materials_order": "00.05.0000001",
+        "newest_name": "OBD转速检测仪",
+        "supplier_newest_type": "OBD01"
+    },
+    {
+        "materials_order": "00.05.0000002",
+        "newest_name": "捷达车档位传感器",
+        "supplier_newest_type": "GER01"
+    },
+    {
+        "materials_order": "00.05.0000003",
+        "newest_name": "传祺GA5档位传感器",
+        "supplier_newest_type": "GER02"
+    },
+    {
+        "materials_order": "00.05.0000004",
+        "newest_name": "通用型档位传感器",
+        "supplier_newest_type": "GER03"
+    },
+    {
+        "materials_order": "00.05.0000005",
+        "newest_name": "比亚迪速锐档位传感器",
+        "supplier_newest_type": "GER04"
+    },
+    {
+        "materials_order": "00.05.0000006",
+        "newest_name": "科目三姿态仪",
+        "supplier_newest_type": "AM01"
+    },
+    {
+        "materials_order": "00.05.0000007",
+        "newest_name": "撞杆传感器",
+        "supplier_newest_type": "AM02"
+    },
+    {
+        "materials_order": "00.05.0000008",
+        "newest_name": "场地传感器采集器",
+        "supplier_newest_type": "SC01"
+    },
+    {
+        "materials_order": "00.05.0000009",
+        "newest_name": "OBD转JK07传感器信号采集 ",
+        "supplier_newest_type": "OBD02"
+    },
+    {
+        "materials_order": "00.05.0000010",
+        "newest_name": "免接线路考仪主机",
+        "supplier_newest_type": "FD01"
+    },
+    {
+        "materials_order": "00.05.0000011",
+        "newest_name": "老捷达档位传感器",
+        "supplier_newest_type": "DW02-W1"
+    },
+    {
+        "materials_order": "00.05.0000012",
+        "newest_name": "新捷达档位传感器",
+        "supplier_newest_type": "DW02-W2"
+    },
+    {
+        "materials_order": "00.05.0000013",
+        "newest_name": "海马M3手动挡档位传感器",
+        "supplier_newest_type": "DW02-W3 "
+    },
+    {
+        "materials_order": "00.05.0000014",
+        "newest_name": "奇瑞E3手动挡档位传感器",
+        "supplier_newest_type": "DW02-W4 "
+    },
+    {
+        "materials_order": "00.05.0000015",
+        "newest_name": "新捷达/宝来自动挡 P挡传感器",
+        "supplier_newest_type": "DW03-P1"
+    },
+    {
+        "materials_order": "00.05.0000016",
+        "newest_name": "海马M3自动挡 P挡传感器",
+        "supplier_newest_type": "DW03-P2"
+    },
+    {
+        "materials_order": "00.05.0000017",
+        "newest_name": "里程计",
+        "supplier_newest_type": "LCJ01"
+    },
+    {
+        "materials_order": "00.05.0000018",
+        "newest_name": "新捷达MT全档位传感器（手动挡）",
+        "supplier_newest_type": "DW02-W6"
+    },
+    {
+        "materials_order": "00.05.0000019",
+        "newest_name": "老捷达MT空档传感器（手动挡）",
+        "supplier_newest_type": "DW03-N1"
+    },
+    {
+        "materials_order": "00.05.0000020",
+        "newest_name": "新捷达MT N档传感器（手动空挡）",
+        "supplier_newest_type": "DW03-N2"
+    },
+    {
+        "materials_order": "00.05.0000021",
+        "newest_name": "老捷达MT全档位传感器（手动挡）",
+        "supplier_newest_type": "DW02-W5"
+    },
+    {
+        "materials_order": "00.05.0000022",
+        "newest_name": "老宝来老捷达自动挡档位传感器     ",
+        "supplier_newest_type": "DW03-P3"
+    },
+    {
+        "materials_order": "00.05.0000023",
+        "newest_name": "干簧管传感器  ",
+        "supplier_newest_type": "DW03-P4"
+    },
+    {
+        "materials_order": "00.05.0000024",
+        "newest_name": "新爱丽舍MT全档位传感器 ",
+        "supplier_newest_type": "DW02-W9 "
+    },
+    {
+        "materials_order": "00.05.0000025",
+        "newest_name": "新爱丽舍MT N档传感器 ",
+        "supplier_newest_type": "DW03-N3 "
+    },
+    {
+        "materials_order": "00.05.0000026",
+        "newest_name": "数据链协议转换配件",
+        "supplier_newest_type": "DL06"
+    },
+    {
+        "materials_order": "00.05.0000027",
+        "newest_name": "JK09数据链配件",
+        "supplier_newest_type": "DL05"
+    },
+    {
+        "materials_order": "00.05.0000028",
+        "newest_name": "OBD12 信号采集器",
+        "supplier_newest_type": "OBD12"
+    },
+    {
+        "materials_order": "00.05.0000029",
+        "newest_name": "通用型档位传感器",
+        "supplier_newest_type": "DW04-W1"
+    },
+    {
+        "materials_order": "00.05.0000030",
+        "newest_name": "海马M3 N挡位传感器 ",
+        "supplier_newest_type": "DW03-N4"
+    },
+    {
+        "materials_order": "00.05.0000031",
+        "newest_name": "海马M3 MT全挡位传感器",
+        "supplier_newest_type": "DW02-W10"
+    },
+    {
+        "materials_order": "00.06.0000001",
+        "newest_name": "高精度定位定向一体机(直通型)",
+        "supplier_newest_type": "OEM01U8"
+    },
+    {
+        "materials_order": "00.06.0000002",
+        "newest_name": "高精度定位定向一体机(直通型)",
+        "supplier_newest_type": "OEM01N7"
+    },
+    {
+        "materials_order": "00.06.0000003",
+        "newest_name": "高精度定位定向一体机(直通型)",
+        "supplier_newest_type": "OEM01U7"
+    },
+    {
+        "materials_order": "00.06.0000004",
+        "newest_name": "电台转接板",
+        "supplier_newest_type": "OEM02"
+    },
+    {
+        "materials_order": "00.07.0000001",
+        "newest_name": "GNSS接收机",
+        "supplier_newest_type": "SS0001"
+    },
+    {
+        "materials_order": "00.08.0000001",
+        "newest_name": "驾考OBD信号采集器",
+        "supplier_newest_type": "SCC318"
+    },
+    {
+        "materials_order": "00.08.0000002",
+        "newest_name": "传感器采集",
+        "supplier_newest_type": "SCC315"
+    },
+    {
+        "materials_order": "00.08.0000003",
+        "newest_name": "传感器采集",
+        "supplier_newest_type": "SCC315-A"
+    },
+    {
+        "materials_order": "00.09.0000001",
+        "newest_name": "M62 GNSS接收机",
+        "supplier_newest_type": "M62U6"
+    },
+    {
+        "materials_order": "00.09.0000002",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UMX"
+    },
+    {
+        "materials_order": "00.09.0000003",
+        "newest_name": "M62 GNSS接收机",
+        "supplier_newest_type": "M62N7"
+    },
+    {
+        "materials_order": "00.09.0000004",
+        "newest_name": "G51C 接收机",
+        "supplier_newest_type": "M61"
+    },
+    {
+        "materials_order": "00.09.0000005",
+        "newest_name": "测绘型RTK终端",
+        "supplier_newest_type": "M65"
+    },
+    {
+        "materials_order": "00.09.0000006",
+        "newest_name": "RTK测量终端",
+        "supplier_newest_type": "M62U4"
+    },
+    {
+        "materials_order": "00.09.0000007",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UMH"
+    },
+    {
+        "materials_order": "00.09.0000008",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UBX"
+    },
+    {
+        "materials_order": "00.09.0000009",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UBH"
+    },
+    {
+        "materials_order": "00.09.0000010",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UBO"
+    },
+    {
+        "materials_order": "00.09.0000011",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66N9X"
+    },
+    {
+        "materials_order": "00.09.0000012",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66N9H"
+    },
+    {
+        "materials_order": "00.09.0000013",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66N8H"
+    },
+    {
+        "materials_order": "00.09.0000014",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66U6H"
+    },
+    {
+        "materials_order": "00.09.0000015",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UBR"
+    },
+    {
+        "materials_order": "00.09.0000016",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65N9A"
+    },
+    {
+        "materials_order": "00.09.0000017",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65UBA"
+    },
+    {
+        "materials_order": "00.09.0000018",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65UMA"
+    },
+    {
+        "materials_order": "00.09.0000019",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65N9I"
+    },
+    {
+        "materials_order": "00.09.0000020",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65UBI"
+    },
+    {
+        "materials_order": "00.09.0000021",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65UMI"
+    },
+    {
+        "materials_order": "00.09.0000022",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UBH-A"
+    },
+    {
+        "materials_order": "00.09.0000023",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66N2H"
+    },
+    {
+        "materials_order": "00.09.0000024",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68N9H"
+    },
+    {
+        "materials_order": "00.09.0000025",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UMH"
+    },
+    {
+        "materials_order": "00.09.0000026",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68N9I"
+    },
+    {
+        "materials_order": "00.09.0000027",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UMI"
+    },
+    {
+        "materials_order": "00.09.0000028",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UMH-B"
+    },
+    {
+        "materials_order": "00.09.0000029",
+        "newest_name": "北斗定位终端(G20M)",
+        "supplier_newest_type": "M68UMI（G20M）"
+    },
+    {
+        "materials_order": "00.09.0000030",
+        "newest_name": "北斗定位终端(BT-PN2)",
+        "supplier_newest_type": "M68UMI（BT-PN2）"
+    },
+    {
+        "materials_order": "00.09.0000031",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66N2O"
+    },
+    {
+        "materials_order": "00.09.0000032",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65UMI（G20UMI）"
+    },
+    {
+        "materials_order": "00.09.0000033",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68PUMI"
+    },
+    {
+        "materials_order": "00.09.0000034",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UMI(NetBOX1)"
+    },
+    {
+        "materials_order": "00.09.0000035",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UNH"
+    },
+    {
+        "materials_order": "00.09.0000036",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UNI"
+    },
+    {
+        "materials_order": "00.09.0000037",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68PUNH"
+    },
+    {
+        "materials_order": "00.09.0000038",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68PUNI"
+    },
+    {
+        "materials_order": "00.09.0000039",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68PUMH"
+    },
+    {
+        "materials_order": "00.09.0000040",
+        "newest_name": "M65接收机",
+        "supplier_newest_type": "M65UMI（L8）"
+    },
+    {
+        "materials_order": "00.09.0000041",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UNH(NetBOX1)"
+    },
+    {
+        "materials_order": "00.09.0000042",
+        "newest_name": "北斗接收机",
+        "supplier_newest_type": "M66UNH"
+    },
+    {
+        "materials_order": "00.09.0000043",
+        "newest_name": "北斗定位终端",
+        "supplier_newest_type": "M68UMH(NetBOX1)"
+    },
+    {
+        "materials_order": "00.09.0000044",
+        "newest_name": "测地型GNSS接收机",
+        "supplier_newest_type": "M66UNX-A"
+    },
+    {
+        "materials_order": "00.09.0000045",
+        "newest_name": "测地型GNSS接收机",
+        "supplier_newest_type": "M68UNI(NetBOX1)"
+    },
+    {
+        "materials_order": "00.09.0000046",
+        "newest_name": "测地型GNSS接收机",
+        "supplier_newest_type": "M65UNI（L8）"
+    },
+    {
+        "materials_order": "00.09.0000047",
+        "newest_name": "测地型GNSS接收机",
+        "supplier_newest_type": "M65UNA"
+    },
+    {
+        "materials_order": "01.01.0000001",
+        "newest_name": "基站电台发射天线",
+        "supplier_newest_type": "AT0001"
+    },
+    {
+        "materials_order": "01.01.0000002",
+        "newest_name": "电台发射天线",
+        "supplier_newest_type": "AT0002"
+    },
+    {
+        "materials_order": "01.01.0000003",
+        "newest_name": "三星七频卫星天线 ",
+        "supplier_newest_type": "AT0003"
+    },
+    {
+        "materials_order": "01.01.0000004",
+        "newest_name": "移动站电台接收天线",
+        "supplier_newest_type": "AT0004"
+    },
+    {
+        "materials_order": "01.01.0000005",
+        "newest_name": "GSM/WCDMA无线网络天线",
+        "supplier_newest_type": "AT0005"
+    },
+    {
+        "materials_order": "01.01.0000006",
+        "newest_name": "四系统全频基准站天线",
+        "supplier_newest_type": "AT0006"
+    },
+    {
+        "materials_order": "01.01.0000007",
+        "newest_name": "卫星网络二合一吸盘天线",
+        "supplier_newest_type": "AT0007"
+    },
+    {
+        "materials_order": "01.01.0000008",
+        "newest_name": "三系统三频外置手持机天线",
+        "supplier_newest_type": "AT0008"
+    },
+    {
+        "materials_order": "01.01.0000009",
+        "newest_name": "三系统三频外置手持机天线",
+        "supplier_newest_type": "AT0009"
+    },
+    {
+        "materials_order": "01.01.0000010",
+        "newest_name": "三星单频卫星吸盘天线",
+        "supplier_newest_type": "AT0010"
+    },
+    {
+        "materials_order": "01.01.0000011",
+        "newest_name": "三系统七频外置测量天线",
+        "supplier_newest_type": "AT0011"
+    },
+    {
+        "materials_order": "01.01.0000012",
+        "newest_name": "三系统三频外置测量天线",
+        "supplier_newest_type": "AT0012"
+    },
+    {
+        "materials_order": "01.01.0000013",
+        "newest_name": "三系统八频外置转发天线",
+        "supplier_newest_type": "AT0013"
+    },
+    {
+        "materials_order": "01.01.0000014",
+        "newest_name": "SMA头WIFI天线",
+        "supplier_newest_type": "AT0014"
+    },
+    {
+        "materials_order": "01.01.0000015",
+        "newest_name": "3G贴片车载天线",
+        "supplier_newest_type": "AT0015"
+    },
+    {
+        "materials_order": "01.01.0000016",
+        "newest_name": "双系统四频外置测量天线",
+        "supplier_newest_type": "AT0016"
+    },
+    {
+        "materials_order": "01.01.0000017",
+        "newest_name": "内置收发数传电台",
+        "supplier_newest_type": "AT0017"
+    },
+    {
+        "materials_order": "01.01.0000018",
+        "newest_name": "三系统六频外置测量天线",
+        "supplier_newest_type": "AT0018"
+    },
+    {
+        "materials_order": "01.01.0000019",
+        "newest_name": "三系统六频内置手持机天线",
+        "supplier_newest_type": "AT0019"
+    },
+    {
+        "materials_order": "01.01.0000020",
+        "newest_name": "JK09移动站电台接收天线",
+        "supplier_newest_type": "AT0020"
+    },
+    {
+        "materials_order": "01.01.0000021",
+        "newest_name": "4G全网通天线",
+        "supplier_newest_type": "AT0021"
+    },
+    {
+        "materials_order": "01.01.0000022",
+        "newest_name": "四系统全频内置测量天线",
+        "supplier_newest_type": "AT0022"
+    },
+    {
+        "materials_order": "01.01.0000023",
+        "newest_name": "全向玻璃钢天线",
+        "supplier_newest_type": "AT0023"
+    },
+    {
+        "materials_order": "01.01.0000024",
+        "newest_name": "WIFI天线",
+        "supplier_newest_type": "AT0024"
+    },
+    {
+        "materials_order": "01.01.0000025",
+        "newest_name": "三系统七频基准站天线",
+        "supplier_newest_type": "AT0025"
+    },
+    {
+        "materials_order": "01.01.0000026",
+        "newest_name": "四系统全频外置测量天线",
+        "supplier_newest_type": "AT0026"
+    },
+    {
+        "materials_order": "01.01.0000027",
+        "newest_name": "410-430M 电台天线",
+        "supplier_newest_type": "AT0027"
+    },
+    {
+        "materials_order": "01.01.0000028",
+        "newest_name": "430-450M 电台天线",
+        "supplier_newest_type": "AT0028"
+    },
+    {
+        "materials_order": "01.01.0000029",
+        "newest_name": "450-470M 电台天线",
+        "supplier_newest_type": "AT0029"
+    },
+    {
+        "materials_order": "01.01.0000030",
+        "newest_name": "基站电台发射天线",
+        "supplier_newest_type": "AT0030"
+    },
+    {
+        "materials_order": "01.01.0000031",
+        "newest_name": "403-470MHz 电台天线",
+        "supplier_newest_type": "AT0031"
+    },
+    {
+        "materials_order": "01.01.0000032",
+        "newest_name": "410-470MHz 全频电台天线",
+        "supplier_newest_type": "AT0032"
+    },
+    {
+        "materials_order": "01.01.0000033",
+        "newest_name": "外置驾考天线",
+        "supplier_newest_type": "AT0033"
+    },
+    {
+        "materials_order": "01.02.0000001",
+        "newest_name": "12V/6A升降压开关电源",
+        "supplier_newest_type": "CG0001"
+    },
+    {
+        "materials_order": "01.02.0000002",
+        "newest_name": "12V/2A 航空头电源适配器",
+        "supplier_newest_type": "CG0002"
+    },
+    {
+        "materials_order": "01.02.0000003",
+        "newest_name": "5V/2A miroUSB电源适配器",
+        "supplier_newest_type": "CG0003"
+    },
+    {
+        "materials_order": "01.02.0000004",
+        "newest_name": "车载双USB充电器",
+        "supplier_newest_type": "CG0004"
+    },
+    {
+        "materials_order": "01.02.0000005",
+        "newest_name": "机械式定时通断电插座",
+        "supplier_newest_type": "CG0005"
+    },
+    {
+        "materials_order": "01.02.0000006",
+        "newest_name": "点烟器转DC头电源线",
+        "supplier_newest_type": "CG0006"
+    },
+    {
+        "materials_order": "01.02.0000007",
+        "newest_name": "12V/2A DC头电源适配器",
+        "supplier_newest_type": "CG0007"
+    },
+    {
+        "materials_order": "01.02.0000008",
+        "newest_name": "12V/10A升降压开关电源",
+        "supplier_newest_type": "CG0008"
+    },
+    {
+        "materials_order": "01.02.0000009",
+        "newest_name": "12V/8.3A模块电源",
+        "supplier_newest_type": "CG0009"
+    },
+    {
+        "materials_order": "01.02.0000010",
+        "newest_name": "12V/2A 2芯雷默头电源适配器",
+        "supplier_newest_type": "CG0010"
+    },
+    {
+        "materials_order": "01.02.0000011",
+        "newest_name": "车载电源",
+        "supplier_newest_type": "CG0011"
+    },
+    {
+        "materials_order": "01.02.0000012",
+        "newest_name": "车载电源",
+        "supplier_newest_type": "CG0012"
+    },
+    {
+        "materials_order": "01.02.0000013",
+        "newest_name": "5V/2A USB电源适配器",
+        "supplier_newest_type": "CG0013"
+    },
+    {
+        "materials_order": "01.02.0000014",
+        "newest_name": "12V/3A DC头电源适配器（含安规电源线）",
+        "supplier_newest_type": "CG0014"
+    },
+    {
+        "materials_order": "01.02.0000015",
+        "newest_name": "48V-12V DC-DC电源适配器",
+        "supplier_newest_type": "CG0015"
+    },
+    {
+        "materials_order": "01.02.0000016",
+        "newest_name": "12V/10A 适配器改装子弹头",
+        "supplier_newest_type": "CG0016"
+    },
+    {
+        "materials_order": "01.02.0000017",
+        "newest_name": "安卓PDA充电器K7",
+        "supplier_newest_type": "CG0017"
+    },
+    {
+        "materials_order": "01.02.0000018",
+        "newest_name": "安卓PDA充电器NLS",
+        "supplier_newest_type": "CG0018"
+    },
+    {
+        "materials_order": "01.02.0000019",
+        "newest_name": "欧规 5V/2A USB电源适配器",
+        "supplier_newest_type": "CG0019"
+    },
+    {
+        "materials_order": "01.02.0000020",
+        "newest_name": "欧规 12V/2A 2芯雷默头电源适配器",
+        "supplier_newest_type": "CG0020"
+    },
+    {
+        "materials_order": "01.03.0000001",
+        "newest_name": "电台天线底座带15M连接线",
+        "supplier_newest_type": "BB0001"
+    },
+    {
+        "materials_order": "01.03.0000002",
+        "newest_name": "天线吸盘带连接杆",
+        "supplier_newest_type": "BB0002"
+    },
+    {
+        "materials_order": "01.03.0000003",
+        "newest_name": "电台天线底座带5M连接线",
+        "supplier_newest_type": "BB0003"
+    },
+    {
+        "materials_order": "01.03.0000004",
+        "newest_name": "8寸平板固定安装支架",
+        "supplier_newest_type": "BB0004"
+    },
+    {
+        "materials_order": "01.03.0000005",
+        "newest_name": "7寸平板固定安装支架",
+        "supplier_newest_type": "BB0005"
+    },
+    {
+        "materials_order": "01.03.0000006",
+        "newest_name": "46寸LBE模块框架带基座",
+        "supplier_newest_type": "BB0006"
+    },
+    {
+        "materials_order": "01.03.0000007",
+        "newest_name": "天线吸盘底座及连接杆",
+        "supplier_newest_type": "BB0007"
+    },
+    {
+        "materials_order": "01.03.0000008",
+        "newest_name": "8寸平板固定安装支架",
+        "supplier_newest_type": "BB0008"
+    },
+    {
+        "materials_order": "01.03.0000009",
+        "newest_name": "GPS测量天线外壳",
+        "supplier_newest_type": "BB0009"
+    },
+    {
+        "materials_order": "01.03.0000010",
+        "newest_name": "铁饼-球墨铸铁",
+        "supplier_newest_type": "BB0010"
+    },
+    {
+        "materials_order": "01.03.0000011",
+        "newest_name": "龙门架",
+        "supplier_newest_type": "BB0011"
+    },
+    {
+        "materials_order": "01.03.0000012",
+        "newest_name": "防水机柜",
+        "supplier_newest_type": "BB0012"
+    },
+    {
+        "materials_order": "01.03.0000013",
+        "newest_name": "吊杆结构件组件",
+        "supplier_newest_type": "BB0013"
+    },
+    {
+        "materials_order": "01.03.0000014",
+        "newest_name": "10寸平板固定安装支架",
+        "supplier_newest_type": "BB0014"
+    },
+    {
+        "materials_order": "01.03.0000015",
+        "newest_name": "10寸平板金属外框",
+        "supplier_newest_type": "BB0015"
+    },
+    {
+        "materials_order": "01.03.0000016",
+        "newest_name": "新捷达档位限位架套件",
+        "supplier_newest_type": "BB0016"
+    },
+    {
+        "materials_order": "01.03.0000017",
+        "newest_name": "选挡摇臂组件(金属支架)",
+        "supplier_newest_type": "BB0017"
+    },
+    {
+        "materials_order": "01.03.0000018",
+        "newest_name": "四角转换支架",
+        "supplier_newest_type": "BB0018"
+    },
+    {
+        "materials_order": "01.03.0000019",
+        "newest_name": "电台天线底座带4M连接线",
+        "supplier_newest_type": "BB0019"
+    },
+    {
+        "materials_order": "01.03.0000020",
+        "newest_name": "工业平板电脑支架",
+        "supplier_newest_type": "BB0020"
+    },
+    {
+        "materials_order": "01.03.0000021",
+        "newest_name": "磁吸盘座",
+        "supplier_newest_type": "BB0021"
+    },
+    {
+        "materials_order": "01.03.0000022",
+        "newest_name": "电台天线底座带8M连接线",
+        "supplier_newest_type": "BB0022"
+    },
+    {
+        "materials_order": "01.03.0000023",
+        "newest_name": "GPS碳钎杆",
+        "supplier_newest_type": "BB0023"
+    },
+    {
+        "materials_order": "01.03.0000024",
+        "newest_name": "M62对中杆",
+        "supplier_newest_type": "BB0024"
+    },
+    {
+        "materials_order": "01.03.0000025",
+        "newest_name": "小型机柜（350*600*450）",
+        "supplier_newest_type": "BB0025"
+    },
+    {
+        "materials_order": "01.03.0000026",
+        "newest_name": "电台天线底座带30M连接线 ",
+        "supplier_newest_type": "BB0026"
+    },
+    {
+        "materials_order": "01.03.0000027",
+        "newest_name": "轻质托盘套件",
+        "supplier_newest_type": "BB0027"
+    },
+    {
+        "materials_order": "01.03.0000028",
+        "newest_name": "轻质托盘套件（54所）",
+        "supplier_newest_type": "BB0028"
+    },
+    {
+        "materials_order": "01.03.0000029",
+        "newest_name": "托盘（讯腾）",
+        "supplier_newest_type": "BB0029"
+    },
+    {
+        "materials_order": "01.03.0000030",
+        "newest_name": "对中杆转接头(3/8转5/8)",
+        "supplier_newest_type": "BB0030"
+    },
+    {
+        "materials_order": "01.03.0000031",
+        "newest_name": "基座连接头",
+        "supplier_newest_type": "BB0031"
+    },
+    {
+        "materials_order": "01.03.0000032",
+        "newest_name": "PDA托盘支架",
+        "supplier_newest_type": "BB0032"
+    },
+    {
+        "materials_order": "01.03.0000033",
+        "newest_name": "内六角扳手CRV普长镀镍2.5mm",
+        "supplier_newest_type": "BB0033"
+    },
+    {
+        "materials_order": "01.03.0000034",
+        "newest_name": "平头内六角扳手（古铜色）",
+        "supplier_newest_type": "BB0034"
+    },
+    {
+        "materials_order": "01.04.0000001",
+        "newest_name": "20M卫星天线电缆",
+        "supplier_newest_type": "CB0001"
+    },
+    {
+        "materials_order": "01.04.0000002",
+        "newest_name": "20M卫星天线电缆",
+        "supplier_newest_type": "CB0002"
+    },
+    {
+        "materials_order": "01.04.0000003",
+        "newest_name": "5M定向前天线电缆",
+        "supplier_newest_type": "CB0003"
+    },
+    {
+        "materials_order": "01.04.0000004",
+        "newest_name": "5M定位后天线电缆",
+        "supplier_newest_type": "CB0004"
+    },
+    {
+        "materials_order": "01.04.0000005",
+        "newest_name": "30M卫星天线电缆",
+        "supplier_newest_type": "CB0005"
+    },
+    {
+        "materials_order": "01.04.0000006",
+        "newest_name": "10M定位后天线电缆",
+        "supplier_newest_type": "CB0006"
+    },
+    {
+        "materials_order": "01.04.0000007",
+        "newest_name": "SMA-TNC 5米定向前线缆   ",
+        "supplier_newest_type": "CB0007"
+    },
+    {
+        "materials_order": "01.04.0000008",
+        "newest_name": "SMA-TNC 5米定位后线缆  ",
+        "supplier_newest_type": "CB0008"
+    },
+    {
+        "materials_order": "01.04.0000009",
+        "newest_name": "15M射频天线电缆",
+        "supplier_newest_type": "CB0009"
+    },
+    {
+        "materials_order": "01.04.0000010",
+        "newest_name": "9米定向前天线线缆",
+        "supplier_newest_type": "CB0010"
+    },
+    {
+        "materials_order": "01.04.0000011",
+        "newest_name": "7米定位后天线线缆",
+        "supplier_newest_type": "CB0011"
+    },
+    {
+        "materials_order": "01.04.0000012",
+        "newest_name": "SMA-TNC 9米定向前线缆   ",
+        "supplier_newest_type": "CB0012"
+    },
+    {
+        "materials_order": "01.04.0000013",
+        "newest_name": "SMA-TNC 7米定位后线缆  ",
+        "supplier_newest_type": "CB0013"
+    },
+    {
+        "materials_order": "01.04.0000014",
+        "newest_name": "50M卫星天线电缆",
+        "supplier_newest_type": "CB0014"
+    },
+    {
+        "materials_order": "01.04.0000015",
+        "newest_name": "15M卫星天线电缆",
+        "supplier_newest_type": "CB0015"
+    },
+    {
+        "materials_order": "01.04.0000016",
+        "newest_name": "0.135米,TNC公直角弯头接入,TNC公直角弯头输出天线电缆",
+        "supplier_newest_type": "CB0016"
+    },
+    {
+        "materials_order": "01.04.0000017",
+        "newest_name": "0.135米,TNC母直角弯头接入,TNC公直角弯头输出天线电缆",
+        "supplier_newest_type": "CB0017"
+    },
+    {
+        "materials_order": "01.04.0000018",
+        "newest_name": "8M定向前天线电缆",
+        "supplier_newest_type": "CB0018"
+    },
+    {
+        "materials_order": "01.04.0000019",
+        "newest_name": "8M定位后天线电缆",
+        "supplier_newest_type": "CB0019"
+    },
+    {
+        "materials_order": "01.05.0000001",
+        "newest_name": "2芯航空头电源线",
+        "supplier_newest_type": "L0801-05"
+    },
+    {
+        "materials_order": "01.05.0000002",
+        "newest_name": "5芯航空头转2个DB9串口线",
+        "supplier_newest_type": "L0802-05"
+    },
+    {
+        "materials_order": "01.05.0000003",
+        "newest_name": "5芯航空头转1个DB9串口线",
+        "supplier_newest_type": "L0803-05"
+    },
+    {
+        "materials_order": "01.05.0000004",
+        "newest_name": "ATX接口4Pin JK07主机电源线",
+        "supplier_newest_type": "L0804-03"
+    },
+    {
+        "materials_order": "01.05.0000005",
+        "newest_name": "8M长电源线 ",
+        "supplier_newest_type": "L0805-8"
+    },
+    {
+        "materials_order": "01.05.0000006",
+        "newest_name": "8M长防水超5类568B网线",
+        "supplier_newest_type": "L0806-5"
+    },
+    {
+        "materials_order": "01.05.0000007",
+        "newest_name": "VGA和USB二合一线",
+        "supplier_newest_type": "L0807-5"
+    },
+    {
+        "materials_order": "01.05.0000008",
+        "newest_name": "3.5MM公对公音频线",
+        "supplier_newest_type": "L0808-03"
+    },
+    {
+        "materials_order": "01.05.0000009",
+        "newest_name": "ATX接口4Pin 音频相关配件电源线",
+        "supplier_newest_type": "L0808-15"
+    },
+    {
+        "materials_order": "01.05.0000010",
+        "newest_name": "公对母USB延长线",
+        "supplier_newest_type": "L0810-5"
+    },
+    {
+        "materials_order": "01.05.0000011",
+        "newest_name": "科目2传感器线束",
+        "supplier_newest_type": "L0811-7"
+    },
+    {
+        "materials_order": "01.05.0000012",
+        "newest_name": "科目3传感器线束",
+        "supplier_newest_type": "L0812-7"
+    },
+    {
+        "materials_order": "01.05.0000013",
+        "newest_name": "USB转公头串口线",
+        "supplier_newest_type": "L0813-13"
+    },
+    {
+        "materials_order": "01.05.0000014",
+        "newest_name": "1M长防水超5类568B网线",
+        "supplier_newest_type": "L0814-1"
+    },
+    {
+        "materials_order": "01.05.0000015",
+        "newest_name": "雷莫头转DB9串口线",
+        "supplier_newest_type": "L0902-05 "
+    },
+    {
+        "materials_order": "01.05.0000016",
+        "newest_name": "(分体机)1分2串口线",
+        "supplier_newest_type": "L0903-05"
+    },
+    {
+        "materials_order": "01.05.0000017",
+        "newest_name": "(分体机)电源线",
+        "supplier_newest_type": "L0904-1"
+    },
+    {
+        "materials_order": "01.05.0000018",
+        "newest_name": " JK07 1分2串口线 ",
+        "supplier_newest_type": "L0815-05"
+    },
+    {
+        "materials_order": "01.05.0000019",
+        "newest_name": "7M长电源线 ",
+        "supplier_newest_type": "L0805-7"
+    },
+    {
+        "materials_order": "01.05.0000020",
+        "newest_name": "A组传感器线束",
+        "supplier_newest_type": "L0816-12"
+    },
+    {
+        "materials_order": "01.05.0000021",
+        "newest_name": "B组传感器线束",
+        "supplier_newest_type": "L0817-4"
+    },
+    {
+        "materials_order": "01.05.0000022",
+        "newest_name": "OBD接口线束",
+        "supplier_newest_type": "L0818-1"
+    },
+    {
+        "materials_order": "01.05.0000023",
+        "newest_name": "里程计与主机连接线",
+        "supplier_newest_type": "L0819-1"
+    },
+    {
+        "materials_order": "01.05.0000024",
+        "newest_name": "JK08主机航空头数据线",
+        "supplier_newest_type": "L0820-15"
+    },
+    {
+        "materials_order": "01.05.0000025",
+        "newest_name": "JK08主机DB9数据线(SCC318 DB9母头串口线 )",
+        "supplier_newest_type": "L0821-1"
+    },
+    {
+        "materials_order": "01.05.0000026",
+        "newest_name": "3.5MM公对公音频线",
+        "supplier_newest_type": "L0822-05"
+    },
+    {
+        "materials_order": "01.05.0000027",
+        "newest_name": "A组传感器线束（通用车型）",
+        "supplier_newest_type": "L0825-25 "
+    },
+    {
+        "materials_order": "01.05.0000028",
+        "newest_name": "B组传感器线束（通用车型）",
+        "supplier_newest_type": "L0826-10"
+    },
+    {
+        "materials_order": "01.05.0000029",
+        "newest_name": "OBD采集转JK07传感器接口线 ",
+        "supplier_newest_type": "L0824-5"
+    },
+    {
+        "materials_order": "01.05.0000030",
+        "newest_name": "JK08串口与飞架平板连接线",
+        "supplier_newest_type": "L0827-1"
+    },
+    {
+        "materials_order": "01.05.0000031",
+        "newest_name": "航空头转DT04-2P电源线",
+        "supplier_newest_type": "L0801-1"
+    },
+    {
+        "materials_order": "01.05.0000032",
+        "newest_name": "航空头分1个DB9母头线",
+        "supplier_newest_type": "L0827-4"
+    },
+    {
+        "materials_order": "01.05.0000033",
+        "newest_name": "1个DB9公头转1公1母DB9",
+        "supplier_newest_type": "L0828-1"
+    },
+    {
+        "materials_order": "01.05.0000034",
+        "newest_name": "OBD采集转JK07传感器单线传输",
+        "supplier_newest_type": "L0828-05"
+    },
+    {
+        "materials_order": "01.05.0000035",
+        "newest_name": "SCC318采集器A线束",
+        "supplier_newest_type": "L0829-30"
+    },
+    {
+        "materials_order": "01.05.0000036",
+        "newest_name": "SCC318采集器B线束",
+        "supplier_newest_type": "L0830-30 "
+    },
+    {
+        "materials_order": "01.05.0000037",
+        "newest_name": "航空头分1个DB9母头线",
+        "supplier_newest_type": "L0803-15"
+    },
+    {
+        "materials_order": "01.05.0000038",
+        "newest_name": "5芯航空头分1个DB9公头线",
+        "supplier_newest_type": "L0831-4"
+    },
+    {
+        "materials_order": "01.05.0000039",
+        "newest_name": "DB9母头串口线 ",
+        "supplier_newest_type": "L0833-06"
+    },
+    {
+        "materials_order": "01.05.0000040",
+        "newest_name": "档位接口信号线束",
+        "supplier_newest_type": "L0832-06"
+    },
+    {
+        "materials_order": "01.05.0000041",
+        "newest_name": "3.5MM公对公音频线",
+        "supplier_newest_type": "L0827-05"
+    },
+    {
+        "materials_order": "01.05.0000042",
+        "newest_name": "2米长4Pin端子转DB9母口线",
+        "supplier_newest_type": "L0833-2"
+    },
+    {
+        "materials_order": "01.05.0000043",
+        "newest_name": "OBD与主机接口线束",
+        "supplier_newest_type": "L0818-15"
+    },
+    {
+        "materials_order": "01.05.0000044",
+        "newest_name": "JK07 485线束",
+        "supplier_newest_type": "L0830-07"
+    },
+    {
+        "materials_order": "01.05.0000045",
+        "newest_name": "OBD与主机接口线(标志雪铁龙专用)",
+        "supplier_newest_type": "L0823-06"
+    },
+    {
+        "materials_order": "01.05.0000046",
+        "newest_name": "传感器信号采集线束",
+        "supplier_newest_type": "L0830-05"
+    },
+    {
+        "materials_order": "01.05.0000047",
+        "newest_name": "档位与探头连接线",
+        "supplier_newest_type": "L0831-15"
+    },
+    {
+        "materials_order": "01.05.0000048",
+        "newest_name": "里程计主机端线束",
+        "supplier_newest_type": "L0838-3"
+    },
+    {
+        "materials_order": "01.05.0000049",
+        "newest_name": "里程计汽车端线束",
+        "supplier_newest_type": "L0837-08"
+    },
+    {
+        "materials_order": "01.05.0000050",
+        "newest_name": "公对母【直连】DB9串口线 ",
+        "supplier_newest_type": "L0837-5"
+    },
+    {
+        "materials_order": "01.05.0000051",
+        "newest_name": "5芯雷莫头转DB9母头串口线",
+        "supplier_newest_type": "L0601-05"
+    },
+    {
+        "materials_order": "01.05.0000052",
+        "newest_name": "DL05与JK09连接线",
+        "supplier_newest_type": "L0831-10"
+    },
+    {
+        "materials_order": "01.05.0000053",
+        "newest_name": "OBD12 A组传感器线材(OBD采集车型)",
+        "supplier_newest_type": "L0816-08"
+    },
+    {
+        "materials_order": "01.05.0000054",
+        "newest_name": "OBD12 B组传感器线材(OBD采集车型)",
+        "supplier_newest_type": "L0817-08"
+    },
+    {
+        "materials_order": "01.05.0000055",
+        "newest_name": "OBD12与JK17连接线",
+        "supplier_newest_type": "L0831-2"
+    },
+    {
+        "materials_order": "01.05.0000056",
+        "newest_name": "OBD12与汽车OBD接口线(通用车型)",
+        "supplier_newest_type": "L0818-08"
+    },
+    {
+        "materials_order": "01.05.0000057",
+        "newest_name": "0.8米JK17主机电源线",
+        "supplier_newest_type": "L0804-08"
+    },
+    {
+        "materials_order": "01.05.0000058",
+        "newest_name": "公对母直连串口延长线",
+        "supplier_newest_type": "L0837-2"
+    },
+    {
+        "materials_order": "01.05.0000059",
+        "newest_name": "3M长电源线 ",
+        "supplier_newest_type": "L0805-3"
+    },
+    {
+        "materials_order": "01.05.0000060",
+        "newest_name": "JK08 OBD与主机接口线(带开关)",
+        "supplier_newest_type": "L0838-08"
+    },
+    {
+        "materials_order": "01.05.0000061",
+        "newest_name": "OBD02主机与汽车OBD接口线",
+        "supplier_newest_type": "L0830-06"
+    },
+    {
+        "materials_order": "01.05.0000062",
+        "newest_name": "DB9母头串口线 ",
+        "supplier_newest_type": "L0833-05"
+    },
+    {
+        "materials_order": "01.05.0000063",
+        "newest_name": "USB2.0转type-c数据线",
+        "supplier_newest_type": "L0602-1"
+    },
+    {
+        "materials_order": "01.05.0000064",
+        "newest_name": "OBD12供电及串口通信线束",
+        "supplier_newest_type": "L0837-1"
+    },
+    {
+        "materials_order": "01.05.0000065",
+        "newest_name": "JK08和顺通车机连接线",
+        "supplier_newest_type": "L0840-15"
+    },
+    {
+        "materials_order": "01.05.0000066",
+        "newest_name": "DW04-W1档位调试线",
+        "supplier_newest_type": "L0841-1"
+    },
+    {
+        "materials_order": "01.05.0000067",
+        "newest_name": "OBD12单独供电线",
+        "supplier_newest_type": "L0842-1"
+    },
+    {
+        "materials_order": "01.05.0000068",
+        "newest_name": "OBD12与JK07对接通信线材",
+        "supplier_newest_type": "L0843-05"
+    },
+    {
+        "materials_order": "01.05.0000069",
+        "newest_name": "OBD12转JK07传感器接口线",
+        "supplier_newest_type": "L0845-5"
+    },
+    {
+        "materials_order": "01.05.0000070",
+        "newest_name": "串口电源线",
+        "supplier_newest_type": "L0846-2"
+    },
+    {
+        "materials_order": "01.05.0000071",
+        "newest_name": "7芯雷莫头转USB-DB9母头  ",
+        "supplier_newest_type": "L0602-15"
+    },
+    {
+        "materials_order": "01.05.0000072",
+        "newest_name": "5芯雷莫头转DB9母头串口线",
+        "supplier_newest_type": "L0601-15"
+    },
+    {
+        "materials_order": "01.05.0000073",
+        "newest_name": "屏蔽网线",
+        "supplier_newest_type": "L0603-3"
+    },
+    {
+        "materials_order": "01.05.0000074",
+        "newest_name": "5芯1.5米 48V供电线",
+        "supplier_newest_type": "L0608-15"
+    },
+    {
+        "materials_order": "01.05.0000075",
+        "newest_name": "和连泰 RJ45 非屏蔽超五类网线（全铜芯 环保PVC) 30M",
+        "supplier_newest_type": "L0604-30"
+    },
+    {
+        "materials_order": "01.05.0000076",
+        "newest_name": "UKCC 单模双纤LC-LC接口光纤跳线 30M",
+        "supplier_newest_type": "L0605-30"
+    },
+    {
+        "materials_order": "01.05.0000077",
+        "newest_name": "7芯大电台连接线(M65)",
+        "supplier_newest_type": "L0610-10"
+    },
+    {
+        "materials_order": "01.05.0000078",
+        "newest_name": "7芯雷默转DB9+USB线(M65)",
+        "supplier_newest_type": "L0609-15"
+    },
+    {
+        "materials_order": "01.05.0000079",
+        "newest_name": "M66 九芯232-485-422线",
+        "supplier_newest_type": "L0611-15"
+    },
+    {
+        "materials_order": "01.05.0000080",
+        "newest_name": "M66 CORS机  大电台数据线 5pin-DB9",
+        "supplier_newest_type": "L0612-15"
+    },
+    {
+        "materials_order": "01.05.0000081",
+        "newest_name": "M66 CORS机  大电台电源线",
+        "supplier_newest_type": "L0613-18"
+    },
+    {
+        "materials_order": "01.05.0000082",
+        "newest_name": "公对公交叉串口延长线",
+        "supplier_newest_type": "L0839-05"
+    },
+    {
+        "materials_order": "01.05.0000083",
+        "newest_name": "M65 RTK 7芯同大电台连接线",
+        "supplier_newest_type": "L0614-15"
+    },
+    {
+        "materials_order": "01.05.0000084",
+        "newest_name": "和连泰 RJ45 非屏蔽超五类网线（全铜芯 环保PVC) 20M",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000085",
+        "newest_name": "和连泰 RJ45 非屏蔽超五类网线（全铜芯 环保PVC) 10M",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000086",
+        "newest_name": "",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000087",
+        "newest_name": "",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000088",
+        "newest_name": "",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000089",
+        "newest_name": "",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000090",
+        "newest_name": "JK20 OBD与主机接口线(通用车型)",
+        "supplier_newest_type": "L0818-4"
+    },
+    {
+        "materials_order": "01.05.0000091",
+        "newest_name": "调试校准串口线",
+        "supplier_newest_type": "L0833-15"
+    },
+    {
+        "materials_order": "01.05.0000092",
+        "newest_name": "",
+        "supplier_newest_type": ""
+    },
+    {
+        "materials_order": "01.05.0000093",
+        "newest_name": "安卓PDA数据线K7",
+        "supplier_newest_type": "L0615-1"
+    },
+    {
+        "materials_order": "01.05.0000094",
+        "newest_name": "安卓PDA数据线NLS",
+        "supplier_newest_type": "L0615-12"
+    },
+    {
+        "materials_order": "01.05.0000095",
+        "newest_name": "1米长10PIN端子转4个DB9公口线",
+        "supplier_newest_type": "L0841-10"
+    },
+    {
+        "materials_order": "01.05.0000096",
+        "newest_name": "JK20 OBD与主机接口线(通用车型)",
+        "supplier_newest_type": "L0818-65"
+    },
+    {
+        "materials_order": "01.06.0000001",
+        "newest_name": "非接触式IC卡读卡器",
+        "supplier_newest_type": "CR0001"
+    },
+    {
+        "materials_order": "01.06.0000002",
+        "newest_name": "二代身份证阅读器",
+        "supplier_newest_type": "CR0002"
+    },
+    {
+        "materials_order": "01.06.0000003",
+        "newest_name": "安卓版非接触式IC卡读卡器",
+        "supplier_newest_type": "CR0003"
+    },
+    {
+        "materials_order": "01.07.0000001",
+        "newest_name": "4寸圆形车载音箱",
+        "supplier_newest_type": "SB0001"
+    },
+    {
+        "materials_order": "01.07.0000002",
+        "newest_name": "USB接口语音对讲音箱",
+        "supplier_newest_type": "SB0002"
+    },
+    {
+        "materials_order": "01.07.0000003",
+        "newest_name": "音柱",
+        "supplier_newest_type": "SB0003"
+    },
+    {
+        "materials_order": "01.07.0000004",
+        "newest_name": "语音对讲话筒",
+        "supplier_newest_type": "SB0004"
+    },
+    {
+        "materials_order": "01.07.0000005",
+        "newest_name": "语音对讲音响",
+        "supplier_newest_type": "SB0005"
+    },
+    {
+        "materials_order": "01.07.0000006",
+        "newest_name": "功放",
+        "supplier_newest_type": "SB0006"
+    },
+    {
+        "materials_order": "01.07.0000007",
+        "newest_name": "功放喊话话筒",
+        "supplier_newest_type": "SB0007"
+    },
+    {
+        "materials_order": "01.07.0000008",
+        "newest_name": "手持式电容麦克风 黑色版(无棉套)",
+        "supplier_newest_type": "SB0008"
+    },
+    {
+        "materials_order": "01.07.0000009",
+        "newest_name": "拉杆式蓝牙音箱",
+        "supplier_newest_type": "SB0009"
+    },
+    {
+        "materials_order": "01.08.0000001",
+        "newest_name": "7寸带触摸车载显示器",
+        "supplier_newest_type": "DP0001"
+    },
+    {
+        "materials_order": "01.08.0000002",
+        "newest_name": "LED排考屏",
+        "supplier_newest_type": "DP0002"
+    },
+    {
+        "materials_order": "01.08.0000003",
+        "newest_name": "50寸液晶显示",
+        "supplier_newest_type": "DP0003"
+    },
+    {
+        "materials_order": "01.08.0000004",
+        "newest_name": "HDMI延长器",
+        "supplier_newest_type": "DP0004"
+    },
+    {
+        "materials_order": "01.08.0000005",
+        "newest_name": "HDMI线",
+        "supplier_newest_type": "DP0005"
+    },
+    {
+        "materials_order": "01.08.0000006",
+        "newest_name": "LED显示屏",
+        "supplier_newest_type": "DP0006"
+    },
+    {
+        "materials_order": "01.08.0000007",
+        "newest_name": "操作电脑主机",
+        "supplier_newest_type": "DP0007"
+    },
+    {
+        "materials_order": "01.08.0000008",
+        "newest_name": "显示器",
+        "supplier_newest_type": "DP0008"
+    },
+    {
+        "materials_order": "01.08.0000009",
+        "newest_name": "LED显示屏控制电脑",
+        "supplier_newest_type": "DP0009"
+    },
+    {
+        "materials_order": "01.08.0000010",
+        "newest_name": "液晶显示器/电视墙",
+        "supplier_newest_type": "DP0010"
+    },
+    {
+        "materials_order": "01.08.0000011",
+        "newest_name": "M5504HM硬盘录像机",
+        "supplier_newest_type": "DP0011"
+    },
+    {
+        "materials_order": "01.08.0000012",
+        "newest_name": "8寸高亮工业显示器",
+        "supplier_newest_type": "DP0012"
+    },
+    {
+        "materials_order": "01.08.0000013",
+        "newest_name": "管理/操作计算机套装",
+        "supplier_newest_type": "DP0013"
+    },
+    {
+        "materials_order": "01.08.0000014",
+        "newest_name": "7寸工业三防安卓电脑",
+        "supplier_newest_type": "DP0014"
+    },
+    {
+        "materials_order": "01.08.0000015",
+        "newest_name": "8寸工业三防安卓电脑",
+        "supplier_newest_type": "DP0015"
+    },
+    {
+        "materials_order": "01.08.0000016",
+        "newest_name": "7寸工业三防安卓电脑带串口航空头",
+        "supplier_newest_type": "DP0016"
+    },
+    {
+        "materials_order": "01.08.0000017",
+        "newest_name": "8寸四核安卓平板电脑",
+        "supplier_newest_type": "DP0017"
+    },
+    {
+        "materials_order": "01.08.0000018",
+        "newest_name": "管理/操作计算机套装",
+        "supplier_newest_type": "DP0018"
+    },
+    {
+        "materials_order": "01.08.0000019",
+        "newest_name": "8寸四核3G安卓平板电脑",
+        "supplier_newest_type": "DP0019"
+    },
+    {
+        "materials_order": "01.08.0000020",
+        "newest_name": "LED单红显示屏",
+        "supplier_newest_type": "DP0020"
+    },
+    {
+        "materials_order": "01.08.0000021",
+        "newest_name": "49英寸液晶电视",
+        "supplier_newest_type": "DP0021"
+    },
+    {
+        "materials_order": "01.08.0000022",
+        "newest_name": "10寸安卓平板电脑",
+        "supplier_newest_type": "DP0022"
+    },
+    {
+        "materials_order": "01.08.0000023",
+        "newest_name": "飞驾10寸安卓工业平板",
+        "supplier_newest_type": "DP0023"
+    },
+    {
+        "materials_order": "01.08.0000024",
+        "newest_name": "智能车载一体机",
+        "supplier_newest_type": "DP0024"
+    },
+    {
+        "materials_order": "01.08.0000025",
+        "newest_name": "倒车影像",
+        "supplier_newest_type": "DP0025"
+    },
+    {
+        "materials_order": "01.08.0000026",
+        "newest_name": "12寸工业平板电脑",
+        "supplier_newest_type": "DP0026"
+    },
+    {
+        "materials_order": "01.08.0000027",
+        "newest_name": "工业触控平板电脑",
+        "supplier_newest_type": "IPC27"
+    },
+    {
+        "materials_order": "01.08.0000028",
+        "newest_name": "安卓PDA手薄NLS",
+        "supplier_newest_type": "DP0027"
+    },
+    {
+        "materials_order": "01.08.0000029",
+        "newest_name": "安卓PDA手薄P7",
+        "supplier_newest_type": "DP0028"
+    },
+    {
+        "materials_order": "01.08.0000030",
+        "newest_name": "工业触控平板电脑",
+        "supplier_newest_type": "IPC27X-A"
+    },
+    {
+        "materials_order": "01.09.0000001",
+        "newest_name": "58MM热敏打印机",
+        "supplier_newest_type": "PT0001"
+    },
+    {
+        "materials_order": "01.09.0000002",
+        "newest_name": "黑白激光打印机",
+        "supplier_newest_type": "PT0002"
+    },
+    {
+        "materials_order": "01.10.0000001",
+        "newest_name": "2串口设备联网服务器",
+        "supplier_newest_type": "SV0001"
+    },
+    {
+        "materials_order": "01.10.0000002",
+        "newest_name": "单串口设备联网服务器",
+        "supplier_newest_type": "SV0002"
+    },
+    {
+        "materials_order": "01.10.0000003",
+        "newest_name": "",
+        "supplier_newest_type": "USBCAN-I"
+    },
+    {
+        "materials_order": "01.10.0000004",
+        "newest_name": "宇泰RS232转RS485 接口转换器",
+        "supplier_newest_type": "SV0004"
+    },
+    {
+        "materials_order": "01.10.0000005",
+        "newest_name": "RS232/485/422串口转以太网工业级串口服务器",
+        "supplier_newest_type": "SV0005"
+    },
+    {
+        "materials_order": "01.11.0000001",
+        "newest_name": "日夜型防水防暴迷你半球网络摄像机 (车外)",
+        "supplier_newest_type": "WC0001"
+    },
+    {
+        "materials_order": "01.11.0000002",
+        "newest_name": "日夜型防水防暴迷你半球网络摄像机（车内）",
+        "supplier_newest_type": "WC0002"
+    },
+    {
+        "materials_order": "01.11.0000003",
+        "newest_name": "日夜型防水防暴迷你半球网络摄像机（车内）",
+        "supplier_newest_type": "WC0003"
+    },
+    {
+        "materials_order": "01.11.0000004",
+        "newest_name": "硬盘录像机",
+        "supplier_newest_type": "WC0004"
+    },
+    {
+        "materials_order": "01.11.0000005",
+        "newest_name": "场地摄像头",
+        "supplier_newest_type": "WC0005"
+    },
+    {
+        "materials_order": "01.11.0000006",
+        "newest_name": "USB摄像头",
+        "supplier_newest_type": "WC0006"
+    },
+    {
+        "materials_order": "01.11.0000007",
+        "newest_name": "视频解码器",
+        "supplier_newest_type": "WC0007"
+    },
+    {
+        "materials_order": "01.11.0000008",
+        "newest_name": "日夜型防水防暴迷你半球网络摄像机（车内）",
+        "supplier_newest_type": "WC0008"
+    },
+    {
+        "materials_order": "01.11.0000009",
+        "newest_name": "人证比对摄像头",
+        "supplier_newest_type": "WC0009"
+    },
+    {
+        "materials_order": "01.12.0000001",
+        "newest_name": "200mw车载端无线AP",
+        "supplier_newest_type": "NB0001"
+    },
+    {
+        "materials_order": "01.12.0000002",
+        "newest_name": "400mw车载端无线AP",
+        "supplier_newest_type": "NB0002"
+    },
+    {
+        "materials_order": "01.12.0000003",
+        "newest_name": "800mw基准站无线AP",
+        "supplier_newest_type": "NB0003"
+    },
+    {
+        "materials_order": "01.12.0000004",
+        "newest_name": "1000mw基准站无线AP",
+        "supplier_newest_type": "NB0004"
+    },
+    {
+        "materials_order": "01.12.0000005",
+        "newest_name": "无线AP双极化扇面天线",
+        "supplier_newest_type": "NB0005"
+    },
+    {
+        "materials_order": "01.12.0000006",
+        "newest_name": "无线AP天线馈线",
+        "supplier_newest_type": "NB0006"
+    },
+    {
+        "materials_order": "01.12.0000007",
+        "newest_name": "无线AP防雷器",
+        "supplier_newest_type": "NB0007"
+    },
+    {
+        "materials_order": "01.12.0000008",
+        "newest_name": "无线AP POE供电适配器",
+        "supplier_newest_type": "NB0008"
+    },
+    {
+        "materials_order": "01.12.0000009",
+        "newest_name": "三泥一带防水套装",
+        "supplier_newest_type": "NB0009"
+    },
+    {
+        "materials_order": "01.12.0000010",
+        "newest_name": "天馈防雷器",
+        "supplier_newest_type": "NB0010"
+    },
+    {
+        "materials_order": "01.12.0000011",
+        "newest_name": "配置信号放大器",
+        "supplier_newest_type": "NB0011"
+    },
+    {
+        "materials_order": "01.13.0000001",
+        "newest_name": "工业级5口非网管型交换机",
+        "supplier_newest_type": "IT0001"
+    },
+    {
+        "materials_order": "01.13.0000002",
+        "newest_name": "H3C 24口全千兆交换机",
+        "supplier_newest_type": "IT0002"
+    },
+    {
+        "materials_order": "01.13.0000003",
+        "newest_name": "路由器",
+        "supplier_newest_type": "IT0003"
+    },
+    {
+        "materials_order": "01.13.0000004",
+        "newest_name": "非网管24口千兆 交换机",
+        "supplier_newest_type": "IT0004"
+    },
+    {
+        "materials_order": "01.13.0000005",
+        "newest_name": "网管型24口千兆二层交换机 ",
+        "supplier_newest_type": "IT0005"
+    },
+    {
+        "materials_order": "01.13.0000011",
+        "newest_name": "四信F3836联通4G路由器，4LAN，带Wifi",
+        "supplier_newest_type": "IT0006"
+    },
+    {
+        "materials_order": "01.13.0000006",
+        "newest_name": "4G无线路由器",
+        "supplier_newest_type": "IT0007"
+    },
+    {
+        "materials_order": "01.13.0000007",
+        "newest_name": "串口DTU",
+        "supplier_newest_type": "IT0008"
+    },
+    {
+        "materials_order": "01.13.0000008",
+        "newest_name": "工业级4G无线路由器",
+        "supplier_newest_type": "IT0009"
+    },
+    {
+        "materials_order": "01.13.0000009",
+        "newest_name": "VPN工业级路由器",
+        "supplier_newest_type": "IT0010"
+    },
+    {
+        "materials_order": "01.13.0000010",
+        "newest_name": "VPN工业级路由器",
+        "supplier_newest_type": "IT0011"
+    },
+    {
+        "materials_order": "01.14.0000001",
+        "newest_name": "S50空白卡",
+        "supplier_newest_type": "AF0001"
+    },
+    {
+        "materials_order": "01.14.0000002",
+        "newest_name": "58mm热敏打印纸",
+        "supplier_newest_type": "AF0002"
+    },
+    {
+        "materials_order": "01.14.0000003",
+        "newest_name": "开口式波纹管",
+        "supplier_newest_type": "AF0003"
+    },
+    {
+        "materials_order": "01.14.0000004",
+        "newest_name": "8孔位3米插座板 ",
+        "supplier_newest_type": "AF0004"
+    },
+    {
+        "materials_order": "01.14.0000005",
+        "newest_name": "PDU机柜电源插座板",
+        "supplier_newest_type": "AF0005"
+    },
+    {
+        "materials_order": "01.14.0000006",
+        "newest_name": "200M 物联网卡",
+        "supplier_newest_type": "AF0006"
+    },
+    {
+        "materials_order": "01.14.0000007",
+        "newest_name": "档位器钻孔治具（NJT） ",
+        "supplier_newest_type": "AF0007"
+    },
+    {
+        "materials_order": "01.14.0000008",
+        "newest_name": "S50空白卡",
+        "supplier_newest_type": "AF0008"
+    },
+    {
+        "materials_order": "01.14.0000009",
+        "newest_name": "软件加密锁",
+        "supplier_newest_type": "AF0009"
+    },
+    {
+        "materials_order": "01.14.0000010",
+        "newest_name": "人证比对加密锁",
+        "supplier_newest_type": "AF0010"
+    },
+    {
+        "materials_order": "01.14.0000011",
+        "newest_name": "串口闸机控制板",
+        "supplier_newest_type": "AF0011"
+    },
+    {
+        "materials_order": "01.14.0000012",
+        "newest_name": "SMA母头转TNC母头",
+        "supplier_newest_type": "AF0012"
+    },
+    {
+        "materials_order": "01.14.0000013",
+        "newest_name": "人脸识别加密锁",
+        "supplier_newest_type": "AF0013"
+    },
+    {
+        "materials_order": "01.14.0000014",
+        "newest_name": "小团圆盘 80 型光盘 尺寸：外径 80mm，内径 22mm 容量：200MB",
+        "supplier_newest_type": "AF0014"
+    },
+    {
+        "materials_order": "01.14.0000015",
+        "newest_name": "DB9公转公接头（交叉）",
+        "supplier_newest_type": "AF0015"
+    },
+    {
+        "materials_order": "01.15.0000001",
+        "newest_name": "通断型安全带",
+        "supplier_newest_type": "SC0001"
+    },
+    {
+        "materials_order": "01.15.0000002",
+        "newest_name": "指纹采集仪",
+        "supplier_newest_type": "SC0002"
+    },
+    {
+        "materials_order": "01.15.0000003",
+        "newest_name": "高清防噪声拾音器",
+        "supplier_newest_type": "SC0003"
+    },
+    {
+        "materials_order": "01.15.0000004",
+        "newest_name": "踏板式副刹传感器",
+        "supplier_newest_type": "SC0004"
+    },
+    {
+        "materials_order": "01.15.0000005",
+        "newest_name": "漫反射光电式绕车一周传感器",
+        "supplier_newest_type": "SC0005"
+    },
+    {
+        "materials_order": "01.15.0000006",
+        "newest_name": "空档检测光电开关",
+        "supplier_newest_type": "SC0006"
+    },
+    {
+        "materials_order": "01.15.0000007",
+        "newest_name": "FM音频转换器",
+        "supplier_newest_type": "SC0007"
+    },
+    {
+        "materials_order": "01.15.0000008",
+        "newest_name": "光电式绕车传感器",
+        "supplier_newest_type": "SC0008"
+    },
+    {
+        "materials_order": "01.15.0000009",
+        "newest_name": "接近开关",
+        "supplier_newest_type": "SC0009"
+    },
+    {
+        "materials_order": "01.15.0000010",
+        "newest_name": "霍尔开关传感器",
+        "supplier_newest_type": "SC0010"
+    },
+    {
+        "materials_order": "01.15.0000011",
+        "newest_name": "绕车一周雷达探头",
+        "supplier_newest_type": "SC0011"
+    },
+    {
+        "materials_order": "01.15.0000012",
+        "newest_name": "安卓版指纹采集仪",
+        "supplier_newest_type": "SC0012"
+    },
+    {
+        "materials_order": "01.15.0000013",
+        "newest_name": "视频遮挡传感器",
+        "supplier_newest_type": "SC0013"
+    },
+    {
+        "materials_order": "01.15.0000014",
+        "newest_name": "绕车一周传感器",
+        "supplier_newest_type": "SC0014"
+    },
+    {
+        "materials_order": "01.16.0000001",
+        "newest_name": "12V/10A保险丝",
+        "supplier_newest_type": "IC0001"
+    },
+    {
+        "materials_order": "01.16.0000002",
+        "newest_name": "柱形带线开关",
+        "supplier_newest_type": "IC0002"
+    },
+    {
+        "materials_order": "01.16.0000003",
+        "newest_name": "19MM自复位金属开关按钮 ",
+        "supplier_newest_type": "IC0003"
+    },
+    {
+        "materials_order": "01.16.0000004",
+        "newest_name": "22MM自复位金属开关按钮",
+        "supplier_newest_type": "IC0004"
+    },
+    {
+        "materials_order": "01.17.0000001",
+        "newest_name": "联想服务器",
+        "supplier_newest_type": "CS0001"
+    },
+    {
+        "materials_order": "01.17.0000002",
+        "newest_name": "服务器专用硬盘",
+        "supplier_newest_type": "CS0002"
+    },
+    {
+        "materials_order": "01.17.0000003",
+        "newest_name": "服务器硬盘支架",
+        "supplier_newest_type": "CS0003"
+    },
+    {
+        "materials_order": "01.17.0000004",
+        "newest_name": "机柜",
+        "supplier_newest_type": "CS0004"
+    },
+    {
+        "materials_order": "01.17.0000005",
+        "newest_name": "PDU（机柜专用电源插座）",
+        "supplier_newest_type": "CS0005"
+    },
+    {
+        "materials_order": "01.17.0000006",
+        "newest_name": "静电地板",
+        "supplier_newest_type": "CS0006"
+    },
+    {
+        "materials_order": "01.17.0000007",
+        "newest_name": "UPS",
+        "supplier_newest_type": "CS0007"
+    },
+    {
+        "materials_order": "01.17.0000008",
+        "newest_name": "联想磁盘阵列",
+        "supplier_newest_type": "CS0008"
+    },
+    {
+        "materials_order": "01.17.0000009",
+        "newest_name": "后备式UPS电源",
+        "supplier_newest_type": "CS0009"
+    },
+    {
+        "materials_order": "01.17.0000010",
+        "newest_name": "联想磁盘阵列",
+        "supplier_newest_type": "CS0010"
+    },
+    {
+        "materials_order": "01.17.0000011",
+        "newest_name": "网络存储器（机架式）",
+        "supplier_newest_type": "CS0011"
+    },
+    {
+        "materials_order": "01.17.0000012",
+        "newest_name": "4T企业级监控专用硬盘(含硬盘架）",
+        "supplier_newest_type": "CS0012"
+    },
+    {
+        "materials_order": "01.17.0000013",
+        "newest_name": "拼接显示屏",
+        "supplier_newest_type": "CS0013"
+    },
+    {
+        "materials_order": "01.17.0000014",
+        "newest_name": "联想服务器",
+        "supplier_newest_type": "CS0014"
+    },
+    {
+        "materials_order": "01.17.0000015",
+        "newest_name": "在线式UPS电源",
+        "supplier_newest_type": "CS0015"
+    },
+    {
+        "materials_order": "01.17.0000016",
+        "newest_name": "19英寸标准机柜",
+        "supplier_newest_type": "CS0016"
+    },
+    {
+        "materials_order": "01.18.0000001",
+        "newest_name": "自助报到查询机",
+        "supplier_newest_type": "BM0001"
+    },
+    {
+        "materials_order": "01.18.0000002",
+        "newest_name": "翼闸",
+        "supplier_newest_type": "BM0002"
+    },
+    {
+        "materials_order": "01.18.0000003",
+        "newest_name": "三辊闸",
+        "supplier_newest_type": "BM0003"
+    },
+    {
+        "materials_order": "01.18.0000004",
+        "newest_name": "自助报到查询机",
+        "supplier_newest_type": "BM0004"
+    },
+    {
+        "materials_order": "01.18.0000005",
+        "newest_name": "板式通道闸",
+        "supplier_newest_type": "BM0005"
+    },
+    {
+        "materials_order": "01.19.0000001",
+        "newest_name": "单发射数传电台",
+        "supplier_newest_type": "BS0001"
+    },
+    {
+        "materials_order": "01.19.0000002",
+        "newest_name": "35W外置单发射数传电台",
+        "supplier_newest_type": "BS0002"
+    },
+    {
+        "materials_order": "01.19.0000003",
+        "newest_name": "外置收发数传电台",
+        "supplier_newest_type": "BS0003"
+    },
+    {
+        "materials_order": "01.19.0000004",
+        "newest_name": "外置收发射数传电台  ",
+        "supplier_newest_type": "BS0004"
+    },
+    {
+        "materials_order": "01.19.0000005",
+        "newest_name": "外置收发射数传电台  ",
+        "supplier_newest_type": "BS0005"
+    },
+    {
+        "materials_order": "02.01.0000001",
+        "newest_name": "移动站系统包装箱",
+        "supplier_newest_type": "PG0001"
+    },
+    {
+        "materials_order": "02.01.0000002",
+        "newest_name": "移动站系统白色珍珠棉 上盖",
+        "supplier_newest_type": "PG0002"
+    },
+    {
+        "materials_order": "02.01.0000003",
+        "newest_name": "移动站系统白色珍珠棉 内衬",
+        "supplier_newest_type": "PG0003"
+    },
+    {
+        "materials_order": "02.01.0000004",
+        "newest_name": "基准站系统包装箱",
+        "supplier_newest_type": "PG0004"
+    },
+    {
+        "materials_order": "02.02.0000001",
+        "newest_name": "PE光身袋  0.04厚",
+        "supplier_newest_type": "360*500mm"
+    },
+    {
+        "materials_order": "02.03.0000001",
+        "newest_name": "驾培系统使用说明书",
+        "supplier_newest_type": "IB0001"
+    },
+    {
+        "materials_order": "02.03.0000002",
+        "newest_name": "UR4B0-D GNSS参考站接收机用户手册",
+        "supplier_newest_type": "IB0002"
+    },
+    {
+        "materials_order": "03.01.0000001",
+        "newest_name": "工控电脑",
+        "supplier_newest_type": "JK06U7R"
+    },
+    {
+        "materials_order": "03.01.0000002",
+        "newest_name": "工控设备",
+        "supplier_newest_type": "JK07U8R"
+    },
+    {
+        "materials_order": "04.01.0000001",
+        "newest_name": "工控主机 ",
+        "supplier_newest_type": "PC001"
+    },
+    {
+        "materials_order": "04.01.0000002",
+        "newest_name": "GPS智能终端",
+        "supplier_newest_type": "PC002"
+    },
+    {
+        "materials_order": "05.01.0000001",
+        "newest_name": "科目二考试系统管理软件（带系统U盘）",
+        "supplier_newest_type": "KM2GL"
+    },
+    {
+        "materials_order": "05.01.0000002",
+        "newest_name": "科目三考试系统管理软件（带系统U盘）",
+        "supplier_newest_type": "KM3GL"
+    },
+    {
+        "materials_order": "05.01.0000003",
+        "newest_name": "科目二考试系统管理软件",
+        "supplier_newest_type": "KM2GL"
+    },
+    {
+        "materials_order": "05.01.0000004",
+        "newest_name": "科目二考试系统公安网交互软件",
+        "supplier_newest_type": "KM2JH"
+    },
+    {
+        "materials_order": "05.01.0000005",
+        "newest_name": "科目三考试系统管理软件",
+        "supplier_newest_type": "KM3GL"
+    },
+    {
+        "materials_order": "05.01.0000006",
+        "newest_name": "科目三考试系统公安网交互软件",
+        "supplier_newest_type": "KM3JH"
+    },
+    {
+        "materials_order": "05.01.0000007",
+        "newest_name": "科目二考试系统主控软件",
+        "supplier_newest_type": "KM2ZK"
+    },
+    {
+        "materials_order": "05.01.0000008",
+        "newest_name": "科目二车载评判软件",
+        "supplier_newest_type": "KM2Exam"
+    },
+    {
+        "materials_order": "05.01.0000009",
+        "newest_name": "差分分发与管理软件",
+        "supplier_newest_type": "DiffIssue"
+    },
+    {
+        "materials_order": "05.01.0000010",
+        "newest_name": "科目三考试系统主控软件",
+        "supplier_newest_type": "KM3ZK"
+    },
+    {
+        "materials_order": "06.01.0000001",
+        "newest_name": "人证合一套装",
+        "supplier_newest_type": "CH0001"
+    },
+    {
+        "materials_order": "06.01.0000002",
+        "newest_name": "安卓版人证合一套装（仅适用于B/S驾考系统）",
+        "supplier_newest_type": "CH0002"
+    },
+    {
+        "materials_order": "07.01.0000001",
+        "newest_name": "控制电源板",
+        "supplier_newest_type": "GA0001"
+    },
+    {
+        "materials_order": "07.01.0000002",
+        "newest_name": "档位检测传感器",
+        "supplier_newest_type": "GA0002"
+    },
+    {
+        "materials_order": "07.01.0000003",
+        "newest_name": "OBD信号分析仪",
+        "supplier_newest_type": "GA0003"
+    },
+    {
+        "materials_order": "07.01.0000004",
+        "newest_name": "卫星信号仿真器",
+        "supplier_newest_type": "GA0004"
+    },
+    {
+        "materials_order": "07.01.0000005",
+        "newest_name": "高精度时钟源",
+        "supplier_newest_type": "GA0005"
+    },
+    {
+        "materials_order": "07.01.0000006",
+        "newest_name": "高精度基站主机",
+        "supplier_newest_type": "GA0006"
+    },
+    {
+        "materials_order": "07.01.0000007",
+        "newest_name": "高精度惯性组合导航主机",
+        "supplier_newest_type": "GA0007"
+    },
+    {
+        "materials_order": "07.01.0000008",
+        "newest_name": "高精度卫星定位测试主机",
+        "supplier_newest_type": "GA0008"
+    }
+]

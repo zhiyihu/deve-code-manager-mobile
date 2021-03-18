@@ -64,6 +64,17 @@ const util = {
         + this.fillZero(date.getDate());
     },
 
+    getBeijingFmtTimeStr(date){
+      let year = date.getUTCFullYear();
+      let month = date.getUTCMonth();
+      let day = date.getUTCDate();
+      let hour = date.getUTCHours();
+      let min = date.getUTCMinutes();
+      let second = date.getUTCSeconds();
+      let beijingDate = new Date(year, month, day, hour + 8, min, second);
+      return this.getFmtTimeStr(beijingDate);
+    },
+
     checkNull(arrs){
       for(let a of arrs){
         if(!a || !a.replace(/\s/g,'')){

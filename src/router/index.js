@@ -154,15 +154,15 @@ const router = new Router({
                         title: '打印外箱标签'
                     }
                 },
-                // {
-                //     path: 'barcodeprintconfig',
-                //     name: 'barcodeprintconfig',
-                //     component: getSrc('BarCodePrintConfig'),
-                //     meta: {
-                //         roles: '',
-                //         title: '外箱标签配置'
-                //     }
-                // }
+                {
+                    path: 'materialmanager',
+                    name: 'materialmanager',
+                    component: getSrc('MaterialManager'),
+                    meta: {
+                        roles: '',
+                        title: '物料管理'
+                    }
+                }
             ],
         },
         {

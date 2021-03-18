@@ -31,7 +31,7 @@ export default {
                 this.$message.error('用户名为空');
                 return;
             }
-            const clientTime = this.$util.getFmtTimeStr(new Date());
+            const clientTime = this.$util.getBeijingFmtTimeStr(new Date());
             const self = this;
             this.$api.login({
                 user: username,
@@ -102,7 +102,7 @@ export default {
                 this.$message.error('邮箱格式不对');
                 return;
             }
-            const clientTime = this.$util.getFmtTimeStr(new Date());
+            const clientTime = this.$util.getBeijingFmtTimeStr(new Date());
             this.$api.post('/reset_password',{
                 user : self.resetPwdUname,
                 email : self.emailAddr,
@@ -137,7 +137,7 @@ export default {
                 this.$message.info('邮件已发送，请60秒后再操作');
                 return;
             }
-            const clientTime = this.$util.getFmtTimeStr(new Date());
+            const clientTime = this.$util.getBeijingFmtTimeStr(new Date());
             this.$api.post('/send_reset_password_mail',{
                 user : self.resetPwdUname,
                 email : self.emailAddr,

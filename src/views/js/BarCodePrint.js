@@ -2,7 +2,8 @@ import Vue from "vue";
 import Print from "vue-print-nb";
 import jsbarcode from "jsbarcode";
 import DeveCodeCommon from './DeveCodeCommon';
-import CompanyIconsArr from './CompanyIconPics';
+import CompanyIconsArr from '../json/company-icons.json';
+import materials from "../json/materials.json";
 Vue.use(Print);
 export default {
     extends: DeveCodeCommon,
@@ -10,7 +11,6 @@ export default {
         return {
             bdtitle: CompanyIconsArr[0].imgBase64,
             extraHead: '<meta http-equiv="Content-Language"content="zh-cn"/>,<style> #printMe { height: auto !important; } <style>',
-            barcodeValue: "Z31086668018092",
             codeArr: [],
             codeStr: '',
             cardCodeStr: '',
@@ -33,11 +33,47 @@ export default {
             cardNum: '',
             cardBeginOrder: '',
             isNotUseSN: false,
+            boxDetailTableData: [
+               
+            ],
+            today: "",
+            materials: [],
+            materialsSelArr: [],
+            timeout: null,
+            materialSelVal: '',
         };
     },
     computed: {
     },
     methods: {
+        applyMaterial(){
+            let currMaterial = null;
+            for(let i = 0; i < this.materials.length; i++){
+                let item = this.materials[i];
+                if(item.materials_order == this.materialSelVal){
+                    currMaterial = item;
+                    break;
+                }
+            }
+            if(currMaterial){
+                this.boxDetailTableData.push(["",currMaterial.materials_order,currMaterial.newest_name,currMaterial.supplier_newest_type,"1","",""]);
+                this.materialSelVal = "";
+            }
+            
+        },
+        handleSearch(value) {
+            if(this.timeout){
+                clearTimeout(this.timeout);
+                this.timeout = null;
+            }
+            let matchVal = value.toUpperCase();
+            this.timeout = setTimeout(()=>{
+                // console.log(value);
+                this.materialsSelArr = this.materials.filter(item=>{return (item.materials_order.includes(matchVal)||item.newest_name.toUpperCase().includes(matchVal));});
+               // this.materialsSelArr = this.materials.slice(0, 5);
+            }, 500);
+            
+        },
         createCardListNum(){
             let cardNum = this.cardNum - 0;
             let cardBeginOrder = this.cardBeginOrder - 0;
@@ -94,6 +130,9 @@ export default {
             this.aPageNum = [10, 84, 1][this.printType];
             this.cardBeginOrder = '';
             this.cardNum = '';
+            if(this.printType == 2){
+                this.codeArr = [""];
+            }
         },
         onCodesTextsChange(){
             const self = this;
@@ -159,5 +198,7 @@ export default {
     },
     mounted() {
         this.reqQueryDeviceType();
+        this.today = this.$util.getFmtDateStr(new Date());
+        this.materials = materials;
     },
 };

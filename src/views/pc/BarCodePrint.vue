@@ -18,7 +18,7 @@
                 <a-radio-group default-value="0" button-style="solid" v-model="printType" @change="onPrintTypeChange">
                     <a-radio-button value="0">外箱标签</a-radio-button>
                     <a-radio-button value="1">板卡号</a-radio-button>
-                    <!-- <a-radio-button value="2">装箱清单</a-radio-button> -->
+                    <a-radio-button value="2">装箱清单</a-radio-button>
                 </a-radio-group>
             </div>
             <div v-if="printType==0">
@@ -99,7 +99,14 @@
             </div>
             <div v-else class="machine-card-num-part">
                 <div class="create-card-num-line">
-                    装箱清单
+                    <div>
+                        <a-select placeholder="可输入料号或最新名称筛选" style="width: 400px;" v-model="materialSelVal" @search="handleSearch" show-search     :default-active-first-option="false" :show-arrow="false" :filter-option="false" :not-found-content="null">
+                             <a-select-option v-for="(item,index) in materialsSelArr" :key="index" :value="item.materials_order">
+                                <span style="margin-right:16px;">{{ item.materials_order }}</span><span>{{ item.newest_name }}</span>
+                            </a-select-option>
+                        </a-select>
+                        <a-button @click="applyMaterial">添加</a-button>
+                    </div>
                 </div>
             </div>
             <div class="prt-bill-btns-line">
@@ -159,7 +166,7 @@
                 </div>
             </div>
             <div class="print-code-main" v-else-if="printType==1">
-                <div class="print-code-content" id="printMe">
+                <div class="print-code-content" id="printMe" style="padding-left:11pt;padding-top:14pt;">
                     <div class="code-line-six-part" v-for="(item, index) in codeArr" :key="index">
                         <div class="barcode-card-main">
                             <div class="barcode-card-part">
@@ -172,8 +179,33 @@
                 </div>
             </div>
             <div class="print-code-main" v-else>
-                <div class="print-code-content" id="printMe">
-                    <div>装箱清单</div>
+                <div class="print-box-detail-content" id="printMe">
+                    <div class="box-detail-title">装箱清单</div>
+                    <table class="box-detail-table">
+                        <tbody>
+                            <tr>
+                                <td style="width:40pt">序号</td>
+                                <td style="width:100pt">产品料号</td>
+                                <td style="width:170pt">名称</td>
+                                <td style="width:80pt">规格</td>
+                                <td style="width:40pt">数量(PCS)</td>
+                                <td style="width:120pt">备注</td>
+                            </tr>
+                            <tr v-for="(item,index) in boxDetailTableData" :key="index">
+                                <td>{{index + 1}}</td>
+                                <td contenteditable="true">
+                                    {{item[1]}}
+                                </td>
+                                <td contenteditable="true">{{item[2]}}</td>
+                                <td contenteditable="true">{{item[3]}}</td>
+                                <td contenteditable="true">{{item[4]}}</td>
+                                <td contenteditable="true">{{item[5]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="box-detail-print-date">
+                        <span>打印日期： {{today}}</span>
+                    </div>
                 </div>
             </div>
             <div class="prt-bottom-bottom">
