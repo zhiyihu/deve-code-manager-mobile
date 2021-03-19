@@ -268,8 +268,8 @@ export default {
                 return;
             }
             const codeList = this.codeList;
-            if (codeList.length >= 500) {
-                this.$message.info('最多添加500台');
+            if (codeList.length >= 5000) {
+                this.$message.info('最多添加5000台');
                 return;
             }
 

@@ -137,7 +137,7 @@
             </div>
             <div class="amodal-edit-line">
               <span><i>*</i>所属公司</span>
-              <a-select
+              <a-select show-search option-filter-prop="children" :filter-option="filterOption" 
                 style="width: 486px"
                 v-model="companySel"
                 @change="onParentCompanySelectChange"

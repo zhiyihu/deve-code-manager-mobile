@@ -46,6 +46,11 @@ export default {
     computed: {
     },
     methods: {
+        filterOption(input, option) {
+            return (
+              option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            );
+        },
         applyMaterial(){
             let currMaterial = null;
             for(let i = 0; i < this.materials.length; i++){

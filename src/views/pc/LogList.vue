@@ -5,14 +5,14 @@
             <div class="data-table-head">
                 <div class="opt-head-part">
                     <span style="margin-left: 16px;">用户列表：</span>
-                    <a-select style="width: 160px;" default-value="" @change="onUserChange">
+                    <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 160px;" default-value="" @change="onUserChange">
                         <a-select-option value="">请选择</a-select-option>
                         <a-select-option v-for="(item, index) in userSelectArr" :key="index" :value="item.user">
                             {{item.real_name}}
                         </a-select-option>
                     </a-select>
                     <span style="margin-left: 16px;">日志类型：</span>
-                    <a-select style="width: 160px;" default-value="" @change="onLogTypeChange">
+                    <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 160px;" default-value="" @change="onLogTypeChange">
                         <a-select-option value="">请选择</a-select-option>
                         <a-select-option v-for="(item, index) in Object.keys(logtypesMap)" :key="index" :value="item">
                             {{logtypesMap[item]}}

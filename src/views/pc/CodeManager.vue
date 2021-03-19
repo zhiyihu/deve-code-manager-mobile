@@ -5,14 +5,14 @@
             <div class="data-table-head" style="height: 90px;">
                 <div class="opt-head-part">
                     <span style="margin-left: 16px;">机型：</span>
-                    <a-select style="width: 240px;" default-value="" @change="onTypeChange">
+                    <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 240px;" default-value="" @change="onTypeChange">
                         <a-select-option value="">请选择</a-select-option>
                         <a-select-option v-for="(item, index) in deviceTypeSelectArr" :key="index" :value="item">
                             {{item}}
                         </a-select-option>
                     </a-select>
                     <span style="margin-left: 16px;">公司：</span>
-                    <a-select style="width: 240px;" default-value="" @change="onCompanyChange">
+                    <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 240px;" default-value="" @change="onCompanyChange">
                         <a-select-option value="">请选择</a-select-option>
                         <a-select-option v-for="(item, index) in companySelectArr" :key="index" :value="item.company_id">
                             {{item.name}}
@@ -23,7 +23,7 @@
                 </div>
                 <div class="opt-head-part" style="margin-top: 12px;">
                     <span style="margin-left: 16px;">用户：</span>
-                    <a-select style="width: 240px;" default-value="" @change="onUserChange">
+                    <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 240px;" default-value="" @change="onUserChange">
                         <a-select-option value="">请选择</a-select-option>
                         <a-select-option v-for="(item, index) in userSelectArr" :key="index" :value="item.user">
                             {{item.real_name}}

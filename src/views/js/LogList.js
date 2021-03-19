@@ -89,6 +89,11 @@ export default {
         };
     },
     methods: {
+        filterOption(input, option) {
+            return (
+              option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            );
+        },
         onDateChange(moment, dates) {
             this.reqParam.beg_time = dates[0] ? dates[0] + ' 00:00:00' : '';
             this.reqParam.end_time = dates[1] ? dates[1] + ' 23:59:59' : '';

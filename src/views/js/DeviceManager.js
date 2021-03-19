@@ -3,7 +3,7 @@ import DeveCodeCommon from './DeveCodeCommon';
 let columns = [{
     title: '序号',
     dataIndex: 'order',
-    width: 60,
+    width: 120,
 }, {
     title: '图标',
     dataIndex: 'pic',

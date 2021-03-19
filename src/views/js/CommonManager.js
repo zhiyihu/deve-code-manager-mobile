@@ -13,7 +13,12 @@ export default {
             myCompanyId: JSON.parse(sessionStorage.getItem("user")).company_id,
         };
     },
-    methods: { 
+    methods: {
+        filterOption(input, option) {
+            return (
+              option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            );
+        }, 
         calCheckedKeys(keys, isdisable) {
             const set = new Set();
             for (let key of keys) {

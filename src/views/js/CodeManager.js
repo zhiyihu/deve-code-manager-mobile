@@ -5,7 +5,7 @@ import DeveCodeCommon from './DeveCodeCommon';
 const columns = [{
     title: '序号',
     dataIndex: 'order',
-    width: 60,
+    width: 100,
 },{
     title: '图标',
     dataIndex: 'pic',

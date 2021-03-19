@@ -30,22 +30,22 @@
                                     <tr>
                                         <td colspan="2">
                                             <div class="top-prt-code-title">
-                                                <img v-if="!isDontUseCompanyIcon" :src="bdtitle" style="border:1px solid #ccc;cursor:pointer" @click="selectIconImg"/>
-                                                <input v-model="companyTitle" style="border: 1px solid #ccc;margin-left:4px;width: 80pt;height:13pt;" placeholder="公司名" type="text" class="rowtitle-ipt"/>
+                                                <img v-if="!isDontUseCompanyIcon" :src="bdtitle" style="border:1px solid #ccc;cursor:pointer" @click="selectIconImg" />
+                                                <input v-model="companyTitle" style="border: 1px solid #ccc;margin-left:4px;width: 80pt;height:13pt;" placeholder="公司名" type="text" class="rowtitle-ipt" />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><input v-model="productCodeTitle" type="text" class="rowtitle-ipt"/></td>
-                                        <td><input v-model="productCodeVal" type="text" class="rowval-ipt"/></td>
+                                        <td><input v-model="productCodeTitle" type="text" class="rowtitle-ipt" /></td>
+                                        <td><input v-model="productCodeVal" type="text" class="rowval-ipt" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input v-model="productNameTitle" type="text" class="rowtitle-ipt"/></td>
-                                        <td><input v-model="productNameVal" type="text" class="rowval-ipt"/></td>
+                                        <td><input v-model="productNameTitle" type="text" class="rowtitle-ipt" /></td>
+                                        <td><input v-model="productNameVal" type="text" class="rowval-ipt" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input v-model="productTypeTitle" type="text" class="rowtitle-ipt"/></td>
-                                        <td><input v-model="productTypeVal" type="text" class="rowval-ipt"/></td>
+                                        <td><input v-model="productTypeTitle" type="text" class="rowtitle-ipt" /></td>
+                                        <td><input v-model="productTypeVal" type="text" class="rowval-ipt" /></td>
                                     </tr>
                                     <tr>
                                         <td>S/N</td>
@@ -57,15 +57,15 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><input v-model="productNumTitle" type="text" class="rowtitle-ipt"/></td>
-                                        <td><input v-model="productNumVal" type="text" class="rowval-ipt"/></td>
+                                        <td><input v-model="productNumTitle" type="text" class="rowtitle-ipt" /></td>
+                                        <td><input v-model="productNumVal" type="text" class="rowval-ipt" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input v-model="productCheckTitle" type="text" class="rowtitle-ipt"/></td>
-                                        <td><input v-model="productCheckVal" type="text" class="rowval-ipt"/></td>
+                                        <td><input v-model="productCheckTitle" type="text" class="rowtitle-ipt" /></td>
+                                        <td><input v-model="productCheckVal" type="text" class="rowval-ipt" /></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><input v-model="remarksText" type="text" class="rowval-ipt" style="width:240pt"/></td>
+                                        <td colspan="2"><input v-model="remarksText" type="text" class="rowval-ipt" style="width:240pt" /></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -100,9 +100,9 @@
             <div v-else class="machine-card-num-part">
                 <div class="create-card-num-line">
                     <div>
-                        <a-select placeholder="可输入料号或最新名称筛选" style="width: 400px;" v-model="materialSelVal" @search="handleSearch" show-search     :default-active-first-option="false" :show-arrow="false" :filter-option="false" :not-found-content="null">
-                             <a-select-option v-for="(item,index) in materialsSelArr" :key="index" :value="item.materials_order">
-                                <span style="margin-right:16px;">{{ item.materials_order }}</span><span>{{ item.newest_name }}</span>
+                        <a-select placeholder="可输入料号或最新名称筛选" style="width: 400px;" v-model="materialSelVal" show-search option-filter-prop="children" :filter-option="filterOption">
+                            <a-select-option v-for="(item,index) in materials" :key="index" :value="item.materials_order">
+                                {{ item.materials_order +"    "+ item.newest_name }}
                             </a-select-option>
                         </a-select>
                         <a-button @click="applyMaterial">添加</a-button>
@@ -128,15 +128,15 @@
                                 </tr>
                                 <tr>
                                     <td>{{productCodeTitle}}</td>
-                                    <td><input :value="productCodeVal" type="text" class="rowval-ipt"/></td>
+                                    <td><input :value="productCodeVal" type="text" class="rowval-ipt" /></td>
                                 </tr>
                                 <tr>
                                     <td>{{productNameTitle}}</td>
-                                    <td><input :value="productNameVal" type="text" class="rowval-ipt"/></td>
+                                    <td><input :value="productNameVal" type="text" class="rowval-ipt" /></td>
                                 </tr>
                                 <tr>
                                     <td>{{productTypeTitle}}</td>
-                                    <td><input :value="productTypeVal" type="text" class="rowval-ipt"/></td>
+                                    <td><input :value="productTypeVal" type="text" class="rowval-ipt" /></td>
                                 </tr>
                                 <tr>
                                     <td>S/N</td>
@@ -151,11 +151,11 @@
                                 </tr>
                                 <tr>
                                     <td>{{productNumTitle}}</td>
-                                    <td><input :value="productNumVal" type="text" class="rowval-ipt"/></td>
+                                    <td><input :value="productNumVal" type="text" class="rowval-ipt" /></td>
                                 </tr>
                                 <tr>
                                     <td>{{productCheckTitle}}</td>
-                                    <td><input :value="productCheckVal" type="text" class="rowval-ipt"/></td>
+                                    <td><input :value="productCheckVal" type="text" class="rowval-ipt" /></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><input :value="remarksText" type="text" class="rowval-ipt" style="width:240pt" /></td>
@@ -209,7 +209,7 @@
                 </div>
             </div>
             <div class="prt-bottom-bottom">
-                <input id="my-input-file" style="display:none;" accept="image/*" @change="onFileChange" type="file"/>
+                <input id="my-input-file" style="display:none;" accept="image/*" @change="onFileChange" type="file" />
             </div>
         </div>
     </a-layout-content>
@@ -226,5 +226,4 @@ export default {
 <style>
 @import url("../../assets/css/manager.css");
 @import url("../../assets/iconfont/iconfont.css");
-
 </style>

@@ -63,7 +63,7 @@
                     </div>
                     <div class="amodal-edit-line" v-if="parentCanChange">
                         <span><i>*</i>上一级</span>
-                        <a-select style="width: 350px" :disabled="!parentCanChange" v-model="companyParentSel" @change="onParentCompanySelectChange">
+                        <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 350px" :disabled="!parentCanChange" v-model="companyParentSel" @change="onParentCompanySelectChange">
                             <a-select-option value="" disabled>请选择</a-select-option>
                             <a-select-option v-if="operateType == 'modify'" value="0" disabled>无</a-select-option>
                             <a-select-option v-for="(item, index) in backData" :key="index" :value="item.company_id">

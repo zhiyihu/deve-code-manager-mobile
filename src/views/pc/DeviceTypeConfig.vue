@@ -8,7 +8,7 @@
                     <div class="z-system-setting-line">
                         <div>设备类型：</div>
                         <div>
-                            <a-select style="width: 420px;" default-value="" @change="onTypeChange">
+                            <a-select show-search option-filter-prop="children" :filter-option="filterOption" style="width: 420px;" default-value="" @change="onTypeChange">
                                 <a-select-option value="">请选择</a-select-option>
                                 <a-select-option v-for="(item, index) in deviceTypeObjArr" :key="index" :value="index">
                                     {{item.name + ' - ' + item.sn_flag}}
