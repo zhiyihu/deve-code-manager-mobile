@@ -21,7 +21,8 @@
 					<div class="login-button-line">
 						<a-button type="primary" @click="loginUser">登录</a-button>
 					</div>
-                    <div class="forget-pwd-line">
+                    <div class="forget-pwd-line-pc">
+                        <span>推荐使用<a href="https://www.google.cn/chrome/" target="blank">谷歌浏览器</a></span>
                         <a href="javascript:;" @click="showResetPwdModal">忘记密码？</a>
                     </div>
 				</div>

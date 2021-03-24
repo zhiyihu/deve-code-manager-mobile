@@ -37,6 +37,10 @@
             </div>
 
             <a-table :scroll="tableScroll" style="overflow:auto;" :style="tableStyle" :columns="columns" :data-source="data" :pagination="pagination">
+                <span slot="sn" slot-scope="sn">
+                    <span v-if="sn && sn.charAt(0) == 'Z'">{{ sn }}</span>
+                    <span v-else style="color: #1890ff">{{ sn }}</span>
+                </span>
                 <span slot="time" slot-scope="time">
                     {{ time.substr(0, 19) }}
                 </span>
@@ -56,6 +60,8 @@
                     <img :src="pic" style="width: 64px;height:43px;"/>
                 </span>
                  <template v-slot:action="record">
+                     <a href="javascript:;" class="'table-opt-alink" @click="showQrCodeModal(record.code);">二维码</a>
+                     <a-divider type="vertical" />
                     <a href="javascript:;" :class="'table-opt-alink copy'+record.order" @click="useClipboard(record.order);" :data-clipboard-text="record.copyText">复制</a>
                  </template>
             </a-table>
@@ -65,6 +71,17 @@
                 </template>
             </a-pagination>
         </div>
+        <a-modal :width="320" :centered="true" v-model="qrCodeVisible" title="注册码">
+            <template slot="footer">
+                <a-button :visible="false" key="back" @click="hideQrCodeModal">取消</a-button>
+                <a-button key="submit" type="primary" :loading="false" @click="hideQrCodeModal">确定</a-button>
+            </template>
+            <div style="padding: 0px 14px;overflow: auto;">
+                <div class="dragonfly-qrcode-part">
+                    <img style="width:130px;height:130px;" :src="regQrcode"/>
+                </div>
+            </div>
+        </a-modal>
     </a-layout-content>
 </a-layout>
 </template>

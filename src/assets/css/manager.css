@@ -482,3 +482,9 @@ body {
 .create-card-num-line{
     margin-bottom: 12px;
 }
+
+.dragonfly-qrcode-part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

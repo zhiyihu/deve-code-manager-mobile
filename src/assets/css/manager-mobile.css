@@ -512,3 +512,9 @@
 .normal-icon-desc {
     margin-right: 8px;
 }
+
+.dragonfly-qrcode-part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

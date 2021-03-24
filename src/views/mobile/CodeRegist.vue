@@ -83,7 +83,7 @@
             <a-modal :width="320" :centered="true" v-model="regResVisible" :title="regResModalTitle">
                 <template slot="footer">
                     <a-button :visible="false" key="back" @click="regResHandleCancel">取消</a-button>
-                    <a-button key="submit" type="primary" :loading="loading" class="copy" :data-clipboard-text="copyText" @click="regResHandleOk">复制全部结果</a-button>
+                    <a-button key="submit" type="primary" :loading="loading" class="copy0" :data-clipboard-text="copyText" @click="regResHandleOk">复制全部结果</a-button>
                 </template>
                 <div style="min-height: 220px;max-height: 300px;padding: 0px;overflow: auto;">
                     <div class="code-list-detail" v-for="(item,index) in registResArr" :key="index">
@@ -128,6 +128,34 @@
                 </template>
                 <div style="height: 240px;overflow: hidden;">
                     <StreamBarcodeReader @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+                </div>
+            </a-modal>
+            <a-modal :width="320" :centered="true" v-model="dragonflyRegResVisible" :title="dragonflyRegResModalTitle">
+                <template slot="footer">
+                    <a-button :visible="false" key="back" @click="regResHandleCancel">取消</a-button>
+                    <a-button key="submit" type="primary" :loading="loading" class="copy1" :data-clipboard-text="copyText" @click="regResHandleOk">复制全部结果</a-button>
+                </template>
+                <div style="min-height: 220px;max-height: 300px;padding: 0px 14px;overflow: auto;">
+                    <div class="code-list-detail" v-if="registResArr.length>0">
+                        <div class="machine-line-info">
+                            <div>机号：</div>
+                            <div><span user-select="true">{{registResArr[pageIndex].sn}}</span></div>
+                        </div>
+                        <div class="machine-line-info">
+                            <div>注册码：</div>
+                            <div><span user-select="true">{{registResArr[pageIndex].codeShow}}</span></div>
+                        </div>
+                        <div class="machine-line-info">
+                            <div>到期时间：</div>
+                            <div><span user-select="true">{{registResArr[pageIndex].passDayShow}}</span></div>
+                        </div>
+                    </div>
+                    <div class="dragonfly-qrcode-part">
+                        <a-button @click="bindPrePage()" :style="{visibility: pageIndex > 0 ? 'visible':'hidden'}"><a-icon type="left"/></a-button>
+                        <img style="width:130px;height:130px;" :src="regQrcode"/>
+                        <a-button @click="bindNextPage()" :style="{visibility: pageIndex<registResArr.length-1 ? 'visible':'hidden'}"><a-icon type="right"/></a-button>
+                    </div>
+                    <div v-if="registResArr.length>1" class="dragonfly-qrcode-part">第{{pageIndex+1}}条</div>
                 </div>
             </a-modal>
         </div>

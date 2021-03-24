@@ -2,6 +2,7 @@ import moment from "moment";
 import ClipboardJS from 'clipboard';
 import { StreamBarcodeReader } from "vue-barcode-reader";
 import DeveCodeCommon from './DeveCodeCommon';
+import QRCode from 'qrcode';
 
 export default {
     extends: DeveCodeCommon,
@@ -85,9 +86,41 @@ export default {
             result: '',
             noStreamApiSupport: false,
             qrVisible: false,
+            regQrcode: '',
+            dragonflyRegResVisible: false,
+            dragonflyRegResModalTitle: "蜻蜓注册结果",
+            pageIndex: 0,
         };
     },
     methods: {
+
+        bindPrePage(){
+            let pageIndex = this.pageIndex;
+            if(pageIndex > 0){
+                this.switchPage(pageIndex - 1);
+            }
+        },
+
+
+        bindNextPage(){
+            let registResArr = this.registResArr;
+            let pageIndex = this.pageIndex;
+            if(pageIndex < registResArr.length - 1){
+                this.switchPage(pageIndex + 1);
+            }
+        },
+
+        switchPage: function(pageIndex){
+            let registResArr = this.registResArr;
+            this.pageIndex = pageIndex;
+            const self = this;
+            QRCode.toDataURL(registResArr[pageIndex].code).then(url => {
+                self.regQrcode = url;
+            }).catch(err => {  //异常时的处理
+                console.error(err);
+            });
+            
+        },
         showQrWin() {
             this.qrVisible = true;
         },
@@ -108,26 +141,34 @@ export default {
 
         initClipboard() {
             const self = this
-            this.clipboard = new ClipboardJS('.copy');
-            this.clipboard.on('success', (e) => {
-                e.clearSelection();
-                self.$message.success('复制成功');
-            });
-            this.clipboard.on('error', () => {
-                self.$message.error('复制错误，请重新复制！');
-            });
+            for(let index of [0, 1]){
+                this.['clipboard'+index] = new ClipboardJS('.copy'+index);
+                this.['clipboard'+index].on('success', (e) => {
+                    e.clearSelection();
+                    self.$message.success('复制成功');
+                });
+                this.['clipboard'+index].on('error', () => {
+                    self.$message.error('复制错误，请重新复制！');
+                });
+            }
+            
         },
 
         destoryClipboard() {
-            if (this.clipboard) {
-                this.clipboard.destroy();
+            if (this.clipboard0) {
+                this.clipboard0.destroy();
+            }
+            if (this.clipboard1) {
+                this.clipboard1.destroy();
             }
         },
         regResHandleOk() {
             this.regResVisible = false;
+            this.dragonflyRegResVisible = false;
         },
         regResHandleCancel() {
             this.regResVisible = false;
+            this.dragonflyRegResVisible = false;
         },
         submitRegist() {
             const self = this;
@@ -139,15 +180,17 @@ export default {
             let currType = (this.groupList[currTypeIndex] || {
                 type: ''
             }).type;
+            let isDev = !(/X-M65|X-M66|X-M68/).test(currType);  //是否为普通的机号或蜻蜓机号
+            let realType = isDev ? currType : currType.substr(2);
             this.$confirm({
-                title: '激活提示',
-                content: '确认激活全部' + currType + '？',
+                title: isDev ? '激活提示' : '蜻蜓APP注册',
+                content: '确认激活全部' + realType + '？',
                 okText: '确认',
                 okType: 'primary',
                 cancelText: '取消',
                 centered: true,
                 onOk() {
-                    self.reqRegistMachine();
+                    self.reqRegistMachine(isDev, realType);
                 },
                 onCancel() { },
             });
@@ -160,7 +203,7 @@ export default {
             }
             return total;
         },
-        reqRegistMachine() {
+        reqRegistMachine(isDev, realType) {
             const self = this;
             const param = new Object();
             const devices = new Array();
@@ -171,22 +214,25 @@ export default {
             for (let item of showCodeList) {
                 devices.push({
                     sn: item.value,
-                    type: item.type,
-                    days: actDay,
-                    function_code: functionCode,
-                    apply_reason: actReason,
+                    type: realType,
+                    days: isDev ? actDay : "",
+                    function_code: isDev ? functionCode : "",
+                    apply_reason: isDev ? actReason : "",
                 });
             }
             param.devices = devices;
             param.way = "web"; //激活方式为网页
-
+            //不是普通机号，使用蜻蜓APP方式注册
+            if(!isDev){
+                param.regist_for_qtapp = true;
+            }
             self.$loading.show();
 
             this.$api.post('/regist_device', param).then(res => {
                 self.$loading.hide();
                 if (res.err_code == '0') {
                     self.clearCurrList();
-                    self.showRegistResModal(res.codes);
+                    self.showRegistResModal(res.codes, isDev);
                 } else {
                     self.$error({
                         title: res.err_msg,
@@ -199,7 +245,7 @@ export default {
             });
 
         },
-        showRegistResModal(codes) {
+        showRegistResModal(codes, isDev) {
             const self = this;
             let copyText = '';
             const len = codes.length;
@@ -213,19 +259,28 @@ export default {
                 copyText += this.getClipFmtTextSingle(item) + (index < len - 1 ? '\r\n\r\n' : '');
             });
             self.registResArr = codes;
-            self.regResVisible = true;
             self.copyText = copyText;
-            self.regResModalTitle = '注册成功（共' + codes.length + '条）';
+            if(isDev){
+                self.regResVisible = true;
+                self.regResModalTitle = '注册成功（共' + codes.length + '条）';
+            }else{
+                self.pageIndex = 0;
+                self.dragonflyRegResVisible = true;
+                self.dragonflyRegResModalTitle = '蜻蜓注册结果（共' + codes.length + '条）';
+                self.switchPage(0);
+            }
+            
         },
         getClipFmtTextSingle: function (code) {
             let res = '';
+            let isDev = code.sn.charAt(0) == 'Z';
             res += '机号：' + code.sn + '\r\n';
             res += '机型：' + code.type + '\r\n';
             res += '注册码：' + code.codeShow + '\r\n';
-            // res += '注册天数：' + code.daysShow + '\r\n';
             res += '到期时间：' + code.passDayShow + '\r\n';
-            res += '主机功能：' + code.funcShow + '\r\n';
-            // res += '操作人：' + code.user + '\r\n';
+            if(isDev){
+                res += '主机功能：' + code.funcShow + '\r\n';
+            }
             return res;
         },
         disabledDate(current) {
@@ -289,7 +344,8 @@ export default {
         getMachineType(code) {
             let snFlag = this.$util.getSnFlag(code);
             const deviceType = this.deviceType;
-            return deviceType[snFlag];
+            const isDev = code.charAt(0) == 'Z';
+            return (isDev ? "" : "X-") + deviceType[snFlag];
         },
 
         getIndexOfCode(code) {
@@ -304,7 +360,7 @@ export default {
         },
         getLegalCodes(codeStr) {
             codeStr = codeStr.toUpperCase();
-            const reg = new RegExp('([A-Z]1[0-9]{2}[1-9ABC][A-Z0-9]{14})|([A-Z]2[0-9]{2}[A-Z0-9]{10})|([A-Z]3[0-9][A-Z0-9]{12})', 'g');
+            const reg = new RegExp('(Z1[0-9]{2}[1-9ABC][A-Z0-9]{14})|(Z2[0-9]{2}[A-Z0-9]{10})|(Z3[0-9][A-Z0-9]{12})|(XZ3[0-9]{3}(65|66|68)[0-9]{8})', 'g');
             const self = this;
             return [...new Set(codeStr.match(reg) || [])].filter(item => {
                 return self.getMachineType(item);

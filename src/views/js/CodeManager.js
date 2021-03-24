@@ -1,6 +1,7 @@
 import moment from "moment";
 import ClipboardJS from 'clipboard';
 import DeveCodeCommon from './DeveCodeCommon';
+import QRCode from 'qrcode';
 
 const columns = [{
     title: '序号',
@@ -18,6 +19,9 @@ const columns = [{
     width: 200,
     title: '机号',
     dataIndex: 'sn',
+    scopedSlots: {
+        customRender: 'sn'
+    },
 },
 {
     width: 70,
@@ -27,7 +31,7 @@ const columns = [{
 {
     width: 200,
     title: '注册码',
-    dataIndex: 'code',
+    dataIndex: 'codeShow',
 },
 {
     title: '注册时间',
@@ -95,9 +99,22 @@ export default {
             searchSN: '', //搜索机号
             pageSize: 10,
             copyText: '',
+            qrCodeVisible: false,
+            regQrcode: "",
         };
     },
     methods: {
+        showQrCodeModal(code){
+            this.qrCodeVisible = true;
+            QRCode.toDataURL(code).then(url => {
+                this.regQrcode = url;
+            }).catch(err => {  //异常时的处理
+                console.error(err);
+            });
+        },
+        hideQrCodeModal(){
+            this.qrCodeVisible = false;
+        },
         useClipboard(className) {
             const self = this
             this.clipboard = new ClipboardJS('.copy' + className);
@@ -199,14 +216,15 @@ export default {
                         item.order = order;
                         item.func_list = item.func_list || '无';
                         item.pic = self.getIconPic(self.$util.getSnFlag(item.sn), item.type);
-                        item.code = self.$util.fmtActCode(item.code);
+                        //item.code = self.$util.fmtActCode(item.code);
 
                         item.regDayShow = item.regist_datetime.substr(0, 19);
                         item.daysShow = self.$util.fmtRegDay(item.days);
                         item.passDayShow = self.$util.fmtPassDay(item.days, item.expire_date);
-                        item.codeShow = item.code;
+                        item.codeShow = self.$util.fmtActCode(item.code);
                         item.funcShow = item.func_list;
                         item.copyText = self.getClipFmtTextSingle(item);
+                        item.isDev = item.sn.charAt(0) == 'Z';
                         resData.push(item);
 
                     }
@@ -225,12 +243,17 @@ export default {
 
         getClipFmtTextSingle: function (code) {
             let res = '';
+            let isDev = code.sn.charAt(0) == 'Z';
             res += '机号：' + code.sn + '\r\n';
             res += '机型：' + code.type + '\r\n';
-            res += '注册码：' + code.code + '\r\n';
-            res += '注册时间：' + code.regDayShow + '\r\n';
+            res += '注册码：' + code.codeShow + '\r\n';
+            if(isDev){
+                res += '注册时间：' + code.regDayShow + '\r\n';
+            }
             res += '到期时间：' + code.passDayShow + '\r\n';
-            res += '主机功能：' + code.funcShow + '\r\n';
+            if(isDev){
+                res += '主机功能：' + code.funcShow + '\r\n';
+            }
             return res;
         },
 

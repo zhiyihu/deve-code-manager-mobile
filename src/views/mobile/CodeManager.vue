@@ -51,7 +51,7 @@
                         <div class="machine-order">{{item.order}}</div>
                         <div class="machine-icon"><img :src="item.pic" /></div>
                         <div class="machine-sn">
-                            {{ item.sn }}
+                            <span :style="{color: item.isDev ? '#595959':'#1890ff'}">{{ item.sn }}</span>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                     </div>
                     <div class="table-info-line">
                         <div>注册码：</div>
-                        <div>{{item.code}}</div>
+                        <div>{{item.codeShow}}</div>
                     </div>
                     <div class="table-info-line">
                         <div>注册时间：</div>
@@ -87,6 +87,7 @@
                         </div>
                     </div>
                     <div class="table-info-optbtns">
+                        <a href="javascript:;" class="table-opt-alink" @click="showQrCodeModal(item.code);">二维码</a>
                         <a href="javascript:;" :class="'table-opt-alink copy'+item.order" @click="useClipboard(item.order);" :data-clipboard-text="item.copyText">复制</a>
                     </div>
                 </div>
@@ -95,6 +96,17 @@
             <a-pagination show-size-changer style="margin-top: 24px;margin-bottom: 20px;" :page-size="Number(reqParam.per_page_max_record_count)" @change="onPageChange" v-model="current" :total="total" :show-total="(total) => ``" show-less-items>
 
             </a-pagination>
+            <a-modal :width="320" :centered="true" v-model="qrCodeVisible" title="注册码">
+                <template slot="footer">
+                    <a-button :visible="false" key="back" @click="hideQrCodeModal">取消</a-button>
+                    <a-button key="submit" type="primary" :loading="false" @click="hideQrCodeModal">确定</a-button>
+                </template>
+                <div style="padding: 0px 14px;overflow: auto;">
+                    <div class="dragonfly-qrcode-part">
+                        <img style="width:130px;height:130px;" :src="regQrcode"/>
+                    </div>
+                </div>
+            </a-modal>
 
         </div>
     </a-layout-content>

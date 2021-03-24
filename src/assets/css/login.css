@@ -116,6 +116,14 @@ body{
     margin-top: 22px;
 }
 
+.forget-pwd-line-pc{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 22px;
+}
+
 @media screen and (max-width: 1024px){
     .changepwd-edit-line{
         height: 50px;
