@@ -142,12 +142,12 @@ export default {
         initClipboard() {
             const self = this
             for(let index of [0, 1]){
-                this.['clipboard'+index] = new ClipboardJS('.copy'+index);
-                this.['clipboard'+index].on('success', (e) => {
+                this['clipboard'+index] = new ClipboardJS('.copy'+index);
+                this['clipboard'+index].on('success', (e) => {
                     e.clearSelection();
                     self.$message.success('复制成功');
                 });
-                this.['clipboard'+index].on('error', () => {
+                this['clipboard'+index].on('error', () => {
                     self.$message.error('复制错误，请重新复制！');
                 });
             }

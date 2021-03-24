@@ -44,9 +44,6 @@ const util = {
         + this.fillZero(date.getSeconds());
     },
     getMachinePicByType(type){
-      if((/X-M65|X-M66|X-M68/).test(type)){
-        type = type.substr(2);
-      }
       let types = 'M62,M65,M66,M68,JK06,JK07,JK08,JK09,JK17,JK27,JK20,SCC318';
       if(types.includes(type)){
         return type;

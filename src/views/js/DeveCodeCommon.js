@@ -147,6 +147,9 @@ export default {
             if(imgSrc){
                 return imgSrc;
             }else{
+                if((/X-M65|X-M66|X-M68/).test(type)){
+                    type = type.substr(2);
+                }
                 let deviceTypeIconObj = this.deviceTypeIconObj;
                 return deviceTypeIconObj[type];
             }
