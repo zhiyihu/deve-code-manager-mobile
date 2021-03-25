@@ -488,3 +488,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.regres-just-copy-code{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 12px;
+}

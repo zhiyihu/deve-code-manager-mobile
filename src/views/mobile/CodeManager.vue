@@ -89,6 +89,7 @@
                     <div class="table-info-optbtns">
                         <a href="javascript:;" class="table-opt-alink" @click="showQrCodeModal(item.code);">二维码</a>
                         <a href="javascript:;" :class="'table-opt-alink copy'+item.order" @click="useClipboard(item.order);" :data-clipboard-text="item.copyText">复制</a>
+                        <a href="javascript:;" :class="'table-opt-alink copy-'+item.order" @click="useClipboard('-'+item.order);" :data-clipboard-text="item.code">复制注册码</a>
                     </div>
                 </div>
             </div>

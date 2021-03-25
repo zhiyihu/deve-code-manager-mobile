@@ -11,7 +11,7 @@ export default {
     },
     data() {
         return {
-            registResArr: [],
+            registResArr: [], 
             copyText: '',
             regResVisible: false,
             regResModalTitle: '注册结果',
@@ -90,10 +90,14 @@ export default {
             dragonflyRegResVisible: false,
             dragonflyRegResModalTitle: "蜻蜓注册结果",
             pageIndex: 0,
+            regTypeArr: ["主机注册", "蜻蜓APP注册"],
+            regTypeIndex: 0,
+            isDragonflyPermission: false, //是否有蜻蜓权限
+            isShowRegTypePart: false,
         };
     },
     methods: {
-
+        
         bindPrePage(){
             let pageIndex = this.pageIndex;
             if(pageIndex > 0){
@@ -138,33 +142,26 @@ export default {
             this.addCode(result, true);
         },
         onLoaded() { },
-
-        initClipboard() {
+        useClipboard(className) {
             const self = this
-            for(let index of [0, 1]){
-                this['clipboard'+index] = new ClipboardJS('.copy'+index);
-                this['clipboard'+index].on('success', (e) => {
-                    e.clearSelection();
-                    self.$message.success('复制成功');
-                });
-                this['clipboard'+index].on('error', () => {
-                    self.$message.error('复制错误，请重新复制！');
-                });
-            }
-            
+            this.clipboard = new ClipboardJS('.copy' + className);
+            this.clipboard.on('success', (e) => {
+                e.clearSelection();
+                self.$message.success('复制成功');
+                if (self.clipboard) {
+                    self.clipboard.destroy();
+                }
+            });
+            this.clipboard.on('error', () => {
+                self.$message.error('复制错误，请重新复制！');
+            });
         },
+        
 
-        destoryClipboard() {
-            if (this.clipboard0) {
-                this.clipboard0.destroy();
-            }
-            if (this.clipboard1) {
-                this.clipboard1.destroy();
-            }
-        },
-        regResHandleOk() {
+        regResHandleOk(className) {
             this.regResVisible = false;
             this.dragonflyRegResVisible = false;
+            this.useClipboard(className);
         },
         regResHandleCancel() {
             this.regResVisible = false;
@@ -180,7 +177,7 @@ export default {
             let currType = (this.groupList[currTypeIndex] || {
                 type: ''
             }).type;
-            let isDev = !(/X-M65|X-M66|X-M68/).test(currType);  //是否为普通的机号或蜻蜓机号
+            let isDev = !this.$util.isDragonflyOrder(currType);  //是否为普通的机号或蜻蜓机号
             let realType = isDev ? currType : currType.substr(2);
             this.$confirm({
                 title: isDev ? '激活提示' : '蜻蜓APP注册',
@@ -211,9 +208,10 @@ export default {
             const actDay = (self.activeDays) + '';
             const functionCode = self.getDeviceFuncVal() + '';
             const actReason = self.regReasonVal;
+            const isChoseDragonflyReg = this.regTypeIndex == 1; //是否通过M65/M66/M68类型选择蜻蜓注册类型
             for (let item of showCodeList) {
                 devices.push({
-                    sn: item.value,
+                    sn: (isDev && isChoseDragonflyReg ? 'X' : '')+item.value,
                     type: realType,
                     days: isDev ? actDay : "",
                     function_code: isDev ? functionCode : "",
@@ -223,16 +221,15 @@ export default {
             param.devices = devices;
             param.way = "web"; //激活方式为网页
             //不是普通机号，使用蜻蜓APP方式注册
-            if(!isDev){
-                param.regist_for_qtapp = true;
-            }
+            param.regist_for_qtapp = !isDev || isChoseDragonflyReg;
+            
             self.$loading.show();
 
             this.$api.post('/regist_device', param).then(res => {
                 self.$loading.hide();
                 if (res.err_code == '0') {
                     self.clearCurrList();
-                    self.showRegistResModal(res.codes, isDev);
+                    self.showRegistResModal(res.codes, isDev && !isChoseDragonflyReg);
                 } else {
                     self.$error({
                         title: res.err_msg,
@@ -298,6 +295,21 @@ export default {
                 borderWidth: '0px'
             };
         },
+        refreshRegTypePart(){
+            this.regTypeIndex = 0;
+            this.isShowRegTypePart = false;
+            if(this.codeList.length > 0){
+                const currTypeIndex = this.currTypeIndex;
+                let currType = (this.groupList[currTypeIndex] || {
+                    type: ''
+                }).type;
+                if(this.$util.isDragonflyOrder(currType)){
+                    this.regTypeIndex = 1;
+                }else if((/^M65$|^M66$|^M68$/).test(currType)){
+                    this.isShowRegTypePart = this.isDragonflyPermission;
+                }
+            }
+        },
         refreshDeviceFuncOptions(isNotResetVal) {
             let options = new Array();
             const currTypeIndex = this.currTypeIndex;
@@ -318,7 +330,6 @@ export default {
             if(!this.regFuncVal.length){
                 this.regFuncVal = this.getDefaultFuncCode(currType);
             }
-
         },
         codeStrChange(e) {
             const codeStr = e.target.value;
@@ -402,6 +413,7 @@ export default {
                 this.showCodeList = showCodeList;
                 this.groupList = newGroupList;
                 this.currTypeIndex = currTypeIndex;
+                this.refreshRegTypePart();
                 this.refreshDeviceFuncOptions(true);
             }
 
@@ -448,6 +460,7 @@ export default {
             this.showCodeList = showCodeList;
             this.groupList = groupList;
             this.currTypeIndex = 0;
+            this.refreshRegTypePart();
             this.refreshDeviceFuncOptions();
         },
         addCode(codeStr, isScan) {
@@ -507,6 +520,7 @@ export default {
             this.showCodeList = showCodeList;
             this.groupList = groupList;
 
+            this.refreshRegTypePart();
             this.refreshDeviceFuncOptions(true);
 
         },
@@ -531,6 +545,7 @@ export default {
             this.showCodeList = codeList.filter((item) => {
                 return item.type == currType
             });
+            this.refreshRegTypePart();
             this.refreshDeviceFuncOptions();
         },
 
@@ -631,7 +646,14 @@ export default {
             }
             return funcArr;
         },
-
+        initDragonflyPermission(){
+            const userJsonStr = sessionStorage.getItem("user");
+            if(userJsonStr){
+                const userObj = JSON.parse(userJsonStr);
+                const permissions = userObj.permissions;
+                this.isDragonflyPermission = permissions.includes('qtapp-regist') || permissions.includes('admin');
+            }
+        }
 
     },
     mounted() {
@@ -640,11 +662,11 @@ export default {
         this.reqQueryDeviceType();
         this.reqRegistReasons();
         this.reqQueryDeviceFuncs();
-        this.initClipboard();
-
+        this.initDragonflyPermission();
     },
+
     destroyed() {
-        this.destoryClipboard();
+        
     },
     computed: {
         maxActText() {

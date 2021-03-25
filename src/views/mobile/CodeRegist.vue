@@ -26,43 +26,56 @@
                 </div>
 
             </div>
-            <div class="regist-machine-line">
-                <div class="regist-machine-line-title">激活天数（{{maxActText}}）</div>
-                <div class="regist-machine-time">
-                    <a-radio-group v-model="regTimeVal" @change="onRegTimeChange">
-                        <a-radio-button v-for="(item, index) in actTimesArr" :key="index" :value="item.val">
-                            {{item.name}}
-                        </a-radio-button>
-                    </a-radio-group>
-                    <div v-if="activeDays<=9999">
-                        <span class="machine-passday-div" :style="actIptStyle">
-                            <a-input v-model="activeDays" style="width:90px;" type="number" @change="onActiveDaysInput" @blur="onActiveDaysBlur"></a-input>
-                        </span>
-                        <span style="margin-left:6px">天</span>
-                    </div>
-                </div>
-                <div class="regist-machine-passday" v-if="activeDays<=9999">
-                    <div class="machine-passday-div" :style="dateStyle">
-                        <a-date-picker :allowClear="false" :inputReadOnly="true" v-model="actPassDay" :disabled-date="disabledDate" @change="onDateChange" style="width: 180px;" />
-                    </div>
-                    <span class="regist-machine-tipspan">到期</span>
-                </div>
-            </div>
-            <div class="regist-machine-line" v-if="deviceFuncOptions.length">
-                <div class="regist-machine-line-title">主机功能</div>
-                <div class="regist-machine-funclist">
-                    <a-checkbox-group v-model="regFuncVal" name="checkboxgroup" :options="deviceFuncOptions" />
-                </div>
-            </div>
 
-            <div class="regist-machine-line">
-                <div class="regist-machine-line-title">注册原因</div>
+            <div class="regist-machine-line" v-if="isShowRegTypePart">
+                <div class="regist-machine-line-title">注册类型</div>
                 <div class="regist-machine-funclist">
-                    <a-radio-group v-model="regReasonVal">
-                        <a-radio-button v-for="(item,index) in actReasonArr" :key="index" :value="item">
+                    <a-radio-group v-model="regTypeIndex">
+                        <a-radio-button v-for="(item,index) in regTypeArr" :key="index" :value="index">
                             {{item}}
                         </a-radio-button>
                     </a-radio-group>
+                </div>
+            </div>
+            <div v-if="regTypeIndex==0">
+                <div class="regist-machine-line">
+                    <div class="regist-machine-line-title">激活天数（{{maxActText}}）</div>
+                    <div class="regist-machine-time">
+                        <a-radio-group v-model="regTimeVal" @change="onRegTimeChange">
+                            <a-radio-button v-for="(item, index) in actTimesArr" :key="index" :value="item.val">
+                                {{item.name}}
+                            </a-radio-button>
+                        </a-radio-group>
+                        <div v-if="activeDays<=9999">
+                            <span class="machine-passday-div" :style="actIptStyle">
+                                <a-input v-model="activeDays" style="width:90px;" type="number" @change="onActiveDaysInput" @blur="onActiveDaysBlur"></a-input>
+                            </span>
+                            <span style="margin-left:6px">天</span>
+                        </div>
+                    </div>
+                    <div class="regist-machine-passday" v-if="activeDays<=9999">
+                        <div class="machine-passday-div" :style="dateStyle">
+                            <a-date-picker :allowClear="false" :inputReadOnly="true" v-model="actPassDay" :disabled-date="disabledDate" @change="onDateChange" style="width: 180px;" />
+                        </div>
+                        <span class="regist-machine-tipspan">到期</span>
+                    </div>
+                </div>
+                <div class="regist-machine-line" v-if="deviceFuncOptions.length">
+                    <div class="regist-machine-line-title">主机功能</div>
+                    <div class="regist-machine-funclist">
+                        <a-checkbox-group v-model="regFuncVal" name="checkboxgroup" :options="deviceFuncOptions" />
+                    </div>
+                </div>
+
+                <div class="regist-machine-line">
+                    <div class="regist-machine-line-title">注册原因</div>
+                    <div class="regist-machine-funclist">
+                        <a-radio-group v-model="regReasonVal">
+                            <a-radio-button v-for="(item,index) in actReasonArr" :key="index" :value="item">
+                                {{item}}
+                            </a-radio-button>
+                        </a-radio-group>
+                    </div>
                 </div>
             </div>
             <div class="regist-machine-submit">
@@ -83,7 +96,7 @@
             <a-modal :width="320" :centered="true" v-model="regResVisible" :title="regResModalTitle">
                 <template slot="footer">
                     <a-button :visible="false" key="back" @click="regResHandleCancel">取消</a-button>
-                    <a-button key="submit" type="primary" :loading="loading" class="copy0" :data-clipboard-text="copyText" @click="regResHandleOk">复制全部结果</a-button>
+                    <a-button key="submit" type="primary" :loading="loading" class="copy0" :data-clipboard-text="copyText" @click="regResHandleOk('0')">复制全部结果</a-button>
                 </template>
                 <div style="min-height: 220px;max-height: 300px;padding: 0px;overflow: auto;">
                     <div class="code-list-detail" v-for="(item,index) in registResArr" :key="index">
@@ -119,6 +132,9 @@
                             <div>操作人：</div>
                             <div><span user-select="true">{{item.user}}</span></div>
                         </div>
+                        <div class="regres-just-copy-code">
+                            <a href="javascript:;" :class="'copy-'+index" @click="useClipboard('-'+index);" :data-clipboard-text="item.code">复制注册码</a>
+                        </div>
                     </div>
                 </div>
             </a-modal>
@@ -133,7 +149,7 @@
             <a-modal :width="320" :centered="true" v-model="dragonflyRegResVisible" :title="dragonflyRegResModalTitle">
                 <template slot="footer">
                     <a-button :visible="false" key="back" @click="regResHandleCancel">取消</a-button>
-                    <a-button key="submit" type="primary" :loading="loading" class="copy1" :data-clipboard-text="copyText" @click="regResHandleOk">复制全部结果</a-button>
+                    <a-button key="submit" type="primary" :loading="loading" class="copy1" :data-clipboard-text="copyText" @click="regResHandleOk('1')">复制全部结果</a-button>
                 </template>
                 <div style="min-height: 220px;max-height: 300px;padding: 0px 14px;overflow: auto;">
                     <div class="code-list-detail" v-if="registResArr.length>0">
@@ -148,6 +164,9 @@
                         <div class="machine-line-info">
                             <div>到期时间：</div>
                             <div><span user-select="true">{{registResArr[pageIndex].passDayShow}}</span></div>
+                        </div>
+                        <div class="regres-just-copy-code">
+                            <a href="javascript:;" :class="'copy-'+pageIndex" @click="useClipboard('-'+pageIndex);" :data-clipboard-text="registResArr[pageIndex].code">复制注册码</a>
                         </div>
                     </div>
                     <div class="dragonfly-qrcode-part">
