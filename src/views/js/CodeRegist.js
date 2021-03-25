@@ -180,7 +180,7 @@ export default {
             let isDev = !this.$util.isDragonflyOrder(currType);  //是否为普通的机号或蜻蜓机号
             let realType = isDev ? currType : currType.substr(2);
             this.$confirm({
-                title: isDev ? '激活提示' : '蜻蜓APP注册',
+                title: isDev&&self.regTypeIndex==0 ? '激活提示' : '蜻蜓APP注册',
                 content: '确认激活全部' + realType + '？',
                 okText: '确认',
                 okType: 'primary',
