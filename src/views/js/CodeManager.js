@@ -67,6 +67,8 @@ const columns = [{
 {
     title: "操作",
     key: "action",
+    fixed: 'right',
+    width: 224,
     scopedSlots: {
         customRender: "action",
     },
@@ -92,7 +94,8 @@ export default {
                 maxHeight: Math.floor((document.body.clientHeight - 250)) + 'px'
             },
             tableScroll: {
-                y: Math.floor((document.body.clientHeight - 320))
+                y: Math.floor((document.body.clientHeight - 320)),
+                x: 1340,
             },
             total: 0, //记录总条数
             current: 1, //分页的当前页码
@@ -214,9 +217,8 @@ export default {
                         let order = i + (self.current - 1) * self.reqParam.per_page_max_record_count;
                         item.key = order;
                         item.order = order;
-                        item.func_list = item.func_list || '无';
+                        item.func_list = (item.func_list || '无').replace(/,/g,'，');
                         item.pic = self.getIconPic(self.$util.getSnFlag(item.sn), item.type);
-                        //item.code = self.$util.fmtActCode(item.code);
 
                         item.regDayShow = item.regist_datetime.substr(0, 19);
                         item.daysShow = self.$util.fmtRegDay(item.days);
