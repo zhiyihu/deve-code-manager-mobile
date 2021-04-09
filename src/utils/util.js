@@ -1,6 +1,10 @@
 import Vue from 'vue';
 
 const util = {
+    calDateStrByGap(date, aft){
+      const ndate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 0 + aft);
+      return this.getFmtDateStr(ndate);
+    },
     getSnFlag: function(code){
       let type = "";
       if(code.charAt(0) == 'X'){

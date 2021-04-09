@@ -19,6 +19,7 @@
     "vue-barcode-reader": "^0.0.3",
     "vue-print-nb": "^1.6.0",
     "vue-router": "^3.4.7",
+    "xlsx": "^0.16.9",
     "zxing": "^0.1.2"
   },
   "devDependencies": {

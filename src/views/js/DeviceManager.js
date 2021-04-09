@@ -1,5 +1,7 @@
 import moment from "moment";
 import DeveCodeCommon from './DeveCodeCommon';
+import XLSX from "xlsx";
+
 let columns = [{
     title: '序号',
     dataIndex: 'order',
@@ -77,6 +79,45 @@ export default {
         };
     },
     methods: {
+        exportExcelByArr(exportArray, filename = "导出表格") {
+            let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
+            let wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
+            XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
+        },
+        //根据筛选条件，导出全部数据
+        exportExcel(){            
+            const self = this;
+            self.$loading.show();
+            const param = this.getReqParam('0');
+            param.page_num = '1'
+            param.per_page_max_record_count = '60000';
+            const tableArr = [["序号","机号","型号","公司","生产时间"]];
+            this.$api.post("/query_device", param).then(res => {
+                if (res.err_code == '0') {
+                    let i = 0;
+                    for (let item of res.devices) {
+                        item.order = ++i;
+                        tableArr.push([
+                            i,
+                            item.sn, 
+                            item.device_type, 
+                            self.companyMap[item.company_id],
+                            item.product_time.substr(0,19)
+                        ]);
+                    }
+                    self.exportExcelByArr(tableArr);
+                } else {
+                    self.$message.error(res.err_msg);
+                    self.data = [];
+                }
+                self.$loading.hide();
+            }).catch((err) => {
+                console.error(err);
+                self.$loading.hide();
+            });
+            
+        },
         onDateChange(moment, dates) {
             this.reqParam.beg_time = dates[0] ? dates[0] + ' 00:00:00' : '';
             this.reqParam.end_time = dates[1] ? dates[1] + ' 23:59:59' : '';

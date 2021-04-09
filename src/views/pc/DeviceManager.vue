@@ -24,6 +24,7 @@
                     <span style="margin-left: 16px;">机号：</span>
                     <a-input allow-clear v-model="searchSN" style="width: 240px;"></a-input>
                     <a-button type="primary" icon="search" style="margin-left: 12px;" @click="reqData">查询</a-button>
+                    <a-button type="primary" style="margin-left: 12px;" @click="exportExcel">导出表格</a-button>
                 </div>
             </div>
 

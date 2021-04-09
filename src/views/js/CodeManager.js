@@ -274,9 +274,11 @@ export default {
 
 
         setDateRange() {
-            const today = this.$util.getFmtDateStr(new Date());
-            this.dateRange = [moment(today, 'YYYY-MM-DD'), moment(today, 'YYYY-MM-DD')];
-            this.reqParam.beg_time = today + ' 00:00:00';
+            const nowDate = new Date();
+            const today = this.$util.getFmtDateStr(nowDate);
+            const lastWeek = this.$util.calDateStrByGap(nowDate, -6);
+            this.dateRange = [moment(lastWeek, 'YYYY-MM-DD'), moment(today, 'YYYY-MM-DD')];
+            this.reqParam.beg_time = lastWeek + ' 00:00:00';
             this.reqParam.end_time = today + ' 23:59:59';
         }
 

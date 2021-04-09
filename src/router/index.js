@@ -155,6 +155,15 @@ const router = new Router({
                     }
                 },
                 {
+                    path: 'billmanager',
+                    name: 'billmanager',
+                    component: getSrc('BillManager'),
+                    meta: {
+                        roles: '',
+                        title: '单据管理'
+                    }
+                },
+                {
                     path: 'materialmanager',
                     name: 'materialmanager',
                     component: getSrc('MaterialManager'),
