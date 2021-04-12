@@ -48,7 +48,7 @@ const util = {
         + this.fillZero(date.getSeconds());
     },
     isDragonflyOrder(type){
-      return (/X-M65|X-M66|X-M68/).test(type);
+      return (/X-M62|X-M65|X-M66|X-M68/).test(type);
     },
     getMachinePicByType(type){
       let types = 'M62,M65,M66,M68,JK06,JK07,JK08,JK09,JK17,JK27,JK20,SCC318';

@@ -305,7 +305,7 @@ export default {
                 }).type;
                 if(this.$util.isDragonflyOrder(currType)){
                     this.regTypeIndex = 1;
-                }else if((/^M65$|^M66$|^M68$/).test(currType)){
+                }else if((/^M62$|^M65$|^M66$|^M68$/).test(currType)){
                     this.isShowRegTypePart = this.isDragonflyPermission;
                 }
             }
@@ -371,7 +371,7 @@ export default {
         },
         getLegalCodes(codeStr) {
             codeStr = codeStr.toUpperCase();
-            const reg = new RegExp('(Z1[0-9]{2}[1-9ABC][A-Z0-9]{14})|(Z2[0-9]{2}[A-Z0-9]{10})|(Z3[0-9][A-Z0-9]{12})|(XZ3[0-9]{3}(65|66|68)[0-9]{8})', 'g');
+            const reg = new RegExp('(Z1[0-9]{2}[1-9ABC][A-Z0-9]{14})|(Z2[0-9]{2}[A-Z0-9]{10})|(Z3[0-9][A-Z0-9]{12})|(XZ3[0-9]{3}(62|65|66|68)[0-9]{8})', 'g');
             const self = this;
             return [...new Set(codeStr.match(reg) || [])].filter(item => {
                 return self.getMachineType(item);
