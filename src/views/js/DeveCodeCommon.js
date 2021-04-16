@@ -22,6 +22,7 @@ export default {
             );
         },
         reqQueryDeviceType(callback) {
+            const  ossImgSrc = "https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/";
             const self = this;
             self.$loading.show();
             this.$api.post("/query_device_type", {}).then(res => {
@@ -33,7 +34,7 @@ export default {
                     let imgObj = new Object();
                     for (let item of res.device_types) {
                         let imgName = self.$util.getMachinePicByType(item.name);
-                        imgObj[item.name] = require('../../assets/' + imgName + '.png');
+                        imgObj[item.name] = ossImgSrc + imgName + '.png';
                     }
                     self.deviceType = res.device_typs;
                     self.deviceTypeIconObj = imgObj;

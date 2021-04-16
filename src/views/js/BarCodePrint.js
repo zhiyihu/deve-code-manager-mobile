@@ -2,14 +2,33 @@ import Vue from "vue";
 import Print from "vue-print-nb";
 import jsbarcode from "jsbarcode";
 import DeveCodeCommon from './DeveCodeCommon';
-import CompanyIconsArr from '../json/company-icons.json';
+
 import materials from "../json/materials.json";
+const ossImgSrc = "https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/";
+const CompanyIconsArr = [
+    {
+        "name": "展讯科技",
+        "imgBase64": ossImgSrc + "devecent.png"
+    },
+    {
+        "name": "北斗星通",
+        "imgBase64": ossImgSrc + "bds.png"
+    },
+    {
+        "name": "深圳赛特雷德",
+        "imgBase64": ossImgSrc + "satlead.png"
+    },
+    {
+        "name": "吉航兴",
+        "imgBase64": ossImgSrc + "gintec.gif"
+    }
+];
 Vue.use(Print);
 export default {
     extends: DeveCodeCommon,
     data() {
         return {
-            bdtitle: CompanyIconsArr[0].imgBase64,
+            bdtitle:CompanyIconsArr[0].imgBase64,
             extraHead: '<meta http-equiv="Content-Language"content="zh-cn"/>,<style> #printMe { height: auto !important; } <style>',
             codeArr: [],
             codeStr: '',

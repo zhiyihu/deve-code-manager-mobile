@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付证明单</title>
+</head>
+
+<body style="margin:0;padding:0;">
+    <style>
+        @media print{.noprint{display:none}
+            .bill{transform:rotate(90deg);left:170mm;outline:none}
+            .a4{width:210mm;height:297mm;word-wrap:break-word;position:relative;display:block !important;outline:none}
+        }
+        :root{--offsetX:0mm;--offsetY:0mm;--firstLine:23mm;--tbline1:43.6mm;--tbline2:52.4mm;--tbline6:89.4mm}
+        .a4{width:210mm;height:297mm;word-wrap:break-word;position:relative;display:none}
+        .bill{-moz-transform-origin:0 0;-webkit-transform-origin:0 0;-o-transform-origin:0 0;transform-origin:0 0;width:230mm;height:128mm;position:absolute;top:0mm;font-family:'MicroSoft YaHei';color:#333;font-size:14px !important}
+        .bill-edit{font-size:14px !important;transform-origin:0 0;width:230mm;height:128mm;border:1px solid #ccc;background:url("https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/bill.jpg") no-repeat;background-size:98.5% 100%;background-position-y:-2mm;background-position-x:2.2mm;position:relative}
+        .department{position:absolute;left:calc(43mm + var(--offsetX));top:calc(var(--firstLine) + var(--offsetY));outline:none}
+        .billyear{position:absolute;left:calc(103mm + var(--offsetX));top:calc(var(--firstLine) + var(--offsetY));outline:none}
+        .billmonth{position:absolute;left:calc(120mm + var(--offsetX));top:calc(var(--firstLine) + var(--offsetY));outline:none}
+        .billday{position:absolute;left:calc(134mm + var(--offsetX));top:calc(var(--firstLine) + var(--offsetY));outline:none}
+        .norder{position:absolute;left:calc(196mm + var(--offsetX));top:calc(var(--firstLine) + var(--offsetY));outline:none}
+        .tbinfo{border:none}
+        .bill>span{display:inline-block}
+        input,textarea{font-family:'MicroSoft YaHei';outline:none}
+        input:active{outline:none}
+        input{border:1px solid #ccc;outline:none;border-radius:2px}
+        textarea{border:1px solid #ccc}
+    </style>
+    <div class="noprint">
+        <div style="padding-top:14px;padding-left:14px;">
+            <!-- <textarea onblur="saveTextStorage()" id="quickTextArea" style="width: 400px;height: 180px;resize:none;"></textarea> -->
+            <!-- <button onclick="quickSetData();" style="background: #1890ff;width: 80px;height:28px;color: white;outline:none;border:none;margin-left: 4px;border-radius:4px;cursor: pointer;vertical-align: top;">快速填写</button> -->
+            <button onclick="window.print();" style="background: #1890ff;width: 80px;height:28px;color: white;outline:none;border:none;margin: 0px 0px 12px 0px;border-radius:4px;cursor: pointer;vertical-align: top;">打印</button>
+        </div>
+
+        <div class="bill-edit" id="bill-edit" style="margin-left:14px;">
+            <input placeholder="部门" type="text" class="department" onblur="billIptEvent(this);" id="department" value="管理部" style="top:21.5mm;" />
+            <input class="billyear" type="date" id="billyear" style="width: 50mm;top:21.5mm;" onchange="onBillDateChange(this);" />
+            <input placeholder="序号" class="norder" type="text" id="norder" style="width: 14mm;top:21.5mm;left:194mm;" onblur="billIptEvent(this);" />
+
+            <input placeholder="在此输入供应商名称" type="text" id="tbinfo11" onblur="billIptEvent(this);" style="position: absolute;left: calc(26mm - 4mm);top: calc(var(--tbline1) - 2mm);width:84mm;text-align: left;"></input>
+            <input placeholder="数量" type="text" id="tbinfo12" onblur="billIptEvent(this);" style="position: absolute;left: calc(114mm - 2mm);top: calc(var(--tbline1) - 2mm);width:24mm;text-align: left;"></input>
+            <input placeholder="单位" type="text" id="tbinfo13" onblur="billIptEvent(this);" style="position: absolute;left: calc(143.2mm - 2.8mm);top: calc(var(--tbline1) - 2mm);width:12mm;text-align: left;"></input>
+            <input placeholder="单价" type="text" id="tbinfo14" onblur="billIptEvent(this,1);" style="position: absolute;left: calc(159mm - 2.8mm);top: calc(var(--tbline1) - 2mm);width:16mm;text-align: left;"></input>
+
+            <input type="text" id="allmoney" placeholder="金额" onblur="onMoneyIptEvent(this);" style="position: absolute;left: calc(180mm + var(--offsetX));top: calc(var(--tbline1) - 2mm);width:30mm;" />
+            <textarea placeholder="备注相关信息" type="text" id="tbinfo21" onblur="billIptEvent(this);" style="position: absolute;left: calc(26mm - 4mm);top: calc(var(--tbline2) - 4mm);width:84mm;height:32mm; text-align: left;resize: none;"></textarea>
+
+            <span class="rex" id="allmoney-edit" style="position: absolute;left: calc(180mm + var(--offsetX));top: calc(var(--tbline6) + var(--offsetY));width:30mm;"></span>
+
+            <!-- <div style="position: absolute;top:29mm;left:20mm;width:197mm;height:69mm;border: 1px solid green;"></div> -->
+        </div>
+    </div>
+    <div id="a4" class="a4">
+        <div class="bill" id="bill">
+            <span class="department" id="department-prt">管理部</span>
+            <span class="billyear" id="billyear-prt"></span>
+            <span class="billmonth" id="billmonth-prt"></span>
+            <span class="billday" id="billday-prt"></span>
+            <span class="norder" id="norder-prt" style="text-align: center;width:14mm;"></span>
+
+            <span class="tbinfo" id="tbinfo11-prt" style="position: absolute;left: calc(26mm + var(--offsetX));top: calc(var(--tbline1) + var(--offsetY));width:84mm;text-align: left;"></span>
+            <span class="tbinfo" id="tbinfo12-prt" style="position: absolute;left: calc(113mm + var(--offsetX));top: calc(var(--tbline1) + var(--offsetY));width:24mm;text-align: left;text-align: center;"></span>
+            <span class="tbinfo" id="tbinfo13-prt" style="position: absolute;left: calc(141mm + var(--offsetX));top: calc(var(--tbline1) + var(--offsetY));width:14mm;text-align: left;text-align: center;"></span>
+            <span class="tbinfo" id="tbinfo14-prt" style="position: absolute;left: calc(155mm + var(--offsetX));top: calc(var(--tbline1) + var(--offsetY));width:19mm;text-align: left;text-align: center;"></span>
+
+            <span class="tbinfo" id="tbinfo21-prt" style="position: absolute;left: calc(26mm + var(--offsetX));top: calc(var(--tbline2) + var(--offsetY));width:84mm;text-align: left;"></span>
+
+            <span class="rex" id="xmoney-prt" style="position: absolute;left: calc(182mm + var(--offsetX));top: calc(var(--tbline1) + var(--offsetY));width:30mm;"></span>
+            <span class="rex" id="allmoney-prt" style="position: absolute;left: calc(182mm + var(--offsetX));top: calc(var(--tbline6) + var(--offsetY));width:30mm;"></span>
+        </div>
+    </div>
+    <script>
+        function getFmtDateStr(date){
+            var fillZero = (num)=>{return (num < 10 ? "0": "") + num;};
+            return date.getFullYear() + '-'
+                + fillZero(date.getMonth() + 1) + '-'
+                + fillZero(date.getDate());
+        }
+        window.onload = function() {
+         //   let examText = '管理部\r\n2021-04-15\r\nNULL\r\n北京北斗星通导航技术股份有限公司\r\n1\r\n批\r\n12345\r\n12345\r\n货款';
+           // ele("#quickTextArea").value = localStorage.getItem("quickTextArea") || examText;
+            var dateVal = getFmtDateStr(new Date());
+            ele("#billyear").value = dateVal;
+            ele("#billyear-prt").innerText = dateVal.substr(0, 4);
+            ele("#billmonth-prt").innerText = dateVal.substr(5, 2);
+            ele("#billday-prt").innerText = dateVal.substr(8, 2);
+        }
+
+        function ele(id) {
+            return document.querySelector(id);
+        }
+
+        function saveTextStorage() {
+            localStorage.setItem("quickTextArea", ele("#quickTextArea").value);
+        }
+
+        function quickSetData() {
+            let val = ele("#quickTextArea").value || "";
+            let arr = val.match(new RegExp(".+", "g")) || [];
+            let eleArr = [{
+                iptName: "department"
+            }, {
+                iptName: "billyear",
+                isDate: true
+            }, {
+                iptName: "norder"
+            }, {
+                iptName: "tbinfo11"
+            }, {
+                iptName: "tbinfo12"
+            }, {
+                iptName: "tbinfo13"
+            }, {
+                iptName: "tbinfo14"
+            }, {
+                iptName: "department",
+                isImportantMoney: true
+            }, {
+                iptName: "tbinfo21"
+            }];
+            if (arr.length >= 9) {
+                for (let i = 0; i < 9; i++) {
+                    let item = arr[i];
+                    item = item == "NULL" ? "" : item;
+                    item = item.trim();
+                    if (eleArr[i].isDate) {
+                        if (new RegExp("20\\d\\d-\\d\\d-\\d\\d").test(item)) {
+                            ele("#" + eleArr[i].iptName).value = item;
+                            ele("#billyear-prt").innerText = item.substr(0, 4);
+                            ele("#billmonth-prt").innerText = item.substr(5, 2);
+                            ele("#billday-prt").innerText = item.substr(8, 2);
+                        }
+                    } else if (eleArr[i].isImportantMoney) {
+                        let allmoneyIpt = ele("#allmoney");
+                        allmoneyIpt.value = item;
+                        onMoneyIptEvent(allmoneyIpt);
+                    } else {
+                        ele("#" + eleArr[i].iptName).value = item;
+                        ele("#" + eleArr[i].iptName + "-prt").innerText = item;
+                    }
+
+                }
+            }
+
+        }
+
+        function billIptEvent(e, isMoney = 0) {
+            ele("#" + e.id + "-prt").innerText = e.value;
+        }
+
+        function onBillDateChange(e) {
+            let dateStr = e.value;
+            ele("#billyear-prt").innerText = dateStr.substr(0, 4);
+            ele("#billmonth-prt").innerText = dateStr.substr(5, 2);
+            ele("#billday-prt").innerText = dateStr.substr(8, 2);
+        }
+
+        function onMoneyIptEvent(e) {
+            let bigMoneyChars = "零壹贰叁肆伍陆柒捌玖";
+            let money = e.value;
+            if (!isNaN(Number(money))) {
+                let num = Math.floor(money - 0);
+                let decimalNum = Math.floor(money * 100 % 100); //小数部分
+                let fmtMoney = num + "." + (decimalNum < 10 ? "0" : "") + decimalNum;
+                // ele("#xmoney-prt").innerText = "￥" + fmtMoney;
+                ele("#allmoney-prt").innerText = fmtMoney;
+                ele("#allmoney-edit").innerText = fmtMoney;
+                let i = 8;
+                let moneyCharPos = 8 - (num + "").length;
+                while (i >= 0) {
+                    if (num <= 0) {
+                        ele("#bigmoney" + i + "-prt").innerText = "";
+                        ele("#bigmoney" + i + "-edit").innerText = "";
+                        ele("#smallmoney" + i + "-prt").innerText = "";
+                    } else {
+                        ele("#bigmoney" + i + "-prt").innerText = bigMoneyChars[num % 10];
+                        ele("#bigmoney" + i + "-edit").innerText = bigMoneyChars[num % 10];
+                        ele("#smallmoney" + i + "-prt").innerText = num % 10;
+                    }
+                    num = Math.floor(num / 10);
+                    i--;
+                }
+
+                ele("#bigmoney" + moneyCharPos + "-prt").innerHTML = "&nbsp;&nbsp;&nbsp;￥";
+                ele("#bigmoney" + moneyCharPos + "-edit").innerHTML = "&nbsp;&nbsp;&nbsp;￥";
+                ele("#smallmoney" + moneyCharPos + "-prt").innerHTML = "&nbsp;￥";
+
+
+                ele("#bigmoney10-prt").innerText = bigMoneyChars[decimalNum % 10];
+                ele("#bigmoney10-edit").innerText = bigMoneyChars[decimalNum % 10];
+                ele("#smallmoney10-prt").innerText = decimalNum % 10;
+
+                ele("#bigmoney9-prt").innerText = bigMoneyChars[Math.floor(decimalNum / 10)];
+                ele("#bigmoney9-edit").innerText = bigMoneyChars[Math.floor(decimalNum / 10)];
+                ele("#smallmoney9-prt").innerText = Math.floor(decimalNum / 10);
+            } else {
+                return;
+            }
+        }
+
+        let tableSpanHtml = "";
+        let tbSpanwidthArr = [84, 24, 14, 19];
+        let posXArr = [26, 118, 145, 161];
+
+        let tableIptHtml = "";
+        let beginMoneyX = 31.2;
+        let moneyXGap = 12.2;
+        for (let i = 0; i <= 10; i++) {
+            tableSpanHtml += '<span id="bigmoney' + i + '-prt" style="position: absolute;left: calc(' + (beginMoneyX + moneyXGap * i) + 'mm + var(--offsetX));top: calc(var(--tbline6) + var(--offsetY));"></span>';
+            tableIptHtml += '<span id="bigmoney' + i + '-edit" style="position: absolute;left: calc(' + (beginMoneyX + moneyXGap * i) + 'mm + var(--offsetX));top: calc(var(--tbline6) + var(--offsetY));"></span>';
+        }
+
+        beginMoneyX = 173.2;
+        moneyXGap = 4.1;
+        for (let i = 0; i <= 10; i++) {
+            tableSpanHtml += '<span id="smallmoney' + i + '-prt" style="position: absolute;left: calc(' + (beginMoneyX + moneyXGap * i) + 'mm + var(--offsetX));top: calc(var(--tbline1) + var(--offsetY));"></span>';
+        }
+
+        let bill = ele("#bill");
+        let billEdit = ele("#bill-edit");
+        bill.innerHTML += tableSpanHtml;
+        billEdit.innerHTML += tableIptHtml;
+    </script>
+</body>
+
+</html>

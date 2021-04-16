@@ -17,9 +17,12 @@
                 <span>打印类型：</span>
                 <a-radio-group default-value="0" button-style="solid" v-model="printType" @change="onPrintTypeChange">
                     <a-radio-button value="0">外箱标签</a-radio-button>
-                    <a-radio-button value="1">板卡号</a-radio-button>
-                    <a-radio-button value="2">装箱清单</a-radio-button>
+                    <!-- <a-radio-button value="1">板卡号</a-radio-button>
+                    <a-radio-button value="2">装箱清单</a-radio-button> -->
                 </a-radio-group>
+                <span style="margin-left: 20px;">其他类型：</span>
+                <a href="/print/print-cardnum.html" target="blank" style="margin-right: 20px;">板卡号</a>
+                <a href="/print/print-bill.html" target="blank">支付证明单</a>
             </div>
             <div v-if="printType==0">
                 <div class="prt-product-bill-opt-part">

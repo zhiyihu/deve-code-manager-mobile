@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>板卡号</title>
+</head>
+
+<body style="margin:0;padding:0;">
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+
+            .a4 {
+                margin: 0 !important;
+                outline: none !important;
+            }
+        }
+
+        :root {
+            --offsetX: 0mm;
+            --offsetY: 0mm;
+            --firstLine: 23mm;
+            --tbline1: 43.6mm;
+            --tbline2: 52.4mm;
+            --tbline6: 89.4mm;
+        }
+
+        .a4 {
+            width: 594pt;
+            min-height: 840pt;
+            outline: 1px solid #ccc;
+            margin-left: 12px;
+        }
+
+        .print-code-content {
+            display: flex;
+            flex-wrap: wrap;
+            width: 594pt;
+            height: auto;
+            min-height: 840pt;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+
+        .code-line-six-part {
+            width: 94.5pt;
+            flex-shrink: 0;
+            flex-grow: 0;
+            height: 58pt !important;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .code-line-six-part:nth-of-type(84n + 85),
+        .code-line-six-part:nth-of-type(84n + 86),
+        .code-line-six-part:nth-of-type(84n + 87),
+        .code-line-six-part:nth-of-type(84n + 88),
+        .code-line-six-part:nth-of-type(84n + 89),
+        .code-line-six-part:nth-of-type(84n + 90) {
+            margin-top: 28pt;
+        }
+
+        .barcode-card-main {
+            width: 99pt;
+        }
+
+        .barcode-card-part {
+            width: 99pt;
+            position: relative;
+            height: 54pt;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5pt;
+            padding-bottom: 2pt;
+        }
+
+        .barcode-card-part>img {
+            height: 18pt;
+            max-width: 72pt;
+        }
+
+        .prt-code-bottom-text-card {
+            letter-spacing: 1.8pt;
+            font-size: 6pt;
+            margin-top: -1pt;
+            font-family: 'MicroSoft YaHei';
+        }
+        .print-btn{
+            background: #1890ff;width: 80px;height:28px;line-height:28px;color: white;outline:none;border:none;margin: 0px 0px 12px 0px;border-radius:4px;cursor: pointer;vertical-align: top;
+        }
+        input[type='text']{
+            height: 26px;
+            line-height: 26px;
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid #ccc;
+            padding-left: 4px;
+        }
+        .tip-text{
+            color: rgba(0, 0, 0, 0.65);
+            margin-left: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="noprint">
+        <div style="padding-top:14px;padding-left:14px;">
+            <input type="text" id="begin-num-ipt" placeholder="输入起始板卡号，10位数字" maxlength="10" style="width: 180px"/>
+            <input type="text" id="count" placeholder="输入个数，1~999" maxlength="3" style="width: 120px"/>
+            <button class="print-btn" style="width: 120px;" onclick="createNumEvent();">生成连续机号</button>
+            <button onclick="window.print();" class="print-btn">打印</button>
+        </div>
+
+        <div class="tip-text"><span id="tip-span">标签个数：0，每页84个，共0页</span>（请设置打印边距为无，保证格式统一）</div>
+    </div>
+    <div id="a4" class="a4">
+        <div class="print-code-content" id="printMe" style="padding-left:11pt;padding-top:14pt;width:583pt;"></div>
+    </div>
+    <div class="noprint">
+        <div style="height:20px;"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <script>
+        function createNumEvent(){
+            let beginNum = document.querySelector("#begin-num-ipt").value;
+            let count = document.querySelector("#count").value;
+            let numReg = /[1-9]\d{9}/;
+            let countReg = /[1-9]\d{0,2}/;
+            let tipSpan = document.querySelector("#tip-span");
+            if(numReg.test(beginNum) && countReg.test(count)){
+                createNumList(beginNum - 0, count - 0);
+                tipSpan.innerText = `标签个数：${count}，每页84个，共${Math.floor(count/84) + 1}页`;
+            }else{
+                alert('请输入10位数字板卡号，个数1~999');
+            }
+        }
+        function createNumList(beginNum, count) {
+            let resHtml = "";
+            let template =
+                '<div class="code-line-six-part" style="border: 0px solid #ccc;"><div class="barcode-card-main"><div class="barcode-card-part"><img id="barcode{{index}}" /><div class="prt-code-bottom-text-card">{{cardNum}}</div></div></div></div>';
+            for (let i = 0; i < count; i++) {
+                resHtml += template
+                    .replace("{{index}}", i)
+                    .replace("{{cardNum}}", beginNum + i);
+            }
+            document.querySelector("#printMe").innerHTML = resHtml;
+            for (let i = 0; i < count; i++) {
+                JsBarcode("#barcode" + i, beginNum + i, {
+                    displayValue: false,
+                    marginBottom: 0,
+                    width: 6,
+                });
+            }
+        }
+
+        function ele(id) {
+            return document.querySelector(id);
+        }
+    </script>
+</body>
+
+</html>
