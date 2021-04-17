@@ -3,7 +3,7 @@
 		<div class="content">
 			<div class="login">
                 <div class="login-head">
-                    <img src="../../assets/logo.png"/>
+                    <img src="https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/logo.png"/>
                     <span>注册码管理系统</span>
                 </div>
 				<div class="login-content">

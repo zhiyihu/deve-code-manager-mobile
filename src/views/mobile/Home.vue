@@ -3,7 +3,7 @@
     <a-layout-sider :style="menuStyle">
         <div class="logo logos" style="position: relative">
             <div class="system-title">
-                <img src="../../assets/logo.png" style="width: 28px; position: relative; bottom: 2px" />
+                <img src="https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/logo.png" style="width: 28px; position: relative; bottom: 2px" />
                 <span>注册码管理系统</span>
             </div>
         </div>

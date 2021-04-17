@@ -4,7 +4,7 @@
     <div class="user-content">
         <div class="face-head">
             <div class="face-head-photo">
-                <img src="../../assets/head.png" />
+                <img src="https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/head.png" />
             </div>
         </div>
         <div class="user-base-info">
@@ -22,14 +22,14 @@
                 <div class="base-info-title">电话</div>
                 <div class="base-info-value">
                     <input v-model="telephone" />
-                    <img src="../../assets/edit.png" />
+                    <img src="https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/edit.png" />
                 </div>
             </div>
             <div class="user-base-info-line">
                 <div class="base-info-title">邮箱</div>
                 <div class="base-info-value">
                     <input v-model="email" />
-                    <img src="../../assets/edit.png" />
+                    <img src="https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/edit.png" />
                 </div>
             </div>
             <div class="user-base-info-line">
