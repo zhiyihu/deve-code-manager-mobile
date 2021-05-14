@@ -1,0 +1,141 @@
+.salebill-freq-contacts{
+    position: relative;
+    width: 1200px;
+    
+}
+.salebill-freq-contacts>div{
+    border: 1px solid #ddd;
+    overflow: auto;
+}
+.salebill-freq-contacts>div:nth-of-type(1){
+    width: 700px;
+    height: calc(100vh - 200px);
+}
+
+.salebill-freq-contacts>div:nth-of-type(2){
+    width: 480px;
+    position:absolute;
+    right: 0px;
+    top: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.salebill-freq-line{
+    display: flex;
+    align-items: flex-start;
+}
+.salebill-freq-line>div:first-of-type{
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.salebill-single{
+    border-bottom: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 6px 0px;
+}
+
+.salebill-edit-btns{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.salebill-opt-line{
+    height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.salebill-opt-line>span{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 6px;
+}
+
+.salebill-opt-line>span>i{
+    color: #ff3300;
+    margin-right: 2px;
+}
+
+.freq-material-table{
+    margin-left: 10px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+.freq-material-table td{
+    border: 1px solid #aaa;
+    /* min-height:20px; */
+    line-height: 20px;
+    padding-left: 4px;
+}
+
+
+.zx-prts table {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-spacing: 0px;
+    max-width: 560pt !important;
+}
+
+.zx-prts td {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 0pt;
+    word-break: break-all !important;
+}
+.zx-prts td>input {
+    border:none;
+    outline: none;
+    text-indent: 2px;
+}
+.zx-prts{
+    font-size: 9pt;
+    margin-left: 12px;
+    /* margin-top: 12px; */
+}
+.xinfos{
+    display: flex;
+    margin-bottom: 2pt;
+    align-items: center;
+}
+.xinfos>div:nth-of-type(1){
+    width: 46pt;
+    margin-top: 4px;
+}
+.xinfos>div:nth-of-type(2){
+    width: 300pt;
+}
+.xinfos-r{
+    display: flex;
+    margin-bottom: 2pt;
+}
+.xinfos-r>div:nth-of-type(1){
+    width: 46pt;
+}
+.xinfos-r>div:nth-of-type(2){
+    width: 150pt;
+}
+.xinfos-sp{
+    display: flex;
+}
+.xinfos-sp>div{
+    display: flex;
+}
+.single-prt-part{
+    border: 1px solid #aaa;
+    margin-bottom: 4pt;
+    position: relative;
+    height: 440pt;
+}
+
+.salebill-ipt{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+}

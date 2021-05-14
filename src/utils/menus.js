@@ -82,13 +82,29 @@ const menus = [{
             roles: 'device-print_shipping_label',
             pc: true,
         },
-        // {
-        //     title: '物料管理',
-        //     key: 'materialmanager',
-        //     link: '/materialmanager',
-        // }
     ],
 },
+// {
+//     title: '单据功能',
+//     key: 'system',
+//     icon: 'icon-danjuguanli',
+//     menus: [
+//         {
+//             title: '物料列表',
+//             key: 'materialmanager',
+//             link: '/materialmanager',
+//             roles: '',
+//             pc: true,
+//         },
+//         {
+//             title: '销售出库单',
+//             key: 'outsalebill',
+//             link: '/outsalebill',
+//             roles: '',
+//             pc: true,
+//         }
+//     ]
+// },
 {
     title: '系统相关配置',
     key: 'system',
@@ -152,7 +168,7 @@ export function getMenus(permissions) {
     for(const menu of menus){
         let secondMenus = [];
         for(const m of menu.menus){
-            if((!m.pc || device == 'pc') &&hasRole(permissions, m.roles)){
+            if((!m.pc || device == 'pc') && hasRole(permissions, m.roles)){
                 secondMenus.push(m);
             }
         }

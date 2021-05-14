@@ -18,7 +18,7 @@
             </template>
         </a-menu>
     </a-layout-sider>
-    <a-layout>
+    <a-layout style="min-width: 1000px;">
         <a-layout-header :style="{ background: '#fff', padding: 0,position:'relative',boxShadow: '0 0 6px 1px rgb(0 0 0 / 10%)' }">
             <div class="user-head">
                 <a-dropdown>

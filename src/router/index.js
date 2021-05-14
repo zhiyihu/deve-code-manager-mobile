@@ -169,7 +169,15 @@ const router = new Router({
                     component: getSrc('MaterialManager'),
                     meta: {
                         roles: '',
-                        title: '物料管理'
+                        title: '物料列表'
+                    }
+                },{
+                    path: 'outsalebill',
+                    name: 'outsalebill',
+                    component: getSrc('OutsaleBill'),
+                    meta: {
+                        roles: '',
+                        title: ''
                     }
                 }
             ],

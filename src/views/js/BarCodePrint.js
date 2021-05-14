@@ -3,7 +3,7 @@ import Print from "vue-print-nb";
 import jsbarcode from "jsbarcode";
 import DeveCodeCommon from './DeveCodeCommon';
 
-import materials from "../json/materials.json";
+
 const ossImgSrc = "https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/img/";
 const CompanyIconsArr = [
     {
@@ -223,6 +223,6 @@ export default {
     mounted() {
         this.reqQueryDeviceType();
         this.today = this.$util.getFmtDateStr(new Date());
-        this.materials = materials;
+        
     },
 };

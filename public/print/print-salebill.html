@@ -1,0 +1,1004 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销售出库单</title>
+</head>
+
+<body style="padding: 0px;margin: 0px;">
+    <style>
+        .zx-prts table {
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+            border-spacing: 0px;
+            max-width: 560pt !important;
+        }
+
+        .zx-prts td {
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            padding-left: 4pt;
+            word-break: break-all !important;
+        }
+        .zx-prts{
+            font-size: 9pt;
+            margin-left: 12px;
+            /* margin-top: 12px; */
+        }
+        .xinfos{
+            display: flex;
+            margin-bottom: 2pt;
+        }
+        .xinfos>div:nth-of-type(1){
+            width: 46pt;
+        }
+        .xinfos>div:nth-of-type(2){
+            width: 300pt;
+        }
+        .xinfos-r{
+            display: flex;
+            margin-bottom: 2pt;
+        }
+        .xinfos-r>div:nth-of-type(1){
+            width: 46pt;
+        }
+        .xinfos-r>div:nth-of-type(2){
+            width: 150pt;
+        }
+        .xinfos-sp{
+            display: flex;
+        }
+        .xinfos-sp>div{
+            display: flex;
+        }
+        .single-prt-part{
+            border: 1px solid #aaa;
+            margin-bottom: 4pt;
+            position: relative;
+            height: 390pt;
+        }
+        @media print{
+            .noprint{
+                display: none;
+            }
+            .zx-prts{
+                font-size: 9pt;
+                margin: 0 0 0 10mm !important;
+            }
+            select,button,input{
+                display: none !important;
+            }
+            .nplace{
+                display: block !important;
+            }
+            .single-prt-part{
+                border:none !important;
+            }
+        }
+        .nplace{
+            display: none;
+        }
+        .filter-res-part{
+            font-size: 14px;
+            margin-bottom: 10px;
+            max-height: 200px;
+            min-height: 100px;
+            overflow: auto;
+            width: 600px;
+            border: 1px solid #ccc;
+            padding-left: 14px;
+            margin-top: 12px;
+        }
+        .filter-res-part>div{
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+        }
+        .filter-column1{
+            width: 100pt;
+        }
+        .filter-column2{
+            width: 180pt;
+        }
+        .filter-column3{
+            width: 100pt;
+        }
+        .filter-column4{
+            width: 120pt;
+        }
+        .filter-column4 a{
+            text-decoration: none;
+            color: #1890ff;
+            margin-left: 6px;
+        }
+        select{
+            height: 18px;
+        }
+        .mx-search{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 595pt;
+            height: 140pt;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+        .opt-div{
+            border: 1px solid #bbb;
+            position: fixed; 
+            left: 610pt;
+            top: 12px;
+            padding: 12px;
+            height: 680px;
+        }
+        .zbtn{
+            background: #1890ff;
+            width: 80px;
+            height:28px;
+            color: white;
+            outline:none;
+            border:none;
+            border-radius:4px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        .global-data-bill-part>div{
+            margin-bottom: 10px;
+        }
+        .global-data-bill-part>div>span{
+            display: inline-block;
+            width: 100px;
+            text-align: right;  
+        }
+
+        .global-data-bill-part input[type='text']{
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #aaa;
+        }
+        
+    </style>
+    <div class="noprint opt-div">
+        <div>
+            <button onclick="myprint();" class="zbtn">打印</button>
+            <button onclick="exportTable();" class="zbtn">导出表格</button>
+            <button onclick="testprint();" class="zbtn">测试打印</button>
+            <span style="vertical-align: middle;">垂直偏移(mm)：</span>
+            <input style="vertical-align: middle;width: 80px;" type="text" value="0" id="verticleOffsetSize"/>
+        </div>
+        <div style="margin-top: 12px;margin-bottom: 10px;">
+            <input type="text" placeholder="请输入清单个数" value="" maxlength="2" id="billNum"style="width: 120px;"/>
+            <input type="text" placeholder="起始出货编号" id="outSaleStartOrder" style="width: 120px;"/>
+            <button onclick="createMuchBill();">生成清单</button>
+        </div>
+        <div>表头全局数据</div>
+        <div class="global-data-bill-part">
+            <div>
+                <span>常用：</span>
+                <select id="common-select">
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <div>
+                <span>类别：</span>
+                <input type="text" id="input-head-data1"/>
+                <select name="" id="" onchange="iptTypeSelChange(this);">
+                    <option value="">--请选择--</option>
+                    <option value="销售">销售</option>
+                    <option value="客返维修">客返维修</option>
+                    <option value="借用">借用</option>
+                    <option value="样品">样品</option>
+                    <option value="生产改装">生产改装</option>
+                    <option value="调拔">调拔</option>
+                    <option value="研发改装">研发改装</option>
+                    <option value="赠送">赠送</option>
+                </select>
+            </div>
+            <div>
+                <span>销售代表：</span>
+                <input type="text"  id="input-head-data2"/>
+                <select name="" id="" onchange="iptTypeSelChange(this);">
+                    <option value="">--请选择--</option>
+                    <option value="胡斯涛">胡斯涛</option>
+                    <option value="郑晓琼">郑晓琼</option>
+                    <option value="张小丽">张小丽</option>
+                    <option value="鄢尤帅">鄢尤帅</option>
+                </select>
+            </div>
+            <div>
+                <span>客户名称：</span>
+                <input type="text"  id="input-head-data3"/>
+            </div>
+            <div>
+                <span>送货地址：</span>
+                <input type="text"  id="input-head-data4"/>
+            </div>
+            <div>
+                <span>联系人：</span>
+                <input type="text"  id="input-head-data5"/>
+            </div>
+            <div>
+                <span>电话：</span>
+                <input type="text"  id="input-head-data6"/>
+            </div>
+            <div>
+                <span>订单前缀：</span>
+                <input type="text"  id="input-head-data7"/>
+            </div>
+            <div>
+                <span>运输方式：</span>
+                <input type="text"  id="input-head-data9"/>
+                <select name="" id="" onchange="iptTypeSelChange(this);">
+                    <option value="">--请选择--</option>
+                    <option value="顺丰速运（寄付）">顺丰速运（寄付）</option>
+                    <option value="顺丰速运（到付）">顺丰速运（到付）</option>
+                    <option value="客户自提">客户自提</option>
+                    <option value="送货上门">送货上门</option>
+                    <option value="其他快递（寄付）">其他快递（寄付）</option>
+                    <option value="其他快递（到付）">其他快递（到付）</option>
+                </select>
+            </div>
+            <div>
+                <span>制单人：</span>
+                <input type="text"  id="input-head-data20"/>
+                <select name="" id="" onchange="iptTypeSelChange(this);">
+                    <option value="">--请选择--</option>
+                    <option value="胡斯涛">胡斯涛</option>
+                    <option value="郑晓琼">郑晓琼</option>
+                    <option value="张小丽">张小丽</option>
+                    <option value="鄢尤帅">鄢尤帅</option>
+                </select>
+            </div>
+
+            <button onclick="setGlobalBillData();">设置全局数据</button>
+        </div>
+        <div>
+            <span>添加物品：</span>
+            <input type="text" id="filter-ipt" placeholder="输入关键词搜索，可输入多个关键词，用逗号或空格分开" style="margin-top: 12px;width: 400px"/>
+            <span>当前：</span>
+            <select id="curr-select">
+                <option value="1">No.1</option>
+            </select>
+        </div>
+        <div id="filter-res-part" class="filter-res-part">
+
+        </div>
+    </div>
+    <div class="noprint" style="height: 12px;"></div>
+    <div id="prt-template" style="display:none;">
+        <div class="single-prt-part">
+            <span style="position: absolute;top:10px;left: 10px;" class="noprint">##NUM##</span>
+            <div style="text-align: center;font-size:15pt;padding-top: 30pt;">广州展讯信息科技有限公司--销售出库清单</div>
+            <div style="display: flex; width: 550pt;margin:16pt auto 4pt auto;">
+                <div style="width: 350pt;">
+                    <div class="xinfos">
+                        <div>类别　　：</div>
+                        <div contenteditable="true" style="width: 150pt;" class="head-data-1">销售</div>
+                        <select name="" id="" onchange="typeSelChange(this);">
+                            <option value="销售">销售</option>
+                            <option value="客返维修">客返维修</option>
+                            <option value="借用">借用</option>
+                            <option value="样品">样品</option>
+                            <option value="生产改装">生产改装</option>
+                            <option value="调拔">调拔</option>
+                            <option value="研发改装">研发改装</option>
+                            <option value="赠送">赠送</option>
+                        </select>
+                    </div>
+                    <div class="xinfos">
+                        <div>销售代表：</div>
+                        <div contenteditable="true" style="width: 150pt;" class="head-data-2">胡斯涛</div>
+                        <select name="" id="" onchange="typeSelChange(this);">
+                            <option value="胡斯涛">胡斯涛</option>
+                            <option value="郑晓琼">郑晓琼</option>
+                            <option value="张小丽">张小丽</option>
+                            <option value="鄢尤帅">鄢尤帅</option>
+                        </select>
+                    </div>
+                    <div class="xinfos">
+                        <div>客户名称：</div>
+                        <div contenteditable="true" class="head-data-3"></div>
+                    </div>
+                    <div class="xinfos">
+                        <div>送货地址：</div>
+                        <div contenteditable="true" class="head-data-4"></div>
+                    </div>
+                    <div class="xinfos-sp">
+                        <div style="margin-right: 8pt;">
+                            <span style="width: 46pt;">联系人　：</span>
+                            <span style="width: 80pt;" contenteditable="true" class="head-data-5"></span>
+                        </div>
+                        <div>
+                            <span>电话：</span>
+                            <span style="width: 120pt;" contenteditable="true" class="head-data-6"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 200pt;">
+                    <div>&nbsp;</div>
+                    <div class="xinfos-r">
+                        <div>订单编号：</div>
+                        <div contenteditable="true" class="head-data-7">ZXC-</div>
+                    </div>
+                    <div class="xinfos-r">
+                        <div>出货编号：</div>
+                        <div contenteditable="true" class="head-data-8">##SALE##</div>
+                    </div>
+                    <div class="xinfos-r">
+                        <div>运输方式：</div>
+                        <div contenteditable="true" class="head-data-9"></div>
+                    </div>
+                    <div class="xinfos-r">
+                        <div>快递单号：</div>
+                        <div contenteditable="true" class="head-data-10"></div>
+                    </div>
+                </div>
+            </div>
+            <table style="margin: auto">
+                <tbody>
+                    <tr>
+                        <td style="width: 24pt;">序号</td>
+                        <td style="width: 80pt;">产品料号</td>
+                        <td style="width: 170pt;">名称</td>
+                        <td style="width: 60pt;">规格</td>
+                        <td style="width: 30pt;">数量</td>
+                        <td style="width: 30pt;">单位</td>
+                        <td style="width: 120pt;">备注</td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;margin-top: 2pt;">签收时请确认外包装是否破损等表面质量问题，否则视为包装完好无损！（以下为空）</div>
+            <div style="text-align: center;margin-top: 2pt;">注：第一联：存根（白）、第二联：财务（红）、第三联：回执（蓝）、第四联：客户（绿）、第五联：业务（黄）</div>
+            <div style="display: flex;justify-content: center;margin-top: 3pt;">
+                <div style="width: 120pt;">
+                    <span>制单人：</span>
+                    <span contenteditable="true" style="display: inline-block;width:70pt;" class="head-data-20"></span>
+                </div>
+                <div style="width: 120pt;">
+                    <span>审核人：</span>
+                    <span contenteditable="true" style="display: inline-block;width:70pt;"></span>
+                </div>
+                <div style="width: 110pt;">
+                    <span>仓管：</span>
+                    <span contenteditable="true" style="display: inline-block;width:70pt;"></span>
+                </div>
+                <div style="width: 130pt;">
+                    <span>客户签收/日期：</span>
+                    <span contenteditable="true" style="display: inline-block;width:60pt;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div style="border: 1px solid red;width: 648pt;">
+        <div style="height:10mm;border: 1px solid red;">1</div>
+        <div style="height:10mm;border: 1px solid red;">2</div>
+    </div> -->
+    <div class="nplace" id="nplace"></div>
+    <div style="width: 595pt;position: relative;" class="zx-prts" id="zx-prts">
+        <div class="single-prt-part">
+            <span style="position: absolute;top:10px;left: 10px;" class="noprint">No.1</span>
+            <div style="text-align: center;font-size:15pt;padding-top: 30pt;">广州展讯信息科技有限公司--销售出库清单</div>
+            <div style="display: flex; width: 550pt;margin:16pt auto 4pt auto;">
+                <div style="width: 350pt;">
+                    <div class="xinfos">
+                        <div>类别　　：</div>
+                        <div contenteditable="true" style="width: 150pt;" class="head-data-1">销售</div>
+                        <select name="" id="" onchange="typeSelChange(this);">
+                            <option value="销售">销售</option>
+                            <option value="客返维修">客返维修</option>
+                            <option value="借用">借用</option>
+                            <option value="样品">样品</option>
+                            <option value="生产改装">生产改装</option>
+                            <option value="调拔">调拔</option>
+                            <option value="研发改装">研发改装</option>
+                            <option value="赠送">赠送</option>
+                        </select>
+                    </div>
+                    <div class="xinfos">
+                        <div>销售代表：</div>
+                        <div contenteditable="true" style="width: 150pt;" class="head-data-2">胡斯涛</div>
+                        <select name="" id="" onchange="typeSelChange(this);">
+                            <option value="胡斯涛">胡斯涛</option>
+                            <option value="郑晓琼">郑晓琼</option>
+                            <option value="张小丽">张小丽</option>
+                            <option value="鄢尤帅">鄢尤帅</option>
+                        </select>
+                    </div>
+                    <div class="xinfos">
+                        <div>客户名称：</div>
+                        <div contenteditable="true" class="head-data-3"></div>
+                    </div>
+                    <div class="xinfos">
+                        <div>送货地址：</div>
+                        <div contenteditable="true" class="head-data-4"></div>
+                    </div>
+                    <div class="xinfos-sp">
+                        <div style="margin-right: 8pt;">
+                            <span style="width: 46pt;">联系人　：</span>
+                            <span style="width: 80pt;" contenteditable="true" class="head-data-5"></span>
+                        </div>
+                        <div>
+                            <span>电话：</span>
+                            <span style="width: 120pt;" contenteditable="true" class="head-data-6"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 200pt;">
+                    <div>&nbsp;</div>
+                    <div class="xinfos-r">
+                        <div>订单编号：</div>
+                        <div contenteditable="true" class="head-data-7">ZXC-</div>
+                    </div>
+                    <div class="xinfos-r">
+                        <div>出货编号：</div>
+                        <div contenteditable="true" class="head-data-8"></div>
+                    </div>
+                    <div class="xinfos-r">
+                        <div>运输方式：</div>
+                        <div contenteditable="true" class="head-data-9"></div>
+                    </div>
+                    <div class="xinfos-r">
+                        <div>快递单号：</div>
+                        <div contenteditable="true" class="head-data-10"></div>
+                    </div>
+                </div>
+            </div>
+            <table style="margin: auto">
+                <tbody>
+                    <tr>
+                        <td style="width: 24pt;">序号</td>
+                        <td style="width: 80pt;">产品料号</td>
+                        <td style="width: 170pt;">名称</td>
+                        <td style="width: 60pt;">规格</td>
+                        <td style="width: 30pt;">数量</td>
+                        <td style="width: 30pt;">单位</td>
+                        <td style="width: 120pt;">备注</td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;margin-top: 2pt;">签收时请确认外包装是否破损等表面质量问题，否则视为包装完好无损！（以下为空）</div>
+            <div style="text-align: center;margin-top: 2pt;">注：第一联：存根（白）、第二联：财务（红）、第三联：回执（蓝）、第四联：客户（绿）、第五联：业务（黄）</div>
+            <div style="display: flex;justify-content: center;margin-top: 3pt;">
+                <div style="width: 120pt;">
+                    <span>制单人：</span>
+                    <span contenteditable="true" style="display: inline-block;width:70pt;" class="head-data-20"></span>
+                </div>
+                <div style="width: 120pt;">
+                    <span>审核人：</span>
+                    <span contenteditable="true" style="display: inline-block;width:70pt;"></span>
+                </div>
+                <div style="width: 110pt;">
+                    <span>仓管：</span>
+                    <span contenteditable="true" style="display: inline-block;width:70pt;"></span>
+                </div>
+                <div style="width: 130pt;">
+                    <span>客户签收/日期：</span>
+                    <span contenteditable="true" style="display: inline-block;width:60pt;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="materials.js"></script>
+    <script src="sale.common.config.js"></script>
+    <script src="xlsx.core.min.js"></script>
+    <script>
+        window.onload = function(){
+            const commonSelect = document.querySelector("#common-select");
+            let resHtml = '<option value="">--请选择--</option>';
+            let i = 0;
+            for(let item of SaleCommonConfigs){
+                resHtml += `<option value="${i}">${item.name}</option>`;
+                i++;
+            }
+            commonSelect.innerHTML = resHtml;
+            commonSelect.onchange = function(e){
+                let index = e.target.value + "";
+                if(index){
+                    let selItem = SaleCommonConfigs[index];
+                    document.querySelector("#input-head-data3").value = selItem.company;
+                    document.querySelector("#input-head-data4").value = selItem.addr;
+                    document.querySelector("#input-head-data5").value = selItem.contact;
+                    document.querySelector("#input-head-data6").value = selItem.tel;
+                }else{
+                    document.querySelector("#input-head-data3").value = "";
+                    document.querySelector("#input-head-data4").value = "";
+                    document.querySelector("#input-head-data5").value = "";
+                    document.querySelector("#input-head-data6").value = "";
+                }
+            }
+            let offset = sessionStorage.getItem("ESPON-offset") || 0;
+            document.querySelector("#verticleOffsetSize").value = offset;
+            var fillZero = function(n){
+                return (n < 10 ? "0" : "") + n;
+            }
+            var date = new Date();
+            var orderStr = date.getFullYear().toString().substr(2, 2) + fillZero(date.getMonth() + 1) + fillZero(date.getDate());
+            document.querySelector("#outSaleStartOrder").value= "ZXFC-" + orderStr + "-001";
+        }
+        function myprint(){
+            let offset = document.querySelector("#verticleOffsetSize").value;
+            if(!isNaN(offset)){
+                offset = Math.min(150, offset);
+                document.querySelector("#nplace").style.height= offset + 'mm';
+                sessionStorage.setItem("ESPON-offset", offset);
+            }else{
+                document.querySelector("#nplace").style.height = '0';
+                sessionStorage.setItem("ESPON-offset", 0);
+            }
+            window.print();
+        }
+        function testprint(){
+            // var newWin = window.open("","blank");
+            let html = '';
+            for(let i = 0; i < 27; i++){
+                html += `<div style="outline: ${(i < 2 || i > 22) ? 1 : 1}px solid #ccc;height:5mm;width:100%">${i+1}</div>`
+            }
+            
+            // var html = new Array(13).fill(singleHtml).join('');
+            var iframe = document.createElement("iframe");
+            document.body.appendChild(iframe);
+            iframe.contentWindow.document.body.innerHTML = `<div style="width: 595pt;height:390pt;border: 1px solid #ccc;margin:auto;">${html}</div>`;
+            iframe.contentWindow.document.body.style.margin = "0";
+            iframe.contentWindow.document.body.style.padding = "0";
+            iframe.width = "0";
+            iframe.height = "0";
+            iframe.contentWindow.print();
+            document.body.removeChild(iframe);
+        }
+        function setGlobalBillData(){
+            let setClassVal = function(selectorText, val){
+                let elements = document.querySelectorAll(selectorText);
+                
+                for(let element of elements){
+                    element.innerHTML = val;
+                }
+            }
+            for(let i of [1,2,3,4,5,6,7,9,20]){
+                let ipt = document.querySelector("#input-head-data" + i);
+                if(ipt.value.trim()){
+                    setClassVal("#zx-prts .head-data-" + i, ipt.value.trim());
+                }
+                
+            }
+            
+        }
+        function createMuchBill(){
+            let getContinueOrder = function(str, i){
+                let len = str.length
+                let orderStr = (str.substr(len - 3, 3) - 0 + i + "");
+                orderStr = "000".substr(0, 3 - orderStr.length) + orderStr;
+                return str.substr(0, len - 3) + orderStr;
+            }
+            let billNumIpt = document.querySelector("#billNum");
+            let outSaleStartOrder = document.querySelector("#outSaleStartOrder");
+            let startOrder = outSaleStartOrder.value.trim();
+            billNumIpt.value = billNumIpt.value.replace(/[^0-9]/g, '');
+            let num = billNumIpt.value;
+            let reg = new RegExp("^[1-9]\\d{0,1}$");
+            if(!num){
+                return;
+            }
+            if(reg.test(num)){
+                let templateHtml = document.querySelector("#prt-template").innerHTML;
+                let zxPrts = document.querySelector("#zx-prts");
+                let currSelect = document.querySelector("#curr-select");
+                let resHtml = '';
+                let selHtml = "";
+                let isUseOutSaleOrder = (/^\S{1,20}\d{3}$/).test(startOrder);
+
+                for(let i = 0; i < num; i++){
+                    let html = templateHtml.replace('##NUM##', 'No.' + (i+1));
+                    html = html.replace('##SALE##', isUseOutSaleOrder ? getContinueOrder(startOrder, i): "");
+                    resHtml += html;
+                    selHtml += `<option value="${i+1}">No.${i+1}</option>`;
+                }
+                zxPrts.innerHTML = resHtml;//new Array(num).fill(templateHtml).join('\r\n');
+                currSelect.innerHTML = selHtml;
+                
+            }else{
+                alert('清单个数1~99');
+            }
+        }
+ 
+       
+        function typeSelChange(e){
+            let val = e.value;
+            e.parentNode.children[1].innerHTML = val;
+            let obj = {"销售":"ZXC-", "借用":"B-"};
+            let orderPre = obj[val] || "ZXFC-";
+            e.parentNode.parentNode.parentNode.children[1].children[1].children[1].innerText = orderPre;
+        }
+        function iptTypeSelChange(e){
+            let val = e.value;
+            e.parentNode.children[1].value = val;
+            if(e.parentNode.children[1].id == 'input-head-data1'){
+                let obj = {"销售":"ZXC-", "借用":"B-"};
+                let orderPre = obj[val] || "ZXFC-";
+                document.querySelector("#input-head-data7").value = orderPre;
+            }
+            // input-head-data1
+            // 
+            // e.parentNode.parentNode.parentNode.children[1].children[1].children[1].innerText = orderPre;
+        }
+        function debounce(fn, wait) {    
+            var timeout = null;    
+            return function() {        
+                if(timeout !== null)   clearTimeout(timeout);        
+                timeout = setTimeout(fn, wait);    
+            }
+        }
+        function matchKeywordAndMaterial(materialItem, keyword){
+            if(!keyword){
+                return false;
+            }
+            var itemArr = [materialItem[0].toUpperCase(), materialItem[2].toUpperCase(), materialItem[5].toUpperCase()];
+            var keywordArr = keyword.replace(/，|\s/g, ",").split(",");
+            for(let k of keywordArr){
+                for(let item of itemArr){
+                    if(item.includes(k)){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        const filterIpt = document.querySelector("#filter-ipt");
+        const filterResPart = document.querySelector("#filter-res-part");
+        document.querySelector("#filter-ipt").onkeyup = debounce(function (e){
+            let val = filterIpt.value.trim().toUpperCase();
+            let resHtml = "";
+            let count = 0;
+            for(var item of materials){
+                if(item[0].length == 13 && matchKeywordAndMaterial(item, val)){
+                    resHtml += `<div>
+                <div class="filter-column1">${item[0]}</div>
+                <div class="filter-column2">${item[2]}</div>
+                <div class="filter-column3">${item[5]}</div>
+                <div class="filter-column4">
+                    <a href="javascript:;" onclick="addSaleItemToTable('${item[0]}', '${item[2]}', '${item[5]}');">全局添加</a>
+                    <a href="javascript:;" onclick="addSaleItemToTableSingle('${item[0]}', '${item[2]}', '${item[5]}');">单个添加</a>
+                </div>
+            </div>`;
+                    count++;
+                }
+                if(count >= 20){
+                    break;
+                }
+            }
+            filterResPart.innerHTML = resHtml;
+        }, 1000);
+   
+
+        function addSaleItemToTable(item1, item2, item3){
+            const tables = document.querySelectorAll("#zx-prts table");
+            for(let table of tables){
+                const trs = table.tBodies[0].children;
+                for(let i = 1; i < trs.length; i++){
+                    let firstTd = trs[i].children[1];
+                    if(!firstTd.innerHTML){
+                        trs[i].children[0].innerHTML = i;
+                        trs[i].children[1].innerHTML = item1;
+                        trs[i].children[2].innerHTML = item2;
+                        trs[i].children[3].innerHTML = item3;
+                        trs[i].children[4].innerHTML = 1;
+                        trs[i].children[5].innerHTML = 'PCS';
+                        break;
+                    }
+
+                }
+            }
+        }
+
+        function addSaleItemToTableSingle(item1, item2, item3){
+            let currSelect = document.querySelector("#curr-select");
+            let currIndex = currSelect.value - 1;
+            const tables = document.querySelectorAll("#zx-prts table");
+            
+            const trs = tables[currIndex].tBodies[0].children;
+            for(let i = 1; i < trs.length; i++){
+                let firstTd = trs[i].children[1];
+                if(!firstTd.innerHTML){
+                    trs[i].children[0].innerHTML = i;
+                    trs[i].children[1].innerHTML = item1;
+                    trs[i].children[2].innerHTML = item2;
+                    trs[i].children[3].innerHTML = item3;
+                    trs[i].children[4].innerHTML = 1;
+                    trs[i].children[5].innerHTML = 'PCS';
+                    break;
+                }
+
+            }
+            
+        }
+
+        function sheet2blob(sheet, sheetName) {
+            sheetName = sheetName || 'sheet1';
+            var workbook = {
+                SheetNames: [sheetName],
+                Sheets: {}
+            };
+            workbook.Sheets[sheetName] = sheet;
+            // 生成excel的配置项
+            var wopts = {
+                bookType: 'xlsx', // 要生成的文件类型
+                bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+                type: 'binary'
+            };
+            var wbout = XLSX.write(workbook, wopts);
+            var blob = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
+            // 字符串转ArrayBuffer
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+            return blob;
+        }
+        function openDownloadDialog(url, saveName) {
+            if (typeof url == 'object' && url instanceof Blob) {
+                url = URL.createObjectURL(url); // 创建blob地址
+            }
+            var aLink = document.createElement('a');
+            aLink.href = url;
+            aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+            var event;
+            if (window.MouseEvent) event = new MouseEvent('click');
+            else {
+                event = document.createEvent('MouseEvents');
+                event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            }
+            aLink.dispatchEvent(event);
+        }
+        
+		
+		
+        function exportTable() {
+            const singlePrtParts = document.querySelectorAll("#zx-prts .single-prt-part");
+            const tbArr = new Array();
+            for(let singlePrtPart of singlePrtParts){
+                let table = singlePrtPart.children[3];
+                let trs = table.tBodies[0].children;
+                for(let tr of trs){
+                    let tds = tr.children;
+                    let trArr = [];
+                    for(let td of tds){
+                        trArr.push(td.innerText);
+                    }
+                    trArr.push([""]);
+                    tbArr.push(trArr);
+                }
+            }
+            
+            var aoa = tbArr;
+            var sheet = XLSX.utils.aoa_to_sheet(aoa);
+            sheet['!merges'] = [
+               // { s: { r: 3, c: 3 }, e: { r: 4, c: 4 } }
+            ];
+            openDownloadDialog(sheet2blob(sheet), '导出.xlsx');
+        }
+
+    </script>
+</body>
+
+</html>

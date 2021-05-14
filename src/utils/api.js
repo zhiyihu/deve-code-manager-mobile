@@ -82,6 +82,31 @@ const api = {
     logout() {
         return this.post('/logout');
     },
+
+    req(url, data, cfg){
+        cfg = cfg || {};
+        let apiURL = localStorage.getItem("billLocalNetURL") || 'http://127.0.0.1:3000/api';
+        const param ={
+            method: cfg.method || "POST",
+            headers: {
+                "Content-Type": cfg.file ? "application/octet-stream" : "application/json"
+            },
+        };
+        if(cfg.method != "GET"){
+            param.body = data;
+        }
+        return fetch(apiURL + url, param).then(function(res) {
+            if (res.status === 200) {
+                return res.json()
+            } else {
+                return Promise.reject(res.json())
+            }
+        }).then(function(data) {
+            return data;
+        }).catch(function(err) {
+            console.error(err);
+        });
+    },
 };
 
 
