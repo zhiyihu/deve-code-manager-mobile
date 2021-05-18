@@ -6,6 +6,22 @@
                     
                     <a-tab-pane key="1" tab="制作清单" force-render>
                         <div class="salebill-create">
+                            <div style="padding-left: 20px;padding-bottom: 10px;">
+                                <span>常用联系人：</span>
+                                <a-select default-value="" show-search option-filter-prop="children" :filter-option="filterOption" style="width: 250px" @change="onFreqContactsSelChange">
+                                    <a-select-option value="">请选择</a-select-option>
+                                    <a-select-option v-for="(item, index) in SaleFreqContactsResult" :key="index" :value="index">
+                                        {{ item.name }}
+                                    </a-select-option>
+                                </a-select>
+                                <span style="margin-left:16px;">常用套装：</span>
+                                <a-select default-value="" show-search option-filter-prop="children" :filter-option="filterOption" style="width: 250px" @change="onFreqMaterialChange">
+                                    <a-select-option value="">请选择</a-select-option>
+                                    <a-select-option v-for="(item, index) in SaleFreqMaterialResult" :key="index" :value="index">
+                                        {{ item.name }}
+                                    </a-select-option>
+                                </a-select>
+                            </div>
                             <div>
                                 <div style="width: 595pt;position: relative;" class="zx-prts" id="zx-prts">
                                     <div class="single-prt-part">
@@ -15,10 +31,11 @@
                                             <div style="width: 350pt;">
                                                 <div class="xinfos">
                                                     <div>类别：</div>
-                                                    <div style="width: 150pt;" class="head-data-1">
+                                                    <!-- <div style="width: 0pt;" class="head-data-1">
                                                         <input class="salebill-ipt" type="text"/>
-                                                    </div>
-                                                    <select name="" id="">
+                                                    </div> -->
+                                                    <select name="" id="" v-model="tbHeadDatas[0]">
+                                                        <option value="" selected>--请选择--</option>
                                                         <option value="销售" selected>销售</option>
                                                         <option value="客返维修">客返维修</option>
                                                         <option value="借用">借用</option>
@@ -31,10 +48,11 @@
                                                 </div>
                                                 <div class="xinfos">
                                                     <div>销售代表：</div>
-                                                    <div style="width: 150pt;" class="head-data-2">
+                                                    <!-- <div style="width: 150pt;" class="head-data-2">
                                                         <input class="salebill-ipt" type="text"/>
-                                                    </div>
-                                                    <select name="" id="">
+                                                    </div> -->
+                                                    <select name="" id="" v-model="tbHeadDatas[1]">
+                                                        <option value="" selected>--请选择--</option>
                                                         <option value="胡斯涛">胡斯涛</option>
                                                         <option value="郑晓琼">郑晓琼</option>
                                                         <option value="张小丽">张小丽</option>
@@ -44,26 +62,26 @@
                                                 <div class="xinfos">
                                                     <div>客户名称：</div>
                                                     <div class="head-data-3">
-                                                        <input class="salebill-ipt" type="text"/>
+                                                        <input class="salebill-ipt" v-model="tbHeadDatas[2]" type="text" style="width: 380px;"/>
                                                     </div>
                                                 </div>
                                                 <div class="xinfos">
                                                     <div>送货地址：</div>
                                                     <div class="head-data-4">
-                                                        <input class="salebill-ipt" type="text"/>
+                                                        <input class="salebill-ipt" v-model="tbHeadDatas[3]" type="text" style="width: 380px;"/>
                                                     </div>
                                                 </div>
                                                 <div class="xinfos-sp">
                                                     <div style="margin-right: 8pt;">
                                                         <span style="width: 46pt;">联系人：</span>
                                                         <span style="width: 80pt;" class="head-data-5">
-                                                            <input class="salebill-ipt" type="text" style="width: 100px;"/>
+                                                            <input class="salebill-ipt" type="text" v-model="tbHeadDatas[4]" style="width: 100px;"/>
                                                         </span>
                                                     </div>
                                                     <div>
                                                         <span>电话：</span>
                                                         <span style="width: 120pt;" class="head-data-6">
-                                                            <input class="salebill-ipt" type="text"/>
+                                                            <input class="salebill-ipt" v-model="tbHeadDatas[5]" type="text"/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -73,25 +91,34 @@
                                                 <div class="xinfos-r">
                                                     <div>订单编号：</div>
                                                     <div  class="head-data-7">
-                                                        <input class="salebill-ipt" type="text"/>
+                                                        <input class="salebill-ipt" v-model="tbHeadDatas[6]" type="text"/>
                                                     </div>
                                                 </div>
                                                 <div class="xinfos-r">
                                                     <div>出货编号：</div>
                                                     <div  class="head-data-8">
-                                                        <input class="salebill-ipt" type="text"/>
+                                                        <input class="salebill-ipt" v-model="tbHeadDatas[7]" type="text"/>
                                                     </div>
                                                 </div>
                                                 <div class="xinfos-r">
                                                     <div>运输方式：</div>
-                                                    <div  class="head-data-9">
-                                                        <input class="salebill-ipt" type="text"/>
-                                                    </div>
+                                                    <!-- <div  class="head-data-9">
+                                                        <input class="salebill-ipt"  type="text"/>
+                                                    </div> -->
+                                                    <select name="" id="" v-model="tbHeadDatas[8]">
+                                                        <option value="">--请选择--</option>
+                                                        <option value="顺丰速运（寄付）">顺丰速运（寄付）</option>
+                                                        <option value="顺丰速运（到付）">顺丰速运（到付）</option>
+                                                        <option value="客户自提">客户自提</option>
+                                                        <option value="送货上门">送货上门</option>
+                                                        <option value="其他快递（寄付）">其他快递（寄付）</option>
+                                                        <option value="其他快递（到付）">其他快递（到付）</option>
+                                                    </select>
                                                 </div>
                                                 <div class="xinfos-r">
                                                     <div>快递单号：</div>
                                                     <div  class="head-data-10">
-                                                        <input class="salebill-ipt" type="text"/>
+                                                        <input class="salebill-ipt" v-model="tbHeadDatas[9]" type="text"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,7 +165,9 @@
                                         <div style="display: flex;justify-content: center;margin-top: 3pt;">
                                             <div style="width: 120pt;">
                                                 <span>制单人：</span>
-                                                <span  style="display: inline-block;width:70pt;" class="head-data-20"></span>
+                                                <span  style="display: inline-block;width:70pt;" class="head-data-20">
+                                                     <input class="salebill-ipt" type="text" style="width: 70pt" v-model="realName"/>
+                                                </span>
                                             </div>
                                             <div style="width: 120pt;">
                                                 <span>审核人：</span>
@@ -156,11 +185,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div></div>
+                            <div style="padding-left: 14px;padding-top: 4px;">
+                                <a-button type="primary" @click="saveBill">保存单据</a-button>
+                            </div>
                         </div>
                     </a-tab-pane>
                     <a-tab-pane key="2" tab="已保存单据">
-                        222
+                        <div>
+                            <a-button type="primary" @click="querySaleBill">查询</a-button>
+                            <a-button type="primary" style="margin-left:10px;">导出打印单</a-button>
+                            <a-button type="primary" style="margin-left:10px;" @click="exportAllBillExcel">导出汇总表格</a-button>
+                        </div>
+                        <div>
+                            <div v-for="(item,index) in salebillRecords" :key="index">
+                                {{item.createTime}}
+                            </div>
+                        </div>
                     </a-tab-pane>
                     <a-tab-pane key="3" tab="常用联系人">
                         <a-button type="primary" style="margin-bottom: 12px;" @click="reqFreqContacts">查询</a-button>
