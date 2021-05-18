@@ -1,6 +1,6 @@
 import moment from "moment";
 import XLSX from "xlsx";
-// import Vue from 'vue'
+import ExportSaleBillPrint from './ExportSaleBillPrint'
 
 export default {
     data() {
@@ -31,6 +31,9 @@ export default {
         };
     },
     methods: {
+        exportPrint(){
+            ExportSaleBillPrint.exportHtml(this.salebillRecords);
+        },
         exportAllBillExcel(){
             const tableArr = [];
             const merge = [];

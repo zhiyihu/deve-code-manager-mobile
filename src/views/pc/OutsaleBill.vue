@@ -57,6 +57,7 @@
                                                         <option value="郑晓琼">郑晓琼</option>
                                                         <option value="张小丽">张小丽</option>
                                                         <option value="鄢尤帅">鄢尤帅</option>
+                                                        <option value="彭子威">彭子威</option>
                                                     </select>
                                                 </div>
                                                 <div class="xinfos">
@@ -193,7 +194,7 @@
                     <a-tab-pane key="2" tab="已保存单据">
                         <div>
                             <a-button type="primary" @click="querySaleBill">查询</a-button>
-                            <a-button type="primary" style="margin-left:10px;">导出打印单</a-button>
+                            <a-button type="primary" style="margin-left:10px;" @click="exportPrint">导出打印单</a-button>
                             <a-button type="primary" style="margin-left:10px;" @click="exportAllBillExcel">导出汇总表格</a-button>
                         </div>
                         <div>
