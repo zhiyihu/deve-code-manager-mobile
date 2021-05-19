@@ -2,6 +2,7 @@ import moment from "moment";
 import DeveCodeCommon from './DeveCodeCommon';
 
 
+
 let columns = [{
     title: '序号',
     dataIndex: 'order',
@@ -80,7 +81,14 @@ export default {
     },
     methods: {
         exportExcelByArr(exportArray, filename = "导出表格") {
-            this.downloadTextFile(filename + ".csv", exportArray.join("\r\n"));
+            //this.downloadTextFile(filename + ".csv", exportArray.join("\r\n"));
+            this.$loading.show();
+            let XLSX = require("xlsx");
+            let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
+            let wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
+            this.$loading.hide();
+            XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
         },
         downloadTextFile(fileName, content) {
             var data = new Blob([content]);
