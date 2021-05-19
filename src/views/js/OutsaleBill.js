@@ -1,5 +1,4 @@
 import moment from "moment";
-import XLSX from "xlsx";
 import ExportSaleBillPrint from './ExportSaleBillPrint'
 
 export default {
@@ -497,11 +496,12 @@ export default {
             this.exportExcelByArr(tableArr, '常用联系人');
         },
         exportExcelByArr(exportArray, filename = "导出表格", merge=[]) {
-            let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
-            let wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
-            tSheet['!merges'] = merge;
-            XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
+            console.log(filename, merge);
+            // let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
+            // let wb = XLSX.utils.book_new();
+            // XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
+            // tSheet['!merges'] = merge;
+            // XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
         },
 
         setDateRange() {

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import XLSX from "xlsx";
+
 export default {
   data() {
     return {};
@@ -34,20 +34,9 @@ export default {
   computed: {},
   methods: {
     bindExportExcel() {
-      let arr = [
-        ["标题1", "标题2", "标题3"],
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        [7, 8, 9],
-      ];
-      this.exportExcel(arr, "exp");
+      
     },
-    exportExcel(exportArray, filename = "导出表格") {
-      let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
-      let wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
-      XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
-    },
+    
   },
   mounted() {},
 };

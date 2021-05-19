@@ -159,7 +159,7 @@ const router = new Router({
                     name: 'billmanager',
                     component: getSrc('BillManager'),
                     meta: {
-                        roles: '',
+                        roles: 'xx',
                         title: '单据管理'
                     }
                 },
@@ -168,7 +168,7 @@ const router = new Router({
                     name: 'materialmanager',
                     component: getSrc('MaterialManager'),
                     meta: {
-                        roles: '',
+                        roles: 'xx',
                         title: '物料列表'
                     }
                 },{
@@ -176,7 +176,7 @@ const router = new Router({
                     name: 'outsalebill',
                     component: getSrc('OutsaleBill'),
                     meta: {
-                        roles: '',
+                        roles: 'xx',
                         title: ''
                     }
                 }

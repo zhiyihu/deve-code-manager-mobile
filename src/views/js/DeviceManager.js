@@ -1,6 +1,6 @@
 import moment from "moment";
 import DeveCodeCommon from './DeveCodeCommon';
-import XLSX from "xlsx";
+
 
 let columns = [{
     title: '序号',
@@ -80,10 +80,16 @@ export default {
     },
     methods: {
         exportExcelByArr(exportArray, filename = "导出表格") {
-            let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
-            let wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
-            XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
+            this.downloadTextFile(filename + ".csv", exportArray.join("\r\n"));
+        },
+        downloadTextFile(fileName, content) {
+            var data = new Blob([content]);
+            var downloadUrl = window.URL.createObjectURL(data);
+            var anchor = document.createElement("a");
+            anchor.href = downloadUrl;
+            anchor.download = fileName;
+            anchor.click();
+            window.URL.revokeObjectURL(data);
         },
         //根据筛选条件，导出全部数据
         exportExcel(){            
