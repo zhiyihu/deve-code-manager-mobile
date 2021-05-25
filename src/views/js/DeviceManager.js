@@ -80,14 +80,21 @@ export default {
         };
     },
     methods: {
+        loadXLSX(){
+            if(!document.getElementById("xlsx-script")){
+                const s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.id = 'xlsx-script';
+                s.src = 'https://devecent-web.oss-cn-shenzhen.aliyuncs.com/erp_web/js/xlsx.core.min.js';
+                document.body.appendChild(s);
+            }
+        },
         exportExcelByArr(exportArray, filename = "导出表格") {
-            //this.downloadTextFile(filename + ".csv", exportArray.join("\r\n"));
-            this.$loading.show();
-            let XLSX = require("xlsx");
+            let XLSX = window.XLSX;//requir("xlsx");
+            if(!XLSX)return;
             let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
             let wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, tSheet, "Sheet1");
-            this.$loading.hide();
             XLSX.writeFile(wb, filename + ".xls", {cellStyles: true});
         },
         downloadTextFile(fileName, content) {
@@ -237,6 +244,7 @@ export default {
                 });
             });
         });
+        this.loadXLSX();
 
     }
 };

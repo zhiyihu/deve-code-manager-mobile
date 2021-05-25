@@ -362,9 +362,17 @@ body {
     font-size: 6pt;
     margin-top: -1pt;
 }
+.my-print-code-table{
+    border-spacing: 0px;
+    border: none;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+}
 
 .my-print-code-table td {
-    border: 1px solid #333;
+    border: none;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
     font-size: 8pt;
     padding-left: 6pt;
     padding-right: 6pt;
