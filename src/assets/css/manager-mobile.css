@@ -524,3 +524,8 @@
     justify-content: flex-end;
     padding-right: 12px;
 }
+
+.brand-change-table>tbody>tr>td{
+    padding-left:2px;
+    padding-right: 14px;
+}

@@ -76,6 +76,12 @@ const menus = [{
             roles: 'device-query,device-update',
         },
         {
+            title: '变更主机品牌',
+            key: 'brandchange',
+            link: '/brandchange',
+            roles: 'device-query,device-update',
+        },
+        {
             title: '打印外箱标签',
             key: 'barcodeprint',
             link: '/barcodeprint',

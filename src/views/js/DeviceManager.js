@@ -90,7 +90,7 @@ export default {
             }
         },
         exportExcelByArr(exportArray, filename = "导出表格") {
-            let XLSX = window.XLSX;//requir("xlsx");
+            let XLSX = window.XLSX;
             if(!XLSX)return;
             let tSheet = XLSX.utils.aoa_to_sheet(exportArray);  
             let wb = XLSX.utils.book_new();

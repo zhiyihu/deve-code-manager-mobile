@@ -92,6 +92,15 @@ const router = new Router({
                     }
                 },
                 {
+                    path: 'brandchange',
+                    name: 'brandchange',
+                    component: getSrc('DeviceBrandChange'),
+                    meta: {
+                        roles: 'device-query,device-update',
+                        title: '变更主机品牌'
+                    }
+                },
+                {
                     path: 'emailconfig',
                     name: 'emailconfig',
                     component: getSrc('EmailConfig'),
