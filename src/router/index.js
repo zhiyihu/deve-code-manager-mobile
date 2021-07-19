@@ -96,7 +96,7 @@ const router = new Router({
                     name: 'brandchange',
                     component: getSrc('DeviceBrandChange'),
                     meta: {
-                        roles: 'device-query,device-update',
+                        roles: 'device-brand-modify',
                         title: '变更主机品牌'
                     }
                 },

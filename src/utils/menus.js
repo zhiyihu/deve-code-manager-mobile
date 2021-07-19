@@ -79,7 +79,7 @@ const menus = [{
             title: '变更主机品牌',
             key: 'brandchange',
             link: '/brandchange',
-            roles: 'device-query,device-update',
+            roles: 'device-brand-modify',
         },
         {
             title: '打印外箱标签',
